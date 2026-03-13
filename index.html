@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Arblok Studio — Aplikasi Kasir Digital untuk UMKM Indonesia</title>
+<meta name="description" content="KasirPro by Arblok Studio. Aplikasi kasir digital untuk warung, kafe, grosir, bengkel, toko bangunan. Struk WA, laporan real-time, QRIS."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#07090A;--surf:#0E1214;--surf2:#141A1E;
+  --b:rgba(255,255,255,.06);--bs:rgba(255,255,255,.13);
+  --acc:#00E676;--acc-d:rgba(0,230,118,.1);
+  --sky:#40C4FF;--ora:#FF7043;--yel:#FFD54F;--pur:#CE93D8;
+  --mu:#6B7A7B;--mu2:#3A4648;
+  --tx:#E4EAEB;--wh:#F2F8F9;
+  --df:'Fraunces',serif;--db:'Plus Jakarta Sans',sans-serif;--dm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--tx);font-family:var(--db);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;transition:.3s;}
+#nav.s{background:rgba(7,9,10,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--b);}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.logo-box{width:34px;height:34px;background:var(--acc);border-radius:9px;display:grid;place-items:center;}
+.logo-box svg{width:18px;height:18px;fill:none;stroke:#000;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;}
+.logo-txt{font-family:var(--df);font-weight:900;font-size:1.1rem;color:var(--wh);letter-spacing:-.02em;}
+.logo-txt b{color:var(--acc);}
+.nav-mid{display:flex;gap:2rem;}
+.nav-mid a{font-size:.82rem;font-weight:600;color:var(--mu);transition:.2s;cursor:pointer;}
+.nav-mid a:hover,.nav-mid a.active{color:var(--wh);}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#000;font-weight:700;font-size:.8rem;padding:10px 22px;border-radius:9px;transition:.2s;cursor:pointer;border:none;}
+.nav-btn:hover{background:#00ff88;transform:translateY(-1px);}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hbg span{width:22px;height:2px;background:var(--tx);border-radius:2px;transition:.3s;}
+.mmenu{display:none;position:fixed;inset:0;background:rgba(7,9,10,.97);z-index:998;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mmenu.on{display:flex;}
+.mmenu a{font-family:var(--df);font-size:2.2rem;font-weight:900;color:var(--tx);}
+.mmenu a:hover{color:var(--acc);}
+.mm-x{position:absolute;top:22px;right:6%;font-size:1.6rem;cursor:pointer;color:var(--mu);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 6% 80px;position:relative;overflow:hidden;box-sizing:border-box;}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 20%,transparent 100%);}
+.hero-bg-glow{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(0,230,118,.13) 0%,transparent 65%);}
+.hero-content{position:relative;z-index:1;max-width:780px;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,230,118,.25);background:rgba(0,230,118,.07);border-radius:100px;padding:6px 16px;margin-bottom:2rem;}
+.hero-pill-dot{width:7px;height:7px;border-radius:50%;background:var(--acc);animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,230,118,.5);}50%{opacity:.7;box-shadow:0 0 0 6px rgba(0,230,118,0);}}
+.hero-pill span{font-family:var(--dm);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);}
+.hero h1{font-family:var(--df);font-size:clamp(3.2rem,7vw,8rem);font-weight:900;letter-spacing:-.05em;line-height:.93;color:var(--wh);margin-bottom:1.8rem;}
+.hero h1 i{font-style:italic;color:var(--acc);}
+.hero h1 .dim{color:var(--mu2);}
+.hero-sub{font-size:1.05rem;color:var(--mu);line-height:1.75;max-width:520px;margin-bottom:2.5rem;}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.btn-g{display:inline-flex;align-items:center;gap:9px;background:var(--acc);color:#000;font-weight:700;font-size:.88rem;padding:14px 28px;border-radius:11px;transition:.25s;border:none;cursor:pointer;}
+.btn-g:hover{background:#00ff88;transform:translateY(-2px);box-shadow:0 10px 35px rgba(0,230,118,.28);}
+.btn-o{display:inline-flex;align-items:center;gap:9px;background:transparent;border:1px solid var(--bs);color:var(--tx);font-weight:600;font-size:.88rem;padding:13px 26px;border-radius:11px;transition:.25s;cursor:pointer;}
+.btn-o:hover{border-color:var(--acc);color:var(--acc);}
+.hero-stats{display:flex;gap:2.5rem;padding-top:2.5rem;border-top:1px solid var(--b);flex-wrap:wrap;}
+.hstat-n{font-family:var(--df);font-size:2.2rem;font-weight:900;color:var(--wh);letter-spacing:-.05em;line-height:1;}
+.hstat-l{font-size:.72rem;color:var(--mu);margin-top:3px;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:14px 0;overflow:hidden;background:var(--surf);}
+.marquee-track{display:flex;gap:0;animation:marq 22s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.marq-item{display:flex;align-items:center;gap:10px;padding:0 32px;white-space:nowrap;font-family:var(--dm);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);}
+.marq-item .dot{width:5px;height:5px;border-radius:50%;background:var(--acc);}
+@keyframes marq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SECTION BASE ── */
+.sec{padding:96px 6%;}
+.sec-label{font-family:var(--dm);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:1rem;}
+.sec-h{font-family:var(--df);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:900;letter-spacing:-.04em;line-height:1.04;color:var(--wh);}
+.sec-h i{font-style:italic;color:var(--acc);}
+.sec-p{font-size:.95rem;color:var(--mu);line-height:1.75;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--bs),transparent);}
+
+/* ── PROBLEM ── */
+.prob-sec{background:var(--surf);}
+.prob-intro{text-align:center;max-width:680px;margin:0 auto 4rem;}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.prob-card{background:var(--bg);border:1px solid var(--b);border-radius:18px;padding:28px;transition:.3s;position:relative;overflow:hidden;}
+.prob-card:hover{border-color:rgba(255,112,67,.3);transform:translateY(-3px);}
+.prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ora);opacity:0;transition:.3s;}
+.prob-card:hover::before{opacity:1;}
+.prob-em{font-size:1.8rem;margin-bottom:1rem;}
+.prob-card h3{font-size:.95rem;font-weight:700;color:var(--wh);margin-bottom:.5rem;}
+.prob-card p{font-size:.8rem;color:var(--mu);line-height:1.6;}
+.prob-stat{display:inline-block;font-family:var(--dm);font-size:.72rem;color:var(--ora);background:rgba(255,112,67,.1);border:1px solid rgba(255,112,67,.2);border-radius:100px;padding:3px 10px;margin-top:.8rem;}
+
+/* ── SOLUSI / BISNIS ── */
+.bisnis-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:3rem;}
+.tab-btn{font-family:var(--dm);font-size:.72rem;letter-spacing:.06em;padding:8px 18px;border-radius:100px;border:1px solid var(--bs);color:var(--mu);background:transparent;cursor:pointer;transition:.2s;}
+.tab-btn.on,.tab-btn:hover{background:var(--acc-d);border-color:rgba(0,230,118,.35);color:var(--acc);}
+.bisnis-panel{display:none;}
+.bisnis-panel.on{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.bp-content .sec-label{margin-bottom:.6rem;}
+.bp-content h2{font-family:var(--df);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;letter-spacing:-.04em;color:var(--wh);margin-bottom:1rem;line-height:1.05;}
+.bp-content h2 i{font-style:italic;color:var(--acc);}
+.bp-content p{font-size:.9rem;color:var(--mu);line-height:1.7;margin-bottom:1.5rem;}
+.bp-features{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;}
+.bp-feat{display:flex;align-items:flex-start;gap:12px;}
+.bp-feat-icon{width:28px;height:28px;border-radius:8px;background:var(--acc-d);border:1px solid rgba(0,230,118,.2);display:grid;place-items:center;font-size:.75rem;flex-shrink:0;margin-top:1px;}
+.bp-feat-txt h4{font-size:.84rem;font-weight:700;color:var(--wh);margin-bottom:1px;}
+.bp-feat-txt p{font-size:.76rem;color:var(--mu);}
+.bp-visual{background:var(--surf);border:1px solid var(--b);border-radius:20px;overflow:hidden;}
+.bp-vis-bar{background:var(--surf2);padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--b);}
+.bp-vis-dot{width:10px;height:10px;border-radius:50%;}
+.bp-vis-title{font-family:var(--dm);font-size:.65rem;letter-spacing:.08em;color:var(--mu2);margin-left:8px;}
+.bp-vis-body{padding:20px;}
+.vis-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:1.2rem;}
+.vis-stat{background:var(--bg);border:1px solid var(--b);border-radius:12px;padding:14px 12px;text-align:center;}
+.vis-stat-n{font-family:var(--df);font-size:1.4rem;font-weight:900;letter-spacing:-.04em;color:var(--acc);}
+.vis-stat-l{font-size:.62rem;color:var(--mu);margin-top:2px;}
+.vis-item-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--bg);border-radius:10px;margin-bottom:.5rem;border:1px solid var(--b);}
+.vis-item-name{font-size:.78rem;color:var(--tx);}
+.vis-item-val{font-family:var(--dm);font-size:.75rem;color:var(--acc);}
+.vis-bar-wrap{margin-top:1rem;}
+.vis-bar-label{display:flex;justify-content:space-between;font-size:.68rem;color:var(--mu);margin-bottom:.4rem;}
+.vis-bar-track{height:6px;background:var(--surf2);border-radius:3px;overflow:hidden;}
+.vis-bar-fill{height:100%;border-radius:3px;background:var(--acc);transition:width 1s ease;}
+
+/* ── FITUR UNGGULAN ── */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.5rem;}
+.feat-card{background:var(--surf);border:1px solid var(--b);border-radius:18px;padding:28px;transition:.3s;}
+.feat-card:hover{border-color:var(--bs);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.feat-icon{width:48px;height:48px;border-radius:14px;background:var(--acc-d);border:1px solid rgba(0,230,118,.2);display:grid;place-items:center;font-size:1.3rem;margin-bottom:1.2rem;}
+.feat-card h3{font-size:.92rem;font-weight:700;color:var(--wh);margin-bottom:.4rem;}
+.feat-card p{font-size:.78rem;color:var(--mu);line-height:1.6;}
+
+/* ── TESTIMONI ── */
+.testi-sec{background:var(--surf);}
+.testi-head{text-align:center;margin-bottom:3rem;}
+.rating-row{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:1.2rem;flex-wrap:wrap;}
+.rating-badge{display:inline-flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--b);border-radius:12px;padding:12px 20px;}
+.rb-n{font-family:var(--df);font-size:1.8rem;font-weight:900;color:var(--acc);letter-spacing:-.05em;}
+.rb-stars{color:var(--yel);font-size:.85rem;}
+.rb-txt{font-size:.75rem;color:var(--mu);}
+.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+.tc{background:var(--bg);border:1px solid var(--b);border-radius:18px;padding:26px;transition:.25s;}
+.tc:hover{border-color:var(--bs);}
+.tc-type{font-family:var(--dm);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:.7rem;opacity:.8;}
+.tc-q{font-size:.86rem;line-height:1.72;color:var(--tx);font-style:italic;margin-bottom:1.2rem;}
+.tc-bot{display:flex;align-items:center;justify-content:space-between;}
+.tc-av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:800;color:#000;flex-shrink:0;}
+.tc-info{margin-left:10px;}
+.tc-name{font-size:.8rem;font-weight:700;color:var(--wh);}
+.tc-role{font-size:.68rem;color:var(--mu);}
+.tc-stars{color:var(--yel);font-size:.8rem;letter-spacing:2px;}
+
+/* ── HARGA ── */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
+.price-card{background:var(--surf);border:1px solid var(--b);border-radius:20px;padding:32px;transition:.3s;position:relative;}
+.price-card.featured{border-color:rgba(0,230,118,.4);background:linear-gradient(145deg,#0D1E14,#0E1214);}
+.price-card.featured::before{content:'Paling Populer';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--acc);color:#000;font-family:var(--dm);font-size:.65rem;font-weight:500;letter-spacing:.08em;padding:4px 16px;border-radius:100px;}
+.price-card:hover{transform:translateY(-4px);}
+.price-name{font-family:var(--dm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:.8rem;}
+.price-val{font-family:var(--df);font-size:2.8rem;font-weight:900;letter-spacing:-.05em;color:var(--wh);line-height:1;}
+.price-val span{font-size:1rem;color:var(--mu);font-weight:400;font-family:var(--db);}
+.price-desc{font-size:.78rem;color:var(--mu);margin:1rem 0 1.5rem;line-height:1.5;}
+.price-list{display:flex;flex-direction:column;gap:.55rem;margin-bottom:2rem;}
+.pi{display:flex;align-items:flex-start;gap:10px;font-size:.8rem;color:var(--tx);}
+.pi::before{content:'✓';color:var(--acc);font-weight:700;flex-shrink:0;}
+.price-btn{display:block;text-align:center;padding:13px;border-radius:10px;font-weight:700;font-size:.85rem;transition:.25s;cursor:pointer;border:none;}
+.price-btn.g{background:var(--acc);color:#000;}
+.price-btn.g:hover{background:#00ff88;}
+.price-btn.outline{background:transparent;border:1px solid var(--bs);color:var(--tx);}
+.price-btn.outline:hover{border-color:var(--acc);color:var(--acc);}
+
+/* ── CTA STRIP ── */
+.cta-strip{background:linear-gradient(135deg,#0A1F12 0%,#07090A 100%);border-top:1px solid rgba(0,230,118,.1);border-bottom:1px solid rgba(0,230,118,.1);padding:80px 6%;}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;max-width:1100px;margin:0 auto;}
+.cta-inner h2{font-family:var(--df);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;letter-spacing:-.04em;color:var(--wh);line-height:1.05;}
+.cta-inner h2 i{font-style:italic;color:var(--acc);}
+
+/* ── FOOTER ── */
+footer{background:var(--surf);border-top:1px solid var(--b);padding:56px 6% 32px;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.foot-brand p{font-size:.78rem;color:var(--mu);line-height:1.65;max-width:250px;margin-top:.8rem;}
+.foot-col h5{font-family:var(--dm);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mu2);margin-bottom:1rem;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.foot-col ul a{font-size:.8rem;color:var(--mu);transition:.2s;}
+.foot-col ul a:hover{color:var(--tx);}
+.foot-bar{border-top:1px solid var(--b);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.foot-bar p{font-size:.72rem;color:var(--mu2);}
+.foot-bar strong{background:linear-gradient(90deg,var(--acc),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* ── FAB ── */
+.fab{position:fixed;bottom:26px;right:26px;z-index:997;width:52px;height:52px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:.2s;}
+.fab:hover{transform:scale(1.1);}
+.fab svg{width:26px;height:26px;fill:#fff;}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.rv.show{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.prob-grid{grid-template-columns:1fr 1fr;}.feat-grid{grid-template-columns:1fr 1fr;}.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){
+  .nav-mid,.nav-btn{display:none;}
+  .hbg{display:flex;}
+  .bisnis-panel.on{grid-template-columns:1fr;}
+  .bp-visual{display:none;}
+  .testi-grid{grid-template-columns:1fr;}
+  .price-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .cta-inner{flex-direction:column;text-align:center;}
+  .prob-grid{grid-template-columns:1fr;}
+  .feat-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+}
+@media(max-width:480px){.hero h1{font-size:3rem;}.bisnis-tabs{gap:.4rem;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* Hero fade-in */
+.fi{opacity:0;animation:fadeUp .6s ease forwards;}
+.fi-1{animation-delay:.1s;}
+.fi-2{animation-delay:.2s;}
+.fi-3{animation-delay:.32s;}
+.fi-4{animation-delay:.44s;}
+.fi-5{animation-delay:.56s;}
+
+
+/* ── PAGE SYSTEM ── */
+.pg{display:none;}
+.pg.on{display:block;}
+#pg-main{display:block;}
+
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--dm);font-size:.65rem;font-weight:500;letter-spacing:.05em;padding:5px 12px;border-radius:100px;border:1px solid var(--bs);color:var(--mu);}
+.chip.green{border-color:rgba(0,230,118,.3);color:var(--acc);background:var(--acc-d);}
+
+@media(max-width:768px){
+  .prod-wrap{grid-template-columns:1fr !important;}
+  .profil-wrap{grid-template-columns:1fr !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo" onclick="scrollTop()">
+    <div class="logo-box"><svg viewBox="0 0 24 24"><path d="M4 12L12 4L20 12M4 12L12 20L20 12"/></svg></div>
+    <span class="logo-txt">Arblok <b>Studio</b></span>
+  </div>
+  <div class="nav-mid">
+    <a onclick="goTo('home')" class="nav-link active" data-p="home">Home</a>
+    <a onclick="goTo('produk')" class="nav-link" data-p="produk">Produk</a>
+    <a onclick="scrollSec('masalah')" class="nav-link" data-p="masalah">Masalah</a>
+    <a onclick="scrollSec('solusi')" class="nav-link" data-p="solusi">Solusi</a>
+    <a onclick="scrollSec('fitur')" class="nav-link" data-p="fitur">Fitur</a>
+    <a onclick="scrollSec('testimoni')" class="nav-link" data-p="testimoni">Testimoni</a>
+    <a onclick="scrollSec('harga')" class="nav-link" data-p="harga">Harga</a>
+    <a onclick="goTo('profil')" class="nav-link" data-p="profil">Profil</a>
+  </div>
+  <a class="nav-btn" href="https://wa.me/6289508053795?text=Halo,%20saya%20mau%20konsultasi%20gratis%20KasirPro" target="_blank">💬 Konsultasi Gratis</a>
+  <div class="hbg" onclick="toggleMob()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOB MENU -->
+<div class="mmenu" id="mm">
+  <span class="mm-x" onclick="toggleMob()">✕</span>
+  <a onclick="goTo('home');toggleMob()">Home</a>
+  <a onclick="goTo('produk');toggleMob()">Produk</a>
+  <a onclick="scrollSec('masalah');toggleMob()">Masalah</a>
+  <a onclick="scrollSec('solusi');toggleMob()">Solusi</a>
+  <a onclick="scrollSec('fitur');toggleMob()">Fitur</a>
+  <a onclick="scrollSec('testimoni');toggleMob()">Testimoni</a>
+  <a onclick="scrollSec('harga');toggleMob()">Harga</a>
+  <a onclick="goTo('profil');toggleMob()">Profil</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<div id="pg-main" class="pg">
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-glow"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-pill fi fi-1">
+      <div class="hero-pill-dot"></div>
+      <span>500+ UMKM sudah buktikan hasilnya</span>
+    </div>
+    <h1 class="fi fi-2">
+      Berhenti rugi<br>karena <i>sistem</i><br><span class="dim">manual.</span>
+    </h1>
+    <p class="hero-sub fi fi-3">
+      KasirPro by Arblok Studio hadir biar kamu tahu persis: omzet berapa, stok tinggal berapa, dan laba kamu ke mana. Tanpa install, langsung di HP.
+    </p>
+    <div class="hero-ctas fi fi-4">
+      <a class="btn-g" href="https://arblok-digital.github.io/Kasirproid-app/" target="_blank">🚀 Coba Gratis 14 Hari →</a>
+      <a class="btn-o" onclick="scrollSec('solusi')" style="cursor:pointer;">Lihat Solusi ↓</a>
+    </div>
+    <div class="hero-stats fi fi-5">
+      <div><div class="hstat-n">500+</div><div class="hstat-l">UMKM Aktif</div></div>
+      <div><div class="hstat-n">4.9★</div><div class="hstat-l">Rating Pengguna</div></div>
+      <div><div class="hstat-n">10×</div><div class="hstat-l">Lebih Cepat</div></div>
+      <div><div class="hstat-n">Rp0</div><div class="hstat-l">Setup Fee</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="mtrack"></div>
+</div>
+
+<!-- ══ MASALAH ══ -->
+<section class="sec prob-sec" id="masalah">
+  <div class="prob-intro">
+    <span class="sec-label rv">Kenapa UMKM sulit berkembang?</span>
+    <h2 class="sec-h rv">Tiap hari ada uang<br>yang <i>senyap hilang.</i></h2>
+    <p class="sec-p rv" style="margin:1rem auto 0;">Bukan karena kamu kurang kerja keras. Tapi karena bisnis yang besar butuh sistem — bukan sekadar ingatan dan buku catatan.</p>
+  </div>
+  <div class="prob-grid">
+    <div class="prob-card rv">
+      <div class="prob-em">📒</div>
+      <h3>Pencatatan manual bikin uang hilang diam-diam</h3>
+      <p>Salah tulis Rp 15.000 jadi Rp 1.500. Dikali 50 transaksi sehari. Dalam sebulan? Ratusan ribu melayang tanpa jejak dan tanpa bisa dilacak.</p>
+      <span class="prob-stat">~Rp 300rb/bulan hilang sia-sia</span>
+    </div>
+    <div class="prob-card rv">
+      <div class="prob-em">📦</div>
+      <h3>Stok habis tanpa ketahuan — pelanggan kabur</h3>
+      <p>Pelanggan yang kecewa sekali butuh 7× transaksi baik untuk kembali lagi. Satu kehabisan stok bisa cost mahal di reputasi dan omzet kamu.</p>
+      <span class="prob-stat">1 pelanggan kabur = Rp 500rb/tahun</span>
+    </div>
+    <div class="prob-card rv">
+      <div class="prob-em">💸</div>
+      <h3>Omzet besar tapi dompet tipis — kenapa?</h3>
+      <p>Tanpa laporan real-time, kamu gak tau produk mana yang untung, mana yang nguras modal. Bisnis jalan buta setiap hari tanpa peta.</p>
+      <span class="prob-stat">40% UMKM tutup karena cash flow</span>
+    </div>
+    <div class="prob-card rv">
+      <div class="prob-em">⏰</div>
+      <h3>Rekap manual habiskan waktu berjam-jam</h3>
+      <p>Rekap harian 2-3 jam, laporan bulanan bisa 2 hari penuh. Waktu itu harusnya dipakai untuk kembangkan bisnis, bukan ngurusin angka.</p>
+      <span class="prob-stat">20+ jam/bulan terbuang sia-sia</span>
+    </div>
+    <div class="prob-card rv">
+      <div class="prob-em">👥</div>
+      <h3>Susah pantau karyawan dari jarak jauh</h3>
+      <p>Tidak ada sistem = tidak ada akuntabilitas. Karyawan kasir bisa salah input atau lebih parah — dan kamu baru tau setelah terlambat.</p>
+      <span class="prob-stat">Kebocoran rata-rata Rp 2-8jt/bln</span>
+    </div>
+    <div class="prob-card rv">
+      <div class="prob-em">⭐</div>
+      <h3>Antrian panjang bikin rating Google Maps turun</h3>
+      <p>Di era ulasan online, kasir lambat bukan cuma bikin kesal — satu bintang 1 bisa mentahkan 10 ulasan bagus yang susah payah kamu kumpulkan.</p>
+      <span class="prob-stat">1 review buruk = 30 calon hilang</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SOLUSI PER BISNIS ══ -->
+<section class="sec" id="solusi">
+  <span class="sec-label rv">Solusi per Jenis Bisnis</span>
+  <h2 class="sec-h rv">Apapun bisnisnya,<br><i>ada solusinya.</i></h2>
+  <p class="sec-p rv" style="margin-top:.8rem;max-width:580px;">Bukan aplikasi generik yang dipaksakan. KasirPro dirancang khusus untuk cara kerja masing-masing jenis bisnis.</p>
+
+  <div class="bisnis-tabs" style="margin-top:2.5rem;">
+    <button class="tab-btn on" data-tab="fnb" onclick="showTab('fnb')">☕ F&B / Kafe</button>
+    <button class="tab-btn" data-tab="grosir" onclick="showTab('grosir')">📦 Grosir / Kelontong</button>
+    <button class="tab-btn" data-tab="bangunan" onclick="showTab('bangunan')">🔨 Toko Bangunan</button>
+    <button class="tab-btn" data-tab="bengkel" onclick="showTab('bengkel')">🔧 Bengkel</button>
+    <button class="tab-btn" data-tab="warung" onclick="showTab('warung')">🍽️ Warung Nasi</button>
+  </div>
+
+  <!-- F&B -->
+  <div class="bisnis-panel on" id="tab-fnb">
+    <div class="bp-content">
+      <span class="sec-label">☕ Kafe, Warung Kopi & Restoran</span>
+      <h2>Kasir kafe yang<br><i>ngerti ritme bisnis F&B.</i></h2>
+      <p>Peak hour pagi yang chaos, menu yang sering berubah, pelanggan yang minta struk WA — semua bisa dihandle KasirPro tanpa drama.</p>
+      <div class="bp-features">
+        <div class="bp-feat"><div class="bp-feat-icon">🧾</div><div class="bp-feat-txt"><h4>Struk otomatis ke WA pelanggan</h4><p>Pelanggan langsung dapat struk di HP, tanpa kertas, tanpa antri printer.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">📊</div><div class="bp-feat-txt"><h4>Laporan menu terlaris per hari</h4><p>Tau persis Es Teh atau Kopi Susu yang lebih untung — bukan sekadar laris.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">💳</div><div class="bp-feat-txt"><h4>QRIS + Transfer + Tunai</h4><p>Semua metode bayar dalam satu kasir. QR otomatis tampil saat pelanggan pilih QRIS.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">📱</div><div class="bp-feat-txt"><h4>Pantau omzet dari rumah</h4><p>Sync Google Sheets realtime — cek pemasukan tanpa harus ada di tempat.</p></div></div>
+      </div>
+      <a class="btn-g" href="https://arblok-digital.github.io/Kasirproid-app/" target="_blank">Coba untuk Kafe →</a>
+    </div>
+    <div class="bp-visual">
+      <div class="bp-vis-bar">
+        <div class="bp-vis-dot" style="background:#FF5F57;"></div>
+        <div class="bp-vis-dot" style="background:#FFBD2E;"></div>
+        <div class="bp-vis-dot" style="background:#28C840;"></div>
+        <span class="bp-vis-title">KasirPro.id — Kafe Mode</span>
+      </div>
+      <div class="bp-vis-body">
+        <div class="vis-stat-row">
+          <div class="vis-stat"><div class="vis-stat-n">47</div><div class="vis-stat-l">Transaksi</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--sky);">Rp 2.8jt</div><div class="vis-stat-l">Omzet Hari Ini</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--yel);">68%</div><div class="vis-stat-l">Margin</div></div>
+        </div>
+        <div class="vis-item-row"><span class="vis-item-name">☕ Es Kopi Susu</span><span class="vis-item-val">23× · Rp 920rb</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🧊 Es Teh Manis</span><span class="vis-item-val">18× · Rp 270rb</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🥪 Roti Bakar</span><span class="vis-item-val">12× · Rp 480rb</span></div>
+        <div class="vis-bar-wrap">
+          <div class="vis-bar-label"><span>Target Harian</span><span>Rp 2.8jt / Rp 4jt</span></div>
+          <div class="vis-bar-track"><div class="vis-bar-fill" style="width:70%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROSIR -->
+  <div class="bisnis-panel" id="tab-grosir">
+    <div class="bp-content">
+      <span class="sec-label">📦 Toko Grosir & Kelontong</span>
+      <h2>Ratusan SKU,<br><i>semua terkontrol.</i></h2>
+      <p>Stok sembako yang berputar cepat, pelanggan yang beli borongan, dan margin yang tipis — butuh sistem yang beneran kuat, bukan Excel yang sering crash.</p>
+      <div class="bp-features">
+        <div class="bp-feat"><div class="bp-feat-icon">📷</div><div class="bp-feat-txt"><h4>Scan barcode instan</h4><p>Scan produk via kamera HP atau USB scanner. Cari dari ribuan SKU dalam 1 detik.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">💰</div><div class="bp-feat-txt"><h4>HPP & margin otomatis</h4><p>Setiap transaksi langsung kalkulasi HPP dan margin — tau mana yang untung tipis.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">📈</div><div class="bp-feat-txt"><h4>Top 10 margin produk</h4><p>Ranking produk paling menguntungkan — bukan cuma paling laris tapi paling untung.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">🤝</div><div class="bp-feat-txt"><h4>Stok konsinyasi terpisah</h4><p>Kelola titipan produk dari supplier — laporan P&L otomatis terbagi.</p></div></div>
+      </div>
+      <a class="btn-g" href="https://arblok-digital.github.io/Kasirproid-app-Grosiran-/" target="_blank">Coba untuk Grosir →</a>
+    </div>
+    <div class="bp-visual">
+      <div class="bp-vis-bar">
+        <div class="bp-vis-dot" style="background:#FF5F57;"></div>
+        <div class="bp-vis-dot" style="background:#FFBD2E;"></div>
+        <div class="bp-vis-dot" style="background:#28C840;"></div>
+        <span class="bp-vis-title">KasirPro Grosiran</span>
+      </div>
+      <div class="bp-vis-body">
+        <div class="vis-stat-row">
+          <div class="vis-stat"><div class="vis-stat-n">312</div><div class="vis-stat-l">Total SKU</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--sky);">Rp 14jt</div><div class="vis-stat-l">Omzet Hari Ini</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--yel);">12%</div><div class="vis-stat-l">Avg Margin</div></div>
+        </div>
+        <div class="vis-item-row"><span class="vis-item-name">🌾 Beras Premium 5kg</span><span class="vis-item-val">Margin 8%</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🛢️ Minyak Goreng 2L</span><span class="vis-item-val">Margin 11%</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🧼 Sabun Mandi Dus</span><span class="vis-item-val">Margin 18%</span></div>
+        <div class="vis-bar-wrap">
+          <div class="vis-bar-label"><span>Nilai Stok Tersimpan</span><span>Rp 48jt</span></div>
+          <div class="vis-bar-track"><div class="vis-bar-fill" style="width:85%;background:var(--sky);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANGUNAN -->
+  <div class="bisnis-panel" id="tab-bangunan">
+    <div class="bp-content">
+      <span class="sec-label">🔨 Toko Bangunan & Material</span>
+      <h2>Material ribuan item,<br><i>stok selalu akurat.</i></h2>
+      <p>Toko bangunan punya ribuan jenis material, satuan yang berbeda-beda, dan pelanggan borongan yang kompleks. KasirPro Grosiran handle semua itu.</p>
+      <div class="bp-features">
+        <div class="bp-feat"><div class="bp-feat-icon">📦</div><div class="bp-feat-txt"><h4>Multi satuan (pcs, kg, m, dus)</h4><p>Semen dijual per sak, besi per batang, cat per liter — semua bisa dikonfigurasi.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">🔍</div><div class="bp-feat-txt"><h4>Stock opname cepat</h4><p>Dari 3 hari jadi 4 jam — scan barcode tiap item dan sistem hitung selisih otomatis.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">📄</div><div class="bp-feat-txt"><h4>Faktur & nota otomatis</h4><p>Print nota proyek langsung dari kasir — detail item, jumlah, harga, total.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">☁️</div><div class="bp-feat-txt"><h4>Laporan untuk pemilik</h4><p>Pantau omzet dan stok dari HP walau lagi di luar kota via Google Sheets sync.</p></div></div>
+      </div>
+      <a class="btn-g" href="https://arblok-digital.github.io/Kasirproid-app-Grosiran-/" target="_blank">Coba untuk Toko Bangunan →</a>
+    </div>
+    <div class="bp-visual">
+      <div class="bp-vis-bar">
+        <div class="bp-vis-dot" style="background:#FF5F57;"></div>
+        <div class="bp-vis-dot" style="background:#FFBD2E;"></div>
+        <div class="bp-vis-dot" style="background:#28C840;"></div>
+        <span class="bp-vis-title">TB Maju Jaya · Stock Check</span>
+      </div>
+      <div class="bp-vis-body">
+        <div class="vis-stat-row">
+          <div class="vis-stat"><div class="vis-stat-n">1.240</div><div class="vis-stat-l">Jenis Item</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--acc);">+Rp 11jt</div><div class="vis-stat-l">Selisih Ketemu</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--yel);">4 jam</div><div class="vis-stat-l">Stock Opname</div></div>
+        </div>
+        <div class="vis-item-row"><span class="vis-item-name">🧱 Semen Tiga Roda 40kg</span><span class="vis-item-val">240 sak</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">⚙️ Besi 10mm / 12m</span><span class="vis-item-val">85 btg</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🪟 Kaca 5mm per m²</span><span class="vis-item-val">32 m²</span></div>
+        <div class="vis-bar-wrap">
+          <div class="vis-bar-label"><span>Akurasi Stok</span><span>98.7%</span></div>
+          <div class="vis-bar-track"><div class="vis-bar-fill" style="width:99%;background:var(--acc);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENGKEL -->
+  <div class="bisnis-panel" id="tab-bengkel">
+    <div class="bp-content">
+      <span class="sec-label">🔧 Bengkel Motor & Mobil</span>
+      <h2>Servis + sparepart,<br><i>semua tercatat rapi.</i></h2>
+      <p>Bengkel punya 2 jenis pendapatan — jasa servis dan penjualan sparepart. Dua-duanya harus tercatat terpisah agar laporan keuangannya beneran akurat.</p>
+      <div class="bp-features">
+        <div class="bp-feat"><div class="bp-feat-icon">🔩</div><div class="bp-feat-txt"><h4>Kasir sparepart + nota jasa</h4><p>Satu transaksi bisa campuran jasa + part — total otomatis terhitung benar.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">📦</div><div class="bp-feat-txt"><h4>Stok sparepart realtime</h4><p>Oli, filter, kampas rem — semua stok terpantau. Alert sebelum kehabisan.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">📊</div><div class="bp-feat-txt"><h4>Laporan pendapatan harian</h4><p>Tau persis berapa dari jasa servis vs penjualan part — tiap hari, tiap bulan.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">🧾</div><div class="bp-feat-txt"><h4>Struk profesional via WA</h4><p>Pelanggan dapat struk langsung di HP — kesan profesional, tanpa kertas.</p></div></div>
+      </div>
+      <a class="btn-g" href="https://arblok-digital.github.io/Kasirproid-app/" target="_blank">Coba untuk Bengkel →</a>
+    </div>
+    <div class="bp-visual">
+      <div class="bp-vis-bar">
+        <div class="bp-vis-dot" style="background:#FF5F57;"></div>
+        <div class="bp-vis-dot" style="background:#FFBD2E;"></div>
+        <div class="bp-vis-dot" style="background:#28C840;"></div>
+        <span class="bp-vis-title">Bengkel Motor Jaya · Laporan</span>
+      </div>
+      <div class="bp-vis-body">
+        <div class="vis-stat-row">
+          <div class="vis-stat"><div class="vis-stat-n">28</div><div class="vis-stat-l">Unit Servis</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--sky);">Rp 3.4jt</div><div class="vis-stat-l">Omzet Hari Ini</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--acc);">62%</div><div class="vis-stat-l">Margin</div></div>
+        </div>
+        <div class="vis-item-row"><span class="vis-item-name">🔧 Servis Tune Up</span><span class="vis-item-val">12× · Rp 1.2jt</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🛢️ Ganti Oli Shell</span><span class="vis-item-val">18× · Rp 900rb</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🔩 Kampas Rem</span><span class="vis-item-val">8× · Rp 480rb</span></div>
+        <div class="vis-bar-wrap">
+          <div class="vis-bar-label"><span>Jasa vs Part</span><span>60% / 40%</span></div>
+          <div class="vis-bar-track"><div class="vis-bar-fill" style="width:60%;background:var(--ora);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WARUNG NASI -->
+  <div class="bisnis-panel" id="tab-warung">
+    <div class="bp-content">
+      <span class="sec-label">🍽️ Warung Nasi & Rumah Makan</span>
+      <h2>Ramai tapi tetap<br><i>tahu untung-ruginya.</i></h2>
+      <p>Warung makan bisa ramai tapi tetap rugi kalau tidak ada kontrol. KasirPro bantu kamu lacak setiap piring yang keluar dan setiap rupiah yang masuk.</p>
+      <div class="bp-features">
+        <div class="bp-feat"><div class="bp-feat-icon">🍛</div><div class="bp-feat-txt"><h4>Kasir menu cepat</h4><p>Tap menu → tambah qty → bayar. Antrian tetap lancar walau lagi peak jam makan siang.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">💰</div><div class="bp-feat-txt"><h4>Laporan COGS harian</h4><p>Input bahan baku tiap hari → sistem hitung otomatis laba kotor dan laba bersih.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">🏆</div><div class="bp-feat-txt"><h4>Menu terlaris & paling untung</h4><p>Bedain mana menu yang laris tapi rugi vs menu yang jarang tapi margin-nya besar.</p></div></div>
+        <div class="bp-feat"><div class="bp-feat-icon">📱</div><div class="bp-feat-txt"><h4>Pantau dari mana aja</h4><p>Pemilik bisa lihat omzet realtime dari HP walau lagi belanja bahan ke pasar.</p></div></div>
+      </div>
+      <a class="btn-g" href="https://arblok-digital.github.io/Kasirproid-app/" target="_blank">Coba untuk Warung Nasi →</a>
+    </div>
+    <div class="bp-visual">
+      <div class="bp-vis-bar">
+        <div class="bp-vis-dot" style="background:#FF5F57;"></div>
+        <div class="bp-vis-dot" style="background:#FFBD2E;"></div>
+        <div class="bp-vis-dot" style="background:#28C840;"></div>
+        <span class="bp-vis-title">RM Masakan Padang · Laporan</span>
+      </div>
+      <div class="bp-vis-body">
+        <div class="vis-stat-row">
+          <div class="vis-stat"><div class="vis-stat-n">156</div><div class="vis-stat-l">Piring Terjual</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--sky);">Rp 4.2jt</div><div class="vis-stat-l">Omzet Hari Ini</div></div>
+          <div class="vis-stat"><div class="vis-stat-n" style="color:var(--acc);">Rp 1.8jt</div><div class="vis-stat-l">Net Profit</div></div>
+        </div>
+        <div class="vis-item-row"><span class="vis-item-name">🍗 Ayam Pop</span><span class="vis-item-val">48 porsi · Margin 58%</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🥩 Rendang Sapi</span><span class="vis-item-val">35 porsi · Margin 45%</span></div>
+        <div class="vis-item-row"><span class="vis-item-name">🐟 Ikan Bakar</span><span class="vis-item-val">29 porsi · Margin 52%</span></div>
+        <div class="vis-bar-wrap">
+          <div class="vis-bar-label"><span>Net Margin Hari Ini</span><span>43%</span></div>
+          <div class="vis-bar-track"><div class="vis-bar-fill" style="width:43%;background:var(--yel);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FITUR UNGGULAN ══ -->
+<section class="sec" id="fitur">
+  <span class="sec-label rv">Fitur Unggulan</span>
+  <h2 class="sec-h rv">Semua yang bisnis kamu<br>butuhkan, <i>dalam satu app.</i></h2>
+  <div class="feat-grid">
+    <div class="feat-card rv"><div class="feat-icon">🧾</div><h3>Kasir & Struk Digital</h3><p>Proses transaksi cepat, struk langsung kirim ke WA pelanggan atau print via Bluetooth printer thermal ESC/POS.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">📊</div><h3>Laporan Laba-Rugi Harian</h3><p>Omzet, COGS, OPEX, Net Profit — kalkulasi otomatis tiap hari. Export CSV atau PDF untuk investor atau laporan pajak.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">☁️</div><h3>Sync Google Sheets</h3><p>Data transaksi otomatis masuk ke Google Sheets realtime. Pantau omzet dari HP manapun, kapanpun.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">💳</div><h3>QRIS + Transfer + Tunai</h3><p>Semua metode pembayaran dalam satu kasir. QR QRIS otomatis tampil di layar saat pelanggan pilih QRIS.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">📷</div><h3>Scan Barcode</h3><p>Scan produk via kamera HP, USB scanner, atau input manual. Cocok untuk ribuan SKU di toko grosir dan retail.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">🔵</div><h3>Bluetooth Printer</h3><p>Kompatibel dengan Xprinter, GOOJPRT, ZJ, Rongta, dan semua printer thermal Bluetooth ESC/POS.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">🔒</div><h3>PIN Keamanan</h3><p>Lindungi aplikasi dengan PIN 4 digit. Data tersimpan lokal di browser — aman dari akses tidak sah.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">💼</div><h3>Tracking Modal Investor</h3><p>Input modal investor sekali, sistem tracking otomatis. Laporan bagi hasil terhitung otomatis tiap hari.</p></div>
+    <div class="feat-card rv"><div class="feat-icon">📱</div><h3>No Install, Langsung Jalan</h3><p>Buka di browser HP atau laptop, langsung bisa dipakai. Tidak perlu download, tidak perlu setup server.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ TESTIMONI ══ -->
+<section class="sec testi-sec" id="testimoni">
+  <div class="testi-head">
+    <span class="sec-label rv">Testimoni Nyata</span>
+    <h2 class="sec-h rv">Dipercaya ratusan<br><i>pemilik bisnis Indonesia.</i></h2>
+    <div class="rating-row rv">
+      <div class="rating-badge">
+        <span class="rb-n">4.9</span>
+        <div><div class="rb-stars">★★★★★</div><div class="rb-txt">dari 500+ pengguna</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="testi-grid">
+    <div class="tc rv">
+      <div class="tc-type">🏪 Toko Kelontong</div>
+      <p class="tc-q">"Ratusan item sembako, dari beras, minyak, sampai sabun — dulu stoknya sering misterius hilang. Setelah pakai KasirPro, stock opname yang biasa 2 hari selesai dalam 2 jam. Ketemu selisih Rp 3 juta yang ternyata dari salah input kasir."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#1B5E20,#00E676);">BS</div>
+          <div class="tc-info"><div class="tc-name">Budi Santoso</div><div class="tc-role">Toko Kelontong Pak Budi, Bekasi</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="tc rv">
+      <div class="tc-type">👕 Laundry</div>
+      <p class="tc-q">"Dulu pelanggan sering telpon nanya laundry sudah jadi belum — sekarang notif WA otomatis yang kerja. Keluhan turun 90%, pelanggan baru naik 40% cuma dari rekomendasi mulut ke mulut."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#0D47A1,#40C4FF);">SR</div>
+          <div class="tc-info"><div class="tc-name">Siti Rahayu</div><div class="tc-role">Laundry Bersih Indah, Tangerang</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="tc rv">
+      <div class="tc-type">🔨 Toko Bangunan</div>
+      <p class="tc-q">"Awalnya skeptis, aplikasi apa yang bisa ngalahin sistem saya yang 8 tahun. Ternyata dalam 3 minggu, sistem nemuin kebocoran stok material Rp 11 juta yang entah ke mana. Karyawan yang salah input akhirnya ketahuan juga."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#BF360C,#FF7043);">HW</div>
+          <div class="tc-info"><div class="tc-name">Hendra Wijaya</div><div class="tc-role">TB Maju Jaya, Surabaya</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="tc rv">
+      <div class="tc-type">☕ Kafe</div>
+      <p class="tc-q">"Kafe saya cuma 6 meja, tapi omzetnya chaos karena gak ada sistem. Sekarang laporan per menu keluar otomatis tiap malam. Ketauan ternyata Es Teh yang paling untung, bukan Kopi Susu yang selama ini gue andalkan."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#004D40,#1DE9B6);color:#000;">RA</div>
+          <div class="tc-info"><div class="tc-name">Rizky Aditya</div><div class="tc-role">Kafe Pojok Sore, Bandung</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="tc rv">
+      <div class="tc-type">🏥 Apotek</div>
+      <p class="tc-q">"Obat kadaluarsa pernah lolos terjual karena sistem manual kami gak ketrack. Sekarang ada alert otomatis 30 hari sebelum expired. Bukan cuma hemat, tapi juga lindungi reputasi apotek kami."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#01579B,#81D4FA);">FN</div>
+          <div class="tc-info"><div class="tc-name">Farhan Nugraha</div><div class="tc-role">Apotek Sehat Farhan, Medan</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="tc rv">
+      <div class="tc-type">🍽️ Warung Makan</div>
+      <p class="tc-q">"Warung makan saya ramai tapi sering rugi entah kenapa. Ternyata ada karyawan yang kasbon terus gak dicatat. Sekarang semua pengeluaran tercatat, saya bisa lihat laporan laba-rugi tiap hari dari HP."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#E65100,#FFCC80);color:#000;">YS</div>
+          <div class="tc-info"><div class="tc-name">Yuni Safitri</div><div class="tc-role">RM Masakan Padang Yuni, Makassar</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="tc rv">
+      <div class="tc-type">🔧 Bengkel</div>
+      <p class="tc-q">"Dulu nota servis tulis tangan, sering hilang, pelanggan komplain. Sekarang semua tersimpan digital, bisa kirim struk ke WA pelanggan langsung. Bengkel keliatan lebih profesional, pelanggan balik terus."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#37474F,#78909C);">DK</div>
+          <div class="tc-info"><div class="tc-name">Doni Kusuma</div><div class="tc-role">Bengkel Motor Doni, Yogyakarta</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="tc rv">
+      <div class="tc-type">📦 Distributor</div>
+      <p class="tc-q">"Saya distributor snack ke 40 warung. Dulu rekap tagihan makan waktu 2 hari. Sekarang faktur otomatis keluar, tagihan per warung langsung kekirim WA. Cashflow saya jauh lebih sehat sekarang."</p>
+      <div class="tc-bot">
+        <div style="display:flex;align-items:center;">
+          <div class="tc-av" style="background:linear-gradient(135deg,#1A237E,#7986CB);">AP</div>
+          <div class="tc-info"><div class="tc-name">Agus Prasetyo</div><div class="tc-role">UD Snack Jaya, Semarang</div></div>
+        </div>
+        <div class="tc-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HARGA ══ -->
+<section class="sec" id="harga">
+  <span class="sec-label rv">Harga & Paket</span>
+  <h2 class="sec-h rv">Investasi kecil,<br><i>hasil yang nyata.</i></h2>
+  <p class="sec-p rv" style="margin-top:.8rem;">Trial 14 hari gratis tanpa kartu kredit. Bisa cancel kapanpun.</p>
+  <div class="price-grid">
+    <div class="price-card rv">
+      <div class="price-name">Starter</div>
+      <div class="price-val">Rp 99rb<span>/bulan</span></div>
+      <div class="price-desc">Cocok untuk warung dan usaha kecil yang baru mulai digital.</div>
+      <div class="price-list">
+        <div class="pi">Kasir & struk digital</div>
+        <div class="pi">Laporan harian</div>
+        <div class="pi">Struk via WA</div>
+        <div class="pi">QRIS + Tunai + Transfer</div>
+        <div class="pi">PIN keamanan</div>
+        <div class="pi">Trial 14 hari gratis</div>
+      </div>
+      <a href="https://arblok-digital.github.io/Kasirproid-app/" target="_blank" class="price-btn outline">Mulai Trial Gratis →</a>
+    </div>
+    <div class="price-card featured rv">
+      <div class="price-name">Business</div>
+      <div class="price-val">Rp 199rb<span>/bulan</span></div>
+      <div class="price-desc">Untuk bisnis yang sudah berkembang dan butuh analitik lebih dalam.</div>
+      <div class="price-list">
+        <div class="pi">Semua fitur Starter</div>
+        <div class="pi">Sync Google Sheets realtime</div>
+        <div class="pi">Bluetooth printer</div>
+        <div class="pi">Export CSV & PDF</div>
+        <div class="pi">Tracking modal investor</div>
+        <div class="pi">Laporan laba-rugi lengkap</div>
+      </div>
+      <a href="https://wa.me/6289508053795?text=Halo,%20saya%20mau%20paket%20Business%20KasirPro" target="_blank" class="price-btn g">Pilih Paket Ini →</a>
+    </div>
+    <div class="price-card rv">
+      <div class="price-name">Grosiran Pro</div>
+      <div class="price-val">Rp 299rb<span>/bulan</span></div>
+      <div class="price-desc">Khusus toko grosir, distributor, dan retail dengan ribuan SKU.</div>
+      <div class="price-list">
+        <div class="pi">Semua fitur Business</div>
+        <div class="pi">Scan barcode (kamera + USB)</div>
+        <div class="pi">HPP & margin otomatis</div>
+        <div class="pi">Stok konsinyasi</div>
+        <div class="pi">Top 10 produk margin</div>
+        <div class="pi">Analitik 30 hari</div>
+      </div>
+      <a href="https://wa.me/6289508053795?text=Halo,%20saya%20mau%20paket%20Grosiran%20Pro%20KasirPro" target="_blank" class="price-btn outline">Hubungi Kami →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<div class="cta-strip">
+  <div class="cta-inner">
+    <div>
+      <h2>Pesaing kamu sudah<br>pakai sistem ini. <i>Kapan kamu?</i></h2>
+      <p style="font-size:.9rem;color:var(--mu);margin-top:.8rem;">Trial 14 hari gratis. Tidak perlu kartu kredit.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.8rem;align-items:flex-start;">
+      <a class="btn-g" href="https://arblok-digital.github.io/Kasirproid-app/" target="_blank" style="font-size:.95rem;padding:16px 32px;">🚀 Coba Gratis Sekarang →</a>
+      <a class="btn-o" href="https://wa.me/6289508053795" target="_blank">💬 Konsultasi via WA dulu</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- end pg-main -->
+<!-- ══ PAGE: PRODUK ══ -->
+<div id="pg-produk" class="pg">
+  <section class="sec" style="padding-top:120px;">
+    <span class="sec-label">Produk Kami</span>
+    <h2 class="sec-h">Tiga solusi,<br><i>satu studio.</i></h2>
+    <p class="sec-p" style="margin-top:.8rem;max-width:560px;">Aplikasi kasir untuk UMKM dan tools trading untuk investor. Semua bisa diakses langsung dari browser — tanpa install.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;" class="prod-wrap">
+
+      <div style="background:var(--surf);border:1px solid var(--b);border-radius:20px;overflow:hidden;transition:.3s;cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''" onclick="window.open('https://arblok-digital.github.io/Kasirproid-app/','_blank')">
+        <div style="padding:28px 28px 20px;">
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--acc-d);border:1px solid rgba(0,230,118,.2);display:grid;place-items:center;font-size:1.5rem;margin-bottom:1.2rem;">🧾</div>
+          <div style="font-family:var(--dm);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:.5rem;">Retail · F&B · Warung</div>
+          <h3 style="font-family:var(--df);font-size:1.4rem;font-weight:900;letter-spacing:-.03em;color:var(--wh);margin-bottom:.5rem;">KasirPro.id</h3>
+          <p style="font-size:.82rem;color:var(--mu);line-height:1.6;margin-bottom:1.2rem;">Aplikasi kasir digital lengkap untuk warung, kafe, toko retail. Struk WA, laporan laba-rugi, QRIS, Bluetooth printer, sync Google Sheets.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+            <span class="chip green">● Live</span><span class="chip">POS</span><span class="chip">Laporan</span><span class="chip">QRIS</span>
+          </div>
+        </div>
+        <div style="padding:16px 28px;border-top:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-family:var(--dm);font-size:.8rem;color:var(--mu);">Mulai <strong style="color:var(--wh);">Rp 99rb</strong>/bln</span>
+          <a href="https://arblok-digital.github.io/Kasirproid-app/" target="_blank" class="btn-g" style="padding:8px 18px;font-size:.78rem;">Coba Gratis →</a>
+        </div>
+      </div>
+
+      <div style="background:var(--surf);border:1px solid rgba(64,196,255,.2);border-radius:20px;overflow:hidden;transition:.3s;cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''" onclick="window.open('https://arblok-digital.github.io/Kasirproid-app-Grosiran-/','_blank')">
+        <div style="padding:28px 28px 20px;">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(64,196,255,.1);border:1px solid rgba(64,196,255,.2);display:grid;place-items:center;font-size:1.5rem;margin-bottom:1.2rem;">📦</div>
+          <div style="font-family:var(--dm);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);margin-bottom:.5rem;">Grosir · Distributor · Kelontong</div>
+          <h3 style="font-family:var(--df);font-size:1.4rem;font-weight:900;letter-spacing:-.03em;color:var(--wh);margin-bottom:.5rem;">KasirPro Grosiran</h3>
+          <p style="font-size:.82rem;color:var(--mu);line-height:1.6;margin-bottom:1.2rem;">Kasir advanced untuk toko grosir & distributor. Scan barcode, HPP & margin otomatis, laporan P&L, stok konsinyasi, export CSV/PDF.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+            <span class="chip green">● Live</span><span class="chip">Barcode</span><span class="chip">HPP</span><span class="chip">P&L</span>
+          </div>
+        </div>
+        <div style="padding:16px 28px;border-top:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-family:var(--dm);font-size:.8rem;color:var(--mu);">Mulai <strong style="color:var(--wh);">Rp 99rb</strong>/bln</span>
+          <a href="https://arblok-digital.github.io/Kasirproid-app-Grosiran-/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:#000;font-weight:700;font-size:.78rem;padding:8px 18px;border-radius:9px;text-decoration:none;">Coba Gratis →</a>
+        </div>
+      </div>
+
+      <div style="background:var(--surf);border:1px solid rgba(245,200,66,.2);border-radius:20px;overflow:hidden;transition:.3s;cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''" onclick="window.open('https://arblok-digital.github.io/Binance-api-/','_blank')">
+        <div style="padding:28px 28px 20px;">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.2);display:grid;place-items:center;font-size:1.5rem;margin-bottom:1.2rem;">⚡</div>
+          <div style="font-family:var(--dm);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#F5C842;margin-bottom:.5rem;">Crypto · Trading · Bybit API</div>
+          <h3 style="font-family:var(--df);font-size:1.4rem;font-weight:900;letter-spacing:-.03em;color:var(--wh);margin-bottom:.5rem;">FlowDesk v2</h3>
+          <p style="font-size:.82rem;color:var(--mu);line-height:1.6;margin-bottom:1.2rem;">Dashboard crypto trading realtime. Order flow, orderbook intelligence, CVD, VWAP, smart alert, macro cycle via Bybit API. No VPN needed.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+            <span class="chip green">● Live</span><span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--dm);font-size:.65rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(245,200,66,.3);color:#F5C842;background:rgba(245,200,66,.08);">Crypto</span><span class="chip">Bybit API</span>
+          </div>
+        </div>
+        <div style="padding:16px 28px;border-top:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-family:var(--dm);font-size:.8rem;color:var(--mu);"><strong style="color:var(--wh);">Gratis</strong> beta</span>
+          <a href="https://arblok-digital.github.io/Binance-api-/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#F5C842;color:#000;font-weight:700;font-size:.78rem;padding:8px 18px;border-radius:9px;text-decoration:none;">Buka →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div><!-- end pg-produk -->
+
+<!-- ══ PAGE: PROFIL ══ -->
+<div id="pg-profil" class="pg">
+  <section class="sec" style="padding-top:120px;">
+    <span class="sec-label">Tentang Kami</span>
+    <h2 class="sec-h">Studio kecil,<br><i>mimpi besar.</i></h2>
+    <p class="sec-p" style="margin-top:1rem;max-width:600px;">Arblok Studio lahir dari frustrasi yang sama yang dirasakan jutaan UMKM Indonesia — kenapa software bisnis yang bagus harus mahal dan ribet?</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem;" class="profil-wrap">
+      <div>
+        <div style="background:var(--surf);border:1px solid var(--b);border-radius:20px;padding:32px;margin-bottom:1.5rem;">
+          <div style="width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#1B3A20,#00E676);display:grid;place-items:center;font-family:var(--df);font-size:1.8rem;font-weight:900;color:#000;margin-bottom:1.2rem;">A</div>
+          <div style="font-family:var(--df);font-size:1.5rem;font-weight:900;letter-spacing:-.03em;color:var(--wh);margin-bottom:.3rem;">Arblok</div>
+          <div style="font-family:var(--dm);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem;">Founder & Developer · Arblok Studio</div>
+          <p style="font-size:.88rem;color:var(--mu);line-height:1.7;">Builder yang percaya teknologi yang baik seharusnya bisa dijangkau semua kalangan. Membangun KasirPro, FlowDesk, dan produk lainnya dari nol — dari ide, desain, coding, sampai support langsung ke pengguna.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:var(--surf);border:1px solid var(--b);border-radius:16px;padding:24px;text-align:center;">
+            <div style="font-family:var(--df);font-size:2.5rem;font-weight:900;color:var(--acc);letter-spacing:-.05em;">3+</div>
+            <div style="font-size:.75rem;color:var(--mu);margin-top:.3rem;">Produk Live</div>
+          </div>
+          <div style="background:var(--surf);border:1px solid var(--b);border-radius:16px;padding:24px;text-align:center;">
+            <div style="font-family:var(--df);font-size:2.5rem;font-weight:900;color:var(--acc);letter-spacing:-.05em;">500+</div>
+            <div style="font-size:.75rem;color:var(--mu);margin-top:.3rem;">UMKM Pengguna</div>
+          </div>
+          <div style="background:var(--surf);border:1px solid var(--b);border-radius:16px;padding:24px;text-align:center;">
+            <div style="font-family:var(--df);font-size:2.5rem;font-weight:900;color:var(--acc);letter-spacing:-.05em;">4.9★</div>
+            <div style="font-size:.75rem;color:var(--mu);margin-top:.3rem;">Rating</div>
+          </div>
+          <div style="background:var(--surf);border:1px solid var(--b);border-radius:16px;padding:24px;text-align:center;">
+            <div style="font-family:var(--df);font-size:2.5rem;font-weight:900;color:var(--acc);letter-spacing:-.05em;">24/7</div>
+            <div style="font-size:.75rem;color:var(--mu);margin-top:.3rem;">Akses Online</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--surf);border:1px solid var(--b);border-radius:20px;padding:28px;margin-bottom:1.5rem;">
+          <div style="font-family:var(--dm);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2);margin-bottom:1.2rem;">// tech stack</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem;">
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--b);font-family:var(--dm);font-size:.8rem;"><span style="color:var(--mu2);">frontend</span><span style="color:var(--acc);">HTML · CSS · Vanilla JS</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--b);font-family:var(--dm);font-size:.8rem;"><span style="color:var(--mu2);">storage</span><span style="color:var(--sky);">LocalStorage · IndexedDB</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--b);font-family:var(--dm);font-size:.8rem;"><span style="color:var(--mu2);">integration</span><span style="color:var(--acc);">Google Sheets API</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--b);font-family:var(--dm);font-size:.8rem;"><span style="color:var(--mu2);">trading_data</span><span style="color:#F5C842;">Bybit WebSocket API</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--b);font-family:var(--dm);font-size:.8rem;"><span style="color:var(--mu2);">deploy</span><span style="color:var(--acc);">GitHub Pages · Netlify</span></div>
+            <div style="display:flex;justify-content:space-between;padding:9px 0;font-family:var(--dm);font-size:.8rem;"><span style="color:var(--mu2);">printer</span><span style="color:var(--sky);">ESC/POS Bluetooth API</span></div>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--acc-d);border:1px solid rgba(0,230,118,.2);border-radius:100px;padding:7px 16px;margin-top:1.2rem;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--acc);animation:blink 1.5s infinite;"></div>
+            <span style="font-family:var(--dm);font-size:.7rem;color:var(--acc);">arblok-digital.netlify.app — LIVE</span>
+          </div>
+        </div>
+        <div style="background:var(--surf);border:1px solid var(--b);border-radius:20px;padding:28px;">
+          <div style="font-size:.9rem;font-weight:700;color:var(--wh);margin-bottom:1.2rem;">Nilai Kami</div>
+          <div style="display:flex;flex-direction:column;gap:.8rem;">
+            <div style="padding:16px;background:var(--surf2);border-radius:12px;"><strong style="font-size:.84rem;color:var(--wh);">🎯 Solve real problems</strong><p style="font-size:.76rem;color:var(--mu);margin-top:.3rem;">Setiap fitur lahir dari keluhan nyata pengguna — bukan asumsi.</p></div>
+            <div style="padding:16px;background:var(--surf2);border-radius:12px;"><strong style="font-size:.84rem;color:var(--wh);">⚡ Ship fast, iterate faster</strong><p style="font-size:.76rem;color:var(--mu);margin-top:.3rem;">Live dengan 80% sempurna lebih baik dari tidak live sama sekali.</p></div>
+            <div style="padding:16px;background:var(--surf2);border-radius:12px;"><strong style="font-size:.84rem;color:var(--wh);">🤝 Harga yang adil</strong><p style="font-size:.76rem;color:var(--mu);margin-top:.3rem;">Terjangkau untuk UMKM kecil. Tidak ada hidden fee atau lock-in.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;background:linear-gradient(135deg,#0A1F12,#07090A);border:1px solid rgba(0,230,118,.15);border-radius:20px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+      <div>
+        <h3 style="font-family:var(--df);font-size:1.8rem;font-weight:900;letter-spacing:-.04em;color:var(--wh);margin-bottom:.5rem;">Ada project atau kolaborasi?</h3>
+        <p style="font-size:.88rem;color:var(--mu);">Konsultasi gratis, tanpa commitment. Ceritakan kebutuhan bisnis kamu.</p>
+      </div>
+      <a href="https://wa.me/6289508053795?text=Halo%20Arblok%20Studio,%20saya%20mau%20konsultasi" target="_blank" class="btn-g" style="font-size:.95rem;padding:15px 30px;white-space:nowrap;">💬 Hubungi via WA →</a>
+    </div>
+  </section>
+</div><!-- end pg-profil -->
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="logo">
+        <div class="logo-box"><svg viewBox="0 0 24 24"><path d="M4 12L12 4L20 12M4 12L12 20L20 12"/></svg></div>
+        <span class="logo-txt">Arblok <b>Studio</b></span>
+      </div>
+      <p>Studio teknologi Indonesia yang membangun aplikasi digital untuk UMKM dan trader. Bukan template — solusi yang beneran dipake.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Produk</h5>
+      <ul>
+        <li><a onclick="goTo('produk')" style="cursor:pointer;">KasirPro.id</a></li>
+        <li><a onclick="goTo('produk')" style="cursor:pointer;">KasirPro Grosiran</a></li>
+        <li><a onclick="goTo('produk')" style="cursor:pointer;">FlowDesk v2</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Bisnis</h5>
+      <ul>
+        <li><a href="#solusi" onclick="showTab('fnb')">F&B / Kafe</a></li>
+        <li><a href="#solusi" onclick="showTab('grosir')">Grosir / Kelontong</a></li>
+        <li><a href="#solusi" onclick="showTab('bangunan')">Toko Bangunan</a></li>
+        <li><a href="#solusi" onclick="showTab('bengkel')">Bengkel</a></li>
+        <li><a href="#solusi" onclick="showTab('warung')">Warung Nasi</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Kontak</h5>
+      <ul>
+        <li><a href="https://wa.me/6289508053795" target="_blank">WhatsApp</a></li>
+        <li><a href="https://github.com/arblok-digital" target="_blank">GitHub</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#15746777797a7e717c727c617479557278747c793b767a78">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bar">
+    <p>© 2025–2026 <strong>Arblok Studio</strong>. All rights reserved.</p>
+    <p>Made in Indonesia 🇮🇩 · Powered by <strong>Arblok Studio</strong></p>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab" href="https://wa.me/6289508053795" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── GLOBAL FUNCTIONS ──
+function toggleMob(){
+  var m=document.getElementById('mm');
+  if(m) m.classList.toggle('on');
+}
+function scrollTop(){
+  goTo('home');
+}
+function goTo(page){
+  // Hide all pages
+  var pgs=['pg-main','pg-produk','pg-profil'];
+  pgs.forEach(function(p){
+    var el=document.getElementById(p);
+    if(el) el.style.display='none';
+  });
+  // Show target
+  var target=document.getElementById('pg-'+page);
+  if(target){ target.style.display='block'; }
+  else {
+    // fallback show main
+    var main=document.getElementById('pg-main');
+    if(main) main.style.display='block';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Update nav active
+  document.querySelectorAll('.nav-link').forEach(function(a){
+    a.classList.toggle('active', a.getAttribute('data-p')===page);
+  });
+}
+function scrollSec(id){
+  // Always show main page first
+  var pgs=['pg-main','pg-produk','pg-profil'];
+  pgs.forEach(function(p){
+    var el=document.getElementById(p);
+    if(el) el.style.display= p==='pg-main' ? 'block' : 'none';
+  });
+  // Then scroll to section
+  setTimeout(function(){
+    var el=document.getElementById(id);
+    if(el){
+      var top=el.getBoundingClientRect().top+window.scrollY-70;
+      window.scrollTo({top:top,behavior:'smooth'});
+    }
+  },100);
+  // Update nav
+  document.querySelectorAll('.nav-link').forEach(function(a){
+    a.classList.toggle('active', a.getAttribute('data-p')===id);
+  });
+}
+function showTab(id){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('on');});
+  document.querySelectorAll('.bisnis-panel').forEach(function(p){p.classList.remove('on');});
+  var btn=document.querySelector('[data-tab="'+id+'"]');
+  if(btn) btn.classList.add('on');
+  var panel=document.getElementById('tab-'+id);
+  if(panel) panel.classList.add('on');
+  setTimeout(function(){
+    var els=document.querySelectorAll('#tab-'+id+' .rv:not(.show)');
+    els.forEach(function(el){el.classList.add('show');});
+  },50);
+}
+
+// ── DOM READY ──
+document.addEventListener('DOMContentLoaded', function(){
+
+  // NAV scroll
+  window.addEventListener('scroll',function(){
+    document.getElementById('nav').classList.toggle('s',window.scrollY>40);
+  },{passive:true});
+
+  // MARQUEE
+  var items=['☕ Kafe & Warung Kopi','📦 Toko Grosir','🏪 Toko Kelontong','🔨 Toko Bangunan','🔧 Bengkel Motor','🍽️ Warung Nasi','👕 Laundry','🏥 Apotek','💇 Salon & Barbershop','🛒 Minimarket','🥩 Catering','🍰 Bakery & Kue'];
+  var t=document.getElementById('mtrack');
+  if(t){
+    var html=items.map(function(i){return '<div class="marq-item"><div class="dot"></div>'+i+'</div>';}).join('');
+    t.innerHTML=html+html;
+  }
+
+  // REVEAL
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){
+        setTimeout(function(){e.target.classList.add('show');},i*55);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.06});
+  document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+
+  // BAR ANIMATIONS
+  var barObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var fill=e.target.querySelector('.vis-bar-fill');
+        if(fill){var w=fill.style.width;fill.style.width='0';setTimeout(function(){fill.style.width=w;},120);}
+        barObs.unobserve(e.target);
+ 
