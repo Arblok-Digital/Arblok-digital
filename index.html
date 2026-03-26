@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arblok Digital — Portfolio Ecosystem</title>
+    <style>
+        :root {
+            --bg: #04080f;
+            --card: #0a0f1a;
+            --neon: #00ff87; /* SekolahPro Green */
+            --gold: #ffd700; /* Arblok Pay Gold */
+            --cyn: #00d4ff;  /* KasirPro Blue */
+            --txt: #ffffff;
+            --txt-dim: rgba(255, 255, 255, 0.6);
+            --bdr: #1a3050;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--txt);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1100px; width: 100%; padding: 40px 20px; text-align: center; }
+        h1 { font-size: 3.5rem; letter-spacing: -2px; margin-bottom: 5px; background: linear-gradient(90deg, var(--neon), var(--cyn)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            margin-top: 50px; 
+        }
+        
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .project-card:hover:not(.locked) { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Border Glows */
+        .card-sp:hover { border-color: var(--neon); }
+        .card-kp:hover { border-color: var(--cyn); }
+
+        /* Locked State */
+        .locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+            border: 1px dashed var(--bdr);
+            background: rgba(10, 15, 26, 0.5);
+        }
+        .lock-icon {
+            font-size: 1.2rem;
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--gold);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 15px;
+            border: 1px solid var(--gold);
+        }
+
+        .icon { font-size: 3.5rem; margin-bottom: 20px; }
+        h2 { margin: 0; color: #fff; font-size: 1.6rem; }
+        p { color: var(--txt-dim); margin-top: 15px; font-size: 0.95rem; line-height: 1.5; flex-grow: 1; }
+        
+        .footer { margin-top: 80px; font-size: 0.8rem; color: var(--txt-dim); letter-spacing: 2px; }
+        .docs-link { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
+        .docs-link a { color: var(--txt-dim); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .docs-link a:hover { color: #fff; border-color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>ARBLOK DIGITAL</h1>
+        <p style="color:var(--txt-dim); font-size: 1.1rem;">Empowering Small & Big Business with Data Oil</p>
+    </header>
+
+    <div class="project-grid">
+        <a href="sekolahpro-demo%20(1).html" class="project-card card-sp">
+            <div>
+                <div class="icon">🏫</div>
+                <h2>SekolahPro</h2>
+                <p>Ekosistem Manajemen Sekolah & Keuangan Terpadu.</p>
+            </div>
+            <small style="color:var(--neon); margin-top: 20px; font-weight: bold;">LIVE DEMO →</small>
+        </a>
+
+        <div class="project-card locked">
+            <div>
+                <div class="icon">💳</div>
+                <h2>Arblok Pay</h2>
+                <p>Unified Payment Gateway for Institutional Billing.</p>
+            </div>
+            <div>
+                <span class="lock-icon">🔒 COMING SOON</span>
+            </div>
+        </div>
+
+        <a href="https://kasirproid-app-grosiran.vercel.app/" class="project-card card-kp" target="_blank">
+            <div>
+                <div class="icon">🛒</div>
+                <h2>KasirPro</h2>
+                <p>Sistem Point of Sales Digital untuk Toko & Grosir.</p>
+            </div>
+            <small style="color:var(--cyn); margin-top: 20px; font-weight: bold;">OPEN VERCEL →</small>
+        </a>
+    </div>
+
+    <nav class="docs-link">
+        <a href="arblok-investment-memo.html">Investment Memo</a>
+        <a href="sekolahpro-presentation-1.html">Pitch Deck Slide</a>
+    </nav>
+
+    <footer class="footer">© 2026 ARBLOK DIGITAL · KABUPATEN TASIKMALAYA</footer>
+</div>
+
+</body>
+</html>
