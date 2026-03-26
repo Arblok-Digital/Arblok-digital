@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SekolahPro — Sistem Manajemen Sekolah Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════
+   VARIABLES
+═══════════════════════════════════════════ */
+:root{
+  --grn:    #059669;
+  --grn2:   #10b981;
+  --grn-lt: #d1fae5;
+  --grn-bg: #f0fdf4;
+  --ink:    #0f1f2e;
+  --ink2:   #1e3a52;
+  --t2:     #4a6880;
+  --t3:     #8aa0b4;
+  --paper:  #fffef9;
+  --warm:   #f8f5ef;
+  --warm2:  #f0ebe0;
+  --bdr:    #e2ddd4;
+  --yel:    #d97706;
+  --yel-lt: #fef3c7;
+  --blu:    #1d4ed8;
+  --blu-lt: #dbeafe;
+  --red:    #dc2626;
+  --red-lt: #fee2e2;
+  --pur:    #7c3aed;
+  --pur-lt: #ede9fe;
+  --white:  #ffffff;
+  --shadow: 0 4px 24px rgba(15,31,46,.08);
+  --shadow2:0 8px 40px rgba(15,31,46,.12);
+  --r:      14px;
+  --head:   'Plus Jakarta Sans', sans-serif;
+  --body:   'Plus Jakarta Sans', sans-serif;
+  --serif:  'Lora', serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:15px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ═══════════════════════════════════════════
+   TOPNAV
+═══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(255,254,249,.92);
+  border-bottom:1px solid var(--bdr);
+  backdrop-filter:blur(12px);
+  padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  height:62px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:9px;text-decoration:none;
+}
+.nav-logo-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--grn),var(--grn2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+  box-shadow:0 2px 10px rgba(5,150,105,.25);
+}
+.nav-logo-name{
+  font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.3px;
+}
+.nav-logo-name span{color:var(--grn)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-link{
+  padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;
+  color:var(--t2);text-decoration:none;transition:all .15s;
+}
+.nav-link:hover{background:var(--warm);color:var(--ink)}
+.nav-cta{
+  padding:9px 20px;border-radius:9px;font-size:13px;font-weight:700;
+  background:var(--grn);color:white;text-decoration:none;
+  box-shadow:0 2px 10px rgba(5,150,105,.3);
+  transition:all .15s;
+}
+.nav-cta:hover{background:var(--grn2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(5,150,105,.35)}
+.nav-mobile-cta{display:none}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-mobile-cta{
+    display:flex;padding:8px 14px;border-radius:8px;
+    background:var(--grn);color:white;font-size:12px;font-weight:700;
+    text-decoration:none;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{
+  padding:120px 5% 80px;
+  background:linear-gradient(160deg,var(--grn-bg) 0%,var(--paper) 50%,var(--warm) 100%);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-120px;right:-80px;
+  width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(16,185,129,.12) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-100px;left:-60px;
+  width:380px;height:380px;border-radius:50%;
+  background:radial-gradient(circle,rgba(5,150,105,.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--grn-lt);border:1px solid rgba(5,150,105,.25);
+  border-radius:20px;padding:5px 14px;
+  font-size:12px;font-weight:700;color:var(--grn);
+  text-transform:uppercase;letter-spacing:.8px;margin-bottom:20px;
+}
+.hero-badge::before{content:'●';font-size:8px}
+.hero-h1{
+  font-family:var(--head);
+  font-size:clamp(32px,4.5vw,54px);
+  font-weight:800;line-height:1.1;
+  letter-spacing:-1.5px;color:var(--ink);
+  margin-bottom:18px;
+}
+.hero-h1 em{
+  font-style:normal;color:var(--grn);
+  font-family:var(--serif);font-weight:600;font-style:italic;
+}
+.hero-sub{
+  font-size:16px;color:var(--t2);line-height:1.75;
+  margin-bottom:32px;max-width:480px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.btn-primary{
+  padding:14px 28px;border-radius:11px;
+  background:linear-gradient(135deg,var(--grn),var(--grn2));
+  color:white;font-size:14px;font-weight:700;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 4px 20px rgba(5,150,105,.35);
+  transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(5,150,105,.4)}
+.btn-secondary{
+  padding:14px 28px;border-radius:11px;
+  background:white;color:var(--ink);font-size:14px;font-weight:700;
+  text-decoration:none;border:1.5px solid var(--bdr);
+  transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-secondary:hover{border-color:var(--grn);color:var(--grn);background:var(--grn-bg)}
+.hero-trust{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t3)}
+.trust-dot{width:6px;height:6px;border-radius:50%;background:var(--grn)}
+
+/* ── Mock App Screenshot ── */
+.hero-visual{position:relative;z-index:1}
+.mockup-wrap{
+  background:white;border-radius:20px;
+  box-shadow:var(--shadow2),0 0 0 1px var(--bdr);
+  overflow:hidden;
+  transform:perspective(1000px) rotateY(-8deg) rotateX(3deg);
+  transition:transform .4s ease;
+}
+.mockup-wrap:hover{transform:perspective(1000px) rotateY(-2deg) rotateX(1deg)}
+.mockup-topbar{
+  background:var(--ink);padding:10px 14px;
+  display:flex;align-items:center;gap:7px;
+}
+.mockup-dot{width:9px;height:9px;border-radius:50%}
+.mockup-url{
+  flex:1;background:rgba(255,255,255,.08);border-radius:5px;
+  padding:4px 10px;font-size:9px;color:rgba(255,255,255,.5);
+  font-family:'Courier New',monospace;
+}
+.mockup-body{background:var(--warm);padding:12px;display:flex;flex-direction:column;gap:8px}
+.mk-banner{
+  background:linear-gradient(135deg,#0f1f2e,#1e3a52);border-radius:10px;
+  padding:12px 14px;display:flex;align-items:center;justify-content:space-between;
+}
+.mk-banner-left{display:flex;align-items:center;gap:8px}
+.mk-school-icon{font-size:20px}
+.mk-school-name{font-size:11px;font-weight:800;color:white}
+.mk-school-sub{font-size:8px;color:rgba(255,255,255,.4);margin-top:1px}
+.mk-saldo{font-size:10px;color:#10b981;font-weight:700}
+.mk-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.mk-stat{
+  background:white;border-radius:8px;padding:8px;text-align:center;
+}
+.mk-stat-v{font-size:14px;font-weight:800;color:var(--ink)}
+.mk-stat-l{font-size:7px;color:var(--t3);margin-top:1px}
+.mk-stat.grn .mk-stat-v{color:var(--grn)}
+.mk-stat.red .mk-stat-v{color:var(--red)}
+.mk-stat.yel .mk-stat-v{color:var(--yel)}
+.mk-acts{background:white;border-radius:10px;padding:10px}
+.mk-acts-title{font-size:9px;font-weight:800;color:var(--ink);margin-bottom:6px}
+.mk-act-row{
+  display:flex;align-items:center;gap:7px;
+  padding:5px 0;border-bottom:1px solid var(--bdr);
+}
+.mk-act-row:last-child{border-bottom:none}
+.mk-act-dot{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;
+}
+.mk-act-name{font-size:9px;font-weight:700;color:var(--ink);flex:1}
+.mk-act-sub{font-size:8px;color:var(--t3)}
+.mk-act-amt{font-size:9px;font-weight:800;color:var(--grn)}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .mockup-wrap{transform:none}
+  .mockup-wrap:hover{transform:none}
+}
+
+/* ═══════════════════════════════════════════
+   SOCIAL PROOF BAR
+═══════════════════════════════════════════ */
+.proof-bar{
+  background:var(--ink);padding:18px 5%;
+  display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;
+}
+.proof-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;color:rgba(255,255,255,.5);
+}
+.proof-num{font-size:20px;font-weight:800;color:white}
+.proof-div{width:1px;height:28px;background:rgba(255,255,255,.1)}
+
+/* ═══════════════════════════════════════════
+   PROBLEMS / WHY
+═══════════════════════════════════════════ */
+.section{padding:80px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{
+  font-size:11px;font-weight:700;color:var(--grn);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;
+}
+.section-h2{
+  font-family:var(--head);font-size:clamp(26px,3.5vw,40px);
+  font-weight:800;letter-spacing:-1px;color:var(--ink);
+  line-height:1.15;margin-bottom:10px;
+}
+.section-sub{font-size:15px;color:var(--t2);max-width:560px;line-height:1.7}
+
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px}
+.problem-card{
+  background:white;border:1.5px solid var(--bdr);border-radius:var(--r);
+  padding:22px;transition:all .2s;
+}
+.problem-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(220,38,38,.08);transform:translateY(-2px)}
+.problem-icon{font-size:28px;margin-bottom:10px}
+.problem-title{font-size:14px;font-weight:700;color:var(--red);margin-bottom:6px}
+.problem-desc{font-size:13px;color:var(--t2);line-height:1.6}
+
+/* ═══════════════════════════════════════════
+   FEATURES
+═══════════════════════════════════════════ */
+.features-section{background:var(--warm);padding:80px 5%}
+.features-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;margin-top:44px;
+}
+.feat-card{
+  background:white;border-radius:var(--r);padding:24px;
+  border:1.5px solid var(--bdr);
+  transition:all .2s;position:relative;overflow:hidden;
+}
+.feat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent,var(--grn));opacity:0;transition:opacity .2s;
+}
+.feat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+.feat-card:hover::before{opacity:1}
+.feat-icon-wrap{
+  width:44px;height:44px;border-radius:11px;
+  background:var(--icon-bg,var(--grn-lt));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:14px;
+}
+.feat-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.feat-desc{font-size:13px;color:var(--t2);line-height:1.6}
+.feat-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.feat-tag{
+  font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;
+  background:var(--tag-bg,var(--grn-lt));color:var(--tag-c,var(--grn));
+}
+
+/* ═══════════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════════ */
+.how-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:0;margin-top:44px;position:relative;
+}
+.how-grid::before{
+  content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,var(--grn),var(--grn2));
+  opacity:.2;
+}
+.how-step{text-align:center;padding:0 20px;position:relative;z-index:1}
+.how-num{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--grn),var(--grn2));
+  color:white;font-size:22px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  box-shadow:0 4px 18px rgba(5,150,105,.3);
+}
+.how-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.how-desc{font-size:12px;color:var(--t2);line-height:1.6}
+
+/* ═══════════════════════════════════════════
+   TESTIMONIAL / SOCIAL PROOF
+═══════════════════════════════════════════ */
+.testi-section{background:var(--grn-bg);padding:80px 5%}
+.testi-card{
+  background:white;border-radius:var(--r);padding:28px;
+  box-shadow:var(--shadow);border:1.5px solid rgba(5,150,105,.1);
+  position:relative;
+}
+.testi-card::before{
+  content:'"';font-family:var(--serif);font-size:80px;
+  color:var(--grn-lt);position:absolute;top:-10px;left:20px;
+  line-height:1;font-style:italic;
+}
+.testi-body{
+  font-size:14px;color:var(--ink2);line-height:1.75;
+  font-family:var(--serif);font-style:italic;
+  margin-bottom:18px;padding-top:20px;
+}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--grn),var(--grn2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:800;color:white;flex-shrink:0;
+}
+.testi-name{font-size:13px;font-weight:700;color:var(--ink)}
+.testi-role{font-size:11px;color:var(--t3)}
+.testi-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;margin-top:40px;
+}
+.stars{color:#f59e0b;font-size:12px;margin-bottom:10px;letter-spacing:2px}
+
+/* ═══════════════════════════════════════════
+   PRICING
+═══════════════════════════════════════════ */
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;margin-top:44px;
+}
+.price-card{
+  background:white;border:1.5px solid var(--bdr);border-radius:var(--r);
+  padding:28px;text-align:center;transition:all .2s;
+}
+.price-card.featured{
+  border-color:var(--grn);
+  box-shadow:0 8px 40px rgba(5,150,105,.15);
+  position:relative;
+}
+.price-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--grn);color:white;font-size:10px;font-weight:800;
+  padding:4px 16px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;
+  white-space:nowrap;
+}
+.price-tier{font-size:12px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.price-amount{
+  font-size:36px;font-weight:800;color:var(--ink);letter-spacing:-1px;line-height:1;
+}
+.price-amount sup{font-size:16px;font-weight:600;color:var(--t2);vertical-align:top;margin-top:8px;display:inline-block}
+.price-period{font-size:12px;color:var(--t3);margin-bottom:16px}
+.price-desc{font-size:12px;color:var(--t2);margin-bottom:20px;line-height:1.5}
+.price-divider{height:1px;background:var(--bdr);margin:16px 0}
+.price-list{list-style:none;text-align:left;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.price-list li{font-size:12px;color:var(--t2);display:flex;align-items:center;gap:8px}
+.price-list li::before{content:'✓';color:var(--grn);font-weight:800;flex-shrink:0}
+.price-list li.no::before{content:'✕';color:var(--t3)}
+.price-list li.no{color:var(--t3)}
+.price-btn{
+  width:100%;padding:12px;border-radius:10px;font-size:13px;font-weight:700;
+  cursor:pointer;transition:all .15s;border:1.5px solid var(--bdr);
+  background:white;color:var(--ink);text-decoration:none;display:block;
+}
+.price-btn:hover{border-color:var(--grn);color:var(--grn)}
+.price-btn.primary{
+  background:linear-gradient(135deg,var(--grn),var(--grn2));
+  color:white;border-color:transparent;
+  box-shadow:0 3px 14px rgba(5,150,105,.3);
+}
+.price-btn.primary:hover{opacity:.9;transform:translateY(-1px)}
+
+/* ═══════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════ */
+.faq-list{max-width:720px;margin:40px auto 0;display:flex;flex-direction:column;gap:8px}
+.faq-item{
+  background:white;border:1.5px solid var(--bdr);border-radius:11px;
+  overflow:hidden;transition:border-color .15s;
+}
+.faq-item.open{border-color:var(--grn)}
+.faq-q{
+  padding:16px 20px;font-size:14px;font-weight:700;color:var(--ink);
+  cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+  user-select:none;
+}
+.faq-arrow{
+  font-size:16px;color:var(--t3);transition:transform .2s;flex-shrink:0;
+}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--grn)}
+.faq-a{
+  padding:0 20px;max-height:0;overflow:hidden;
+  font-size:13px;color:var(--t2);line-height:1.7;
+  transition:max-height .3s ease,padding .3s;
+}
+.faq-a.open{max-height:200px;padding:0 20px 16px}
+
+/* ═══════════════════════════════════════════
+   CTA BOTTOM
+═══════════════════════════════════════════ */
+.cta-section{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);
+  padding:80px 5%;text-align:center;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(16,185,129,.12) 0%,transparent 60%);
+  pointer-events:none;
+}
+.cta-h2{
+  font-family:var(--head);font-size:clamp(28px,4vw,44px);
+  font-weight:800;color:white;letter-spacing:-1px;margin-bottom:12px;
+}
+.cta-sub{font-size:15px;color:rgba(255,255,255,.6);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn-white{
+  padding:14px 28px;border-radius:11px;
+  background:white;color:var(--ink);font-size:14px;font-weight:700;
+  text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-white:hover{background:var(--grn-lt);color:var(--grn);transform:translateY(-2px)}
+.btn-outline-white{
+  padding:14px 28px;border-radius:11px;
+  background:transparent;color:white;font-size:14px;font-weight:700;
+  text-decoration:none;border:1.5px solid rgba(255,255,255,.3);
+  transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-outline-white:hover{border-color:white;background:rgba(255,255,255,.08)}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:var(--ink);padding:32px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,255,255,.06);
+}
+.footer-logo{font-size:15px;font-weight:800;color:white}
+.footer-logo span{color:var(--grn2)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.35)}
+.footer-links{display:flex;gap:20px}
+.footer-link{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s}
+.footer-link:hover{color:var(--grn2)}
+
+/* ═══════════════════════════════════════════
+   REVEAL ANIMATIONS
+═══════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .6s,transform .6s}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(24px);transition:opacity .6s,transform .6s}
+.reveal-right.visible{opacity:1;transform:none}
+
+/* ═══════════════════════════════════════════
+   WHATSAPP FLOAT
+═══════════════════════════════════════════ */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:500;
+  width:52px;height:52px;border-radius:50%;
+  background:#25d366;color:white;font-size:24px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  text-decoration:none;transition:all .2s;
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+
+/* ═══════════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════════ */
+.text-center{text-align:center}
+.mt-4{margin-top:4px}
+.mt-8{margin-top:8px}
+</style>
+</head>
+<body>
+
+<!-- ═══ WHATSAPP FLOAT ═══ -->
+<a class="wa-float" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20dengan%20SekolahPro" target="_blank" title="Chat WhatsApp">💬</a>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">🏫</div>
+    <span class="nav-logo-name">Sekolah<span>Pro</span></span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#fitur">Fitur</a>
+    <a class="nav-link" href="#cara-kerja">Cara Kerja</a>
+    <a class="nav-link" href="#harga">Harga</a>
+    <a class="nav-link" href="#faq">FAQ</a>
+    <a class="nav-cta" href="#cta">Coba Gratis →</a>
+  </div>
+  <a class="nav-mobile-cta" href="#cta">Coba Gratis</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content reveal-left">
+      <div class="hero-badge">Sudah dipercaya sekolah di Indonesia</div>
+      <h1 class="hero-h1">Kelola Sekolah Lebih <em>Mudah & Rapi</em> dari HP</h1>
+      <p class="hero-sub">
+        SekolahPro membantu kepala sekolah, bendahara, dan admin TU mengelola
+        data siswa, SPP, gaji guru, dan laporan — semua dalam satu aplikasi.
+        Tanpa ribet, tanpa biaya mahal.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://sekolah-pro.vercel.app/" target="_blank">🚀 Buka Aplikasi Live</a>
+        <a class="btn-secondary" href="#demo">▶ Lihat Demo</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-dot"></div>
+        Tidak perlu install · Bisa di HP & laptop · Data tersimpan aman
+      </div>
+    </div>
+
+    <!-- Mock App -->
+    <div class="hero-visual reveal-right">
+      <div class="mockup-wrap">
+        <div class="mockup-topbar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#ffbd2e"></div>
+          <div class="mockup-dot" style="background:#28ca41"></div>
+          <div class="mockup-url">sekolahpro.app · SD Islam Sahara</div>
+        </div>
+        <div class="mockup-body">
+          <!-- Banner -->
+          <div class="mk-banner">
+            <div class="mk-banner-left">
+              <div class="mk-school-icon">🏫</div>
+              <div>
+                <div class="mk-school-name">SD Islam Sahara</div>
+                <div class="mk-school-sub">SISTEM MANAJEMEN SEKOLAH</div>
+              </div>
+            </div>
+            <div class="mk-saldo">Kas: Rp 8,4jt</div>
+          </div>
+          <!-- Stats -->
+          <div class="mk-stats">
+            <div class="mk-stat">
+              <div class="mk-stat-v">184</div>
+              <div class="mk-stat-l">Siswa</div>
+            </div>
+            <div class="mk-stat grn">
+              <div class="mk-stat-v">172</div>
+              <div class="mk-stat-l">SPP Lunas</div>
+            </div>
+            <div class="mk-stat red">
+              <div class="mk-stat-v">12</div>
+              <div class="mk-stat-l">Tunggakan</div>
+            </div>
+            <div class="mk-stat yel">
+              <div class="mk-stat-v">Rp 0</div>
+              <div class="mk-stat-l">Infak</div>
+            </div>
+          </div>
+          <!-- Activity -->
+          <div class="mk-acts">
+            <div class="mk-acts-title">📋 Aktivitas Terbaru</div>
+            <div class="mk-act-row">
+              <div class="mk-act-dot" style="background:#dcfce7;font-size:12px">💳</div>
+              <div>
+                <div class="mk-act-name">SPP Arfan — Tunai</div>
+                <div class="mk-act-sub">Hari ini, 09.25</div>
+              </div>
+              <div class="mk-act-amt">+Rp 150rb</div>
+            </div>
+            <div class="mk-act-row">
+              <div class="mk-act-dot" style="background:#dbeafe;font-size:12px">👤</div>
+              <div>
+                <div class="mk-act-name">Siswa baru: Doni (1A)</div>
+                <div class="mk-act-sub">Hari ini, 08.30</div>
+              </div>
+              <div></div>
+            </div>
+            <div class="mk-act-row">
+              <div class="mk-act-dot" style="background:#fef3c7;font-size:12px">💸</div>
+              <div>
+                <div class="mk-act-name">Gaji Bu Sari — Transfer</div>
+                <div class="mk-act-sub">Kemarin, 14.15</div>
+              </div>
+              <div class="mk-act-amt" style="color:#dc2626">-Rp 2,5jt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROOF BAR ═══ -->
+<div class="proof-bar reveal">
+  <div class="proof-item">
+    <div class="proof-num">100+</div>
+    <div>Siswa<br/>Dikelola</div>
+  </div>
+  <div class="proof-div"></div>
+  <div class="proof-item">
+    <div class="proof-num">14</div>
+    <div>Modul<br/>Aktif</div>
+  </div>
+  <div class="proof-div"></div>
+  <div class="proof-item">
+    <div class="proof-num">5</div>
+    <div>Jenis<br/>Pengguna</div>
+  </div>
+  <div class="proof-div"></div>
+  <div class="proof-item">
+    <div class="proof-num">Rp 0</div>
+    <div>Biaya<br/>Awal</div>
+  </div>
+</div>
+
+<!-- ═══ PROBLEMS ═══ -->
+<section class="section" id="masalah">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto">
+      <div class="section-label">Kenali Masalahnya</div>
+      <h2 class="section-h2">Apakah Sekolah Anda Masih Mengalami Ini?</h2>
+      <p class="section-sub">Ribuan sekolah di Indonesia masih mengelola administrasi secara manual — menyita waktu dan rawan kesalahan.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">📊</div>
+        <div class="problem-title">Data Siswa Tersebar</div>
+        <div class="problem-desc">Data di Excel, absensi di buku, nilai di kertas. Susah dicari, mudah hilang.</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">💸</div>
+        <div class="problem-title">SPP Susah Dipantau</div>
+        <div class="problem-desc">Bendahara harus rekap manual tiap bulan. Siapa yang sudah bayar? Siapa yang belum? Sering tertukar.</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">👨‍🏫</div>
+        <div class="problem-title">Gaji Guru Ribet</div>
+        <div class="problem-desc">Hitung potongan, lembur, kasbon — semua dihitung manual di kalkulator atau Excel.</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">📱</div>
+        <div class="problem-title">Ortu Tidak Bisa Cek</div>
+        <div class="problem-desc">Orang tua harus datang ke sekolah atau chat guru hanya untuk tahu status SPP anak.</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">📄</div>
+        <div class="problem-title">Laporan Makan Waktu</div>
+        <div class="problem-desc">Rekap bulanan untuk kepala sekolah atau dinas butuh waktu berjam-jam.</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🏦</div>
+        <div class="problem-title">Dana BOS Tidak Terlacak</div>
+        <div class="problem-desc">Pengeluaran BOS dicatat di buku. Susah tahu sisa anggaran real-time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="features-section" id="fitur">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto">
+      <div class="section-label">Solusi Lengkap</div>
+      <h2 class="section-h2">Semua Kebutuhan Sekolah, Satu Aplikasi</h2>
+      <p class="section-sub">Dari data siswa sampai laporan keuangan — semua terkoneksi dan bisa diakses dari HP manapun.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card reveal" style="--accent:#059669">
+        <div class="feat-icon-wrap" style="--icon-bg:#d1fae5">📚</div>
+        <div class="feat-title">Data Siswa (CRM)</div>
+        <div class="feat-desc">Profil lengkap setiap siswa — absensi, nilai, riwayat bayar, kelas, wali murid — semua dalam satu profil.</div>
+        <div class="feat-tags">
+          <span class="feat-tag" style="--tag-bg:#d1fae5;--tag-c:#059669">Import Excel/CSV</span>
+          <span class="feat-tag" style="--tag-bg:#d1fae5;--tag-c:#059669">Foto profil</span>
+        </div>
+      </div>
+      <div class="feat-card reveal" style="--accent:#1d4ed8">
+        <div class="feat-icon-wrap" style="--icon-bg:#dbeafe">💳</div>
+        <div class="feat-title">SPP & Keuangan</div>
+        <div class="feat-desc">Catat pembayaran, tagihan massal, infak harian. Kwitansi digital otomatis lengkap dengan QR Code.</div>
+        <div class="feat-tags">
+          <span class="feat-tag" style="--tag-bg:#dbeafe;--tag-c:#1d4ed8">Kwitansi QR</span>
+          <span class="feat-tag" style="--tag-bg:#dbeafe;--tag-c:#1d4ed8">Tagihan massal</span>
+        </div>
+      </div>
+      <div class="feat-card reveal" style="--accent:#7c3aed">
+        <div class="feat-icon-wrap" style="--icon-bg:#ede9fe">👨‍🏫</div>
+        <div class="feat-title">Gaji & Payroll Guru</div>
+        <div class="feat-desc">Hitung gaji otomatis dengan potongan BPJS, kasbon, transport, uang makan. Cetak slip gaji PDF.</div>
+        <div class="feat-tags">
+          <span class="feat-tag" style="--tag-bg:#ede9fe;--tag-c:#7c3aed">Slip gaji PDF</span>
+          <span class="feat-tag" style="--tag-bg:#ede9fe;--tag-c:#7c3aed">Kasbon</span>
+        </div>
+      </div>
+      <div class="feat-card reveal" style="--accent:#d97706">
+        <div class="feat-icon-wrap" style="--icon-bg:#fef3c7">🏦</div>
+        <div class="feat-title">Dana BOS</div>
+        <div class="feat-desc">Pantau pagu, realisasi, dan sisa anggaran BOS real-time. Log pengeluaran otomatis tersimpan.</div>
+        <div class="feat-tags">
+          <span class="feat-tag" style="--tag-bg:#fef3c7;--tag-c:#d97706">Real-time</span>
+          <span class="feat-tag" style="--tag-bg:#fef3c7;--tag-c:#d97706">Laporan BOS</span>
+        </div>
+      </div>
+      <div class="feat-card reveal" style="--accent:#059669">
+        <div class="feat-icon-wrap" style="--icon-bg:#d1fae5">🏫</div>
+        <div class="feat-title">Kelola Kelas</div>
+        <div class="feat-desc">Atur struktur kelas SD/SMP/SMA dengan sub kelas A–F. Assign wali kelas, lihat statistik per rombel.</div>
+        <div class="feat-tags">
+          <span class="feat-tag" style="--tag-bg:#d1fae5;--tag-c:#059669">SD/SMP/SMA</span>
+          <span class="feat-tag" style="--tag-bg:#d1fae5;--tag-c:#059669">Wali kelas</span>
+        </div>
+      </div>
+      <div class="feat-card reveal" style="--accent:#dc2626">
+        <div class="feat-icon-wrap" style="--icon-bg:#fee2e2">📄</div>
+        <div class="feat-title">Laporan & Cetak</div>
+        <div class="feat-desc">Rapor digital, laporan keuangan bulanan, rekap absensi — siap cetak atau kirim PDF kapan saja.</div>
+        <div class="feat-tags">
+          <span class="feat-tag" style="--tag-bg:#fee2e2;--tag-c:#dc2626">Export PDF</span>
+          <span class="feat-tag" style="--tag-bg:#fee2e2;--tag-c:#dc2626">Rapor digital</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIVE DEMO ═══ -->
+<section class="section" id="demo" style="background:var(--ink);padding:80px 5%">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto;margin-bottom:40px">
+      <div class="section-label" style="color:var(--grn2)">Live Demo</div>
+      <h2 class="section-h2" style="color:white">Coba Langsung Sekarang</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.5)">Aplikasi asli — bukan video, bukan screenshot. Buka, login demo, eksplorasi semua fitur.</p>
+    </div>
+
+    <!-- Demo Frame -->
+    <div class="reveal" style="max-width:900px;margin:0 auto">
+      <div style="background:#1e3a52;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)">
+        <!-- Browser chrome -->
+        <div style="background:#0f1f2e;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)">
+          <div style="display:flex;gap:6px">
+            <div style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#ffbd2e"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#28ca41"></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,.06);border-radius:6px;padding:6px 12px;font-size:11px;color:rgba(255,255,255,.4);font-family:'Courier New',monospace;display:flex;align-items:center;gap:6px">
+            <span style="color:var(--grn2)">🔒</span> sekolah-pro.vercel.app
+          </div>
+          <a href="https://sekolah-pro.vercel.app/" target="_blank" style="padding:5px 12px;border-radius:6px;background:var(--grn);color:white;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap;transition:opacity .15s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Buka Tab Baru ↗</a>
+        </div>
+        <!-- iFrame -->
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden">
+          <iframe
+            id="demo-iframe"
+            src="https://sekolah-pro.vercel.app/"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
+            loading="lazy"
+            title="SekolahPro Live Demo"
+            allow="fullscreen">
+          </iframe>
+          <!-- Fallback jika iframe diblok -->
+          <div id="iframe-fallback" style="display:none;position:absolute;inset:0;background:#0f1f2e;align-items:center;justify-content:center;flex-direction:column;gap:16px;text-align:center;padding:32px">
+            <div style="font-size:48px">🏫</div>
+            <div style="font-size:16px;font-weight:700;color:white">Demo tidak bisa ditampilkan di sini</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);max-width:360px;line-height:1.6">Browser Anda memblok tampilan embed. Klik tombol di bawah untuk buka di tab baru.</div>
+            <a href="https://sekolah-pro.vercel.app/" target="_blank" style="padding:12px 24px;border-radius:10px;background:var(--grn);color:white;font-weight:700;font-size:14px;text-decoration:none">🚀 Buka Demo di Tab Baru</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo hints -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:16px">
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+          <span style="font-size:18px">📴</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:white">Mode Offline</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4)">Klik "Lanjutkan Tanpa Internet"</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+          <span style="font-size:18px">🔐</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:white">Login Demo</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4)">Hubungi kami untuk akun trial</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+          <span style="font-size:18px">📱</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:white">Coba di HP</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4)">Scan QR atau buka link langsung</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOWNLOAD ═══ -->
+<section class="section" id="download" style="background:var(--grn-bg)">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto;margin-bottom:40px">
+      <div class="section-label">Install Gratis</div>
+      <h2 class="section-h2">Download untuk HP & Laptop</h2>
+      <p class="section-sub">SekolahPro adalah PWA (Progressive Web App) — install langsung dari browser, tidak perlu Play Store atau App Store.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:860px;margin:0 auto">
+
+      <!-- Android -->
+      <div class="reveal" style="background:white;border:1.5px solid var(--bdr);border-radius:var(--r);padding:28px;text-align:center">
+        <div style="font-size:44px;margin-bottom:12px">🤖</div>
+        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px">Android (Chrome)</div>
+        <div style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:20px">
+          1. Buka <strong>sekolah-pro.vercel.app</strong> di Chrome<br/>
+          2. Tap menu <strong>⋮</strong> pojok kanan atas<br/>
+          3. Pilih <strong>"Add to Home Screen"</strong><br/>
+          4. Tap <strong>"Install"</strong> — selesai!
+        </div>
+        <a href="https://sekolah-pro.vercel.app/" target="_blank"
+           style="display:block;padding:12px;border-radius:10px;background:var(--grn);color:white;font-weight:700;font-size:13px;text-decoration:none;transition:opacity .15s"
+           onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          📲 Buka di Chrome Android
+        </a>
+      </div>
+
+      <!-- iOS -->
+      <div class="reveal" style="background:white;border:1.5px solid var(--bdr);border-radius:var(--r);padding:28px;text-align:center">
+        <div style="font-size:44px;margin-bottom:12px">🍎</div>
+        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px">iPhone / iPad (Safari)</div>
+        <div style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:20px">
+          1. Buka <strong>sekolah-pro.vercel.app</strong> di Safari<br/>
+          2. Tap ikon <strong>⬆️ Share</strong> di bawah layar<br/>
+          3. Pilih <strong>"Add to Home Screen"</strong><br/>
+          4. Tap <strong>"Add"</strong> — selesai!
+        </div>
+        <a href="https://sekolah-pro.vercel.app/" target="_blank"
+           style="display:block;padding:12px;border-radius:10px;background:var(--ink);color:white;font-weight:700;font-size:13px;text-decoration:none;transition:opacity .15s"
+           onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          📲 Buka di Safari iPhone
+        </a>
+      </div>
+
+      <!-- Desktop -->
+      <div class="reveal" style="background:white;border:1.5px solid var(--bdr);border-radius:var(--r);padding:28px;text-align:center">
+        <div style="font-size:44px;margin-bottom:12px">💻</div>
+        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px">Laptop / PC (Chrome)</div>
+        <div style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:20px">
+          1. Buka <strong>sekolah-pro.vercel.app</strong> di Chrome<br/>
+          2. Klik ikon <strong>⊕ Install</strong> di address bar<br/>
+          3. Klik <strong>"Install"</strong><br/>
+          4. Muncul sebagai <strong>app desktop</strong>!
+        </div>
+        <a href="https://sekolah-pro.vercel.app/" target="_blank"
+           style="display:block;padding:12px;border-radius:10px;background:var(--blu);color:white;font-weight:700;font-size:13px;text-decoration:none;transition:opacity .15s"
+           onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          💻 Buka di Chrome Desktop
+        </a>
+      </div>
+
+    </div>
+
+    <!-- QR Code -->
+    <div class="reveal" style="text-align:center;margin-top:36px">
+      <div style="display:inline-block;background:white;border:1.5px solid var(--bdr);border-radius:14px;padding:20px 28px">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:12px">📷 Scan QR untuk buka di HP</div>
+        <div id="qr-demo" style="display:flex;justify-content:center;margin-bottom:10px"></div>
+        <div style="font-size:11px;color:var(--t3);font-family:'Courier New',monospace">sekolah-pro.vercel.app</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="cara-kerja">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto">
+      <div class="section-label">Cara Kerja</div>
+      <h2 class="section-h2">Mulai dalam 3 Langkah Mudah</h2>
+      <p class="section-sub">Tidak perlu instalasi, tidak perlu beli server. Buka browser, daftar, langsung pakai.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="how-num">1</div>
+        <div class="how-title">Daftar & Setup Sekolah</div>
+        <div class="how-desc">Masukkan nama sekolah, nominal SPP, tahun ajaran. Selesai dalam 2 menit.</div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-num">2</div>
+        <div class="how-title">Import Data Siswa & Guru</div>
+        <div class="how-desc">Upload file Excel/CSV yang sudah ada. Sistem otomatis mapping kolom dan validasi data.</div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-num">3</div>
+        <div class="how-title">Kelola dari Mana Saja</div>
+        <div class="how-desc">Akses dari HP, tablet, atau laptop. Data tersinkron real-time ke semua perangkat.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="testi-section" id="testimoni">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto">
+      <div class="section-label">Kata Mereka</div>
+      <h2 class="section-h2">Dipercaya Guru & Kepala Sekolah</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="testi-body">Dulu rekap SPP tiap bulan bisa sampai 3 jam. Sekarang tinggal buka dashboard, semua sudah ada. Bendahara kami sampai tidak percaya.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Ahmad Fauzi, M.Pd.</div>
+            <div class="testi-role">Kepala Sekolah · SD Islam Sahara, Tasikmalaya</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="testi-body">Import 100 data siswa dari Excel cuma butuh 1 menit. Kwitansi pembayaran langsung bisa dicetak dengan QR Code. Orang tua puas, kami lebih tenang.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Sri Wahyuni</div>
+            <div class="testi-role">Bendahara · SD Muhammadiyah 3</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="testi-body">Fitur gaji guru sangat membantu. Perhitungan kasbon, BPJS, lembur sudah otomatis. Slip gaji bisa langsung dikirim via WhatsApp.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Rini Susanti, S.E.</div>
+            <div class="testi-role">Tata Usaha · SMP Al-Hidayah</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="section" id="harga">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto">
+      <div class="section-label">Harga Transparan</div>
+      <h2 class="section-h2">Terjangkau untuk Semua Skala Sekolah</h2>
+      <p class="section-sub">Mulai gratis. Upgrade kapan pun sekolah berkembang. Tidak ada biaya tersembunyi.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="price-card reveal">
+        <div class="price-tier">Gratis / Offline</div>
+        <div class="price-amount"><sup>Rp</sup>0</div>
+        <div class="price-period">Selamanya gratis</div>
+        <div class="price-desc">Untuk sekolah yang baru mulai digital</div>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>Data siswa (unlimited)</li>
+          <li>Kelola kelas SD/SMP/SMA</li>
+          <li>Catat pembayaran SPP</li>
+          <li>Payroll guru dasar</li>
+          <li>Jadwal & kalender</li>
+          <li class="no">Sync cloud Firebase</li>
+          <li class="no">Dana BOS & inventaris</li>
+          <li class="no">Laporan cetak PDF</li>
+        </ul>
+        <a class="price-btn" href="#cta">Mulai Gratis</a>
+      </div>
+      <!-- Basic -->
+      <div class="price-card featured reveal">
+        <div class="price-badge">Paling Populer</div>
+        <div class="price-tier">Basic</div>
+        <div class="price-amount"><sup>Rp</sup>149<span style="font-size:18px;font-weight:600;color:var(--t2)">.000</span></div>
+        <div class="price-period">per bulan</div>
+        <div class="price-desc">Untuk sekolah swasta aktif dengan 1–200 siswa</div>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>Semua fitur Gratis</li>
+          <li>Sync cloud Firebase</li>
+          <li>Dana BOS + inventaris</li>
+          <li>Laporan & cetak PDF</li>
+          <li>Kwitansi QR Code</li>
+          <li>Komunikasi orang tua</li>
+          <li class="no">Multi cabang</li>
+          <li class="no">Priority support</li>
+        </ul>
+        <a class="price-btn primary" href="#cta">Coba 14 Hari Gratis</a>
+      </div>
+      <!-- Pro -->
+      <div class="price-card reveal">
+        <div class="price-tier">Pro</div>
+        <div class="price-amount"><sup>Rp</sup>349<span style="font-size:18px;font-weight:600;color:var(--t2)">.000</span></div>
+        <div class="price-period">per bulan</div>
+        <div class="price-desc">Untuk sekolah besar atau yayasan dengan beberapa unit</div>
+        <div class="price-divider"></div>
+        <ul class="price-list">
+          <li>Semua fitur Basic</li>
+          <li>Unlimited siswa</li>
+          <li>Multi cabang sekolah</li>
+          <li>Rapor digital lengkap</li>
+          <li>Alumni & wisuda</li>
+          <li>Priority WhatsApp support</li>
+          <li>Custom nama domain</li>
+          <li>Onboarding langsung</li>
+        </ul>
+        <a class="price-btn" href="#cta">Hubungi Kami</a>
+      </div>
+    </div>
+    <div class="reveal text-center mt-8" style="margin-top:24px">
+      <p style="font-size:12px;color:var(--t3)">💳 Bayar via transfer bank · QRIS · Daftar sekarang, bayar nanti setelah trial</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section" id="faq" style="background:var(--warm)">
+  <div class="section-inner">
+    <div class="reveal text-center" style="max-width:560px;margin:0 auto">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-h2">Pertanyaan yang Sering Ditanya</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">Apakah data sekolah aman? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Data disimpan di server Firebase milik Google dengan enkripsi penuh. Tidak ada pihak ketiga yang bisa mengakses data sekolah Anda. Setiap sekolah memiliki database terpisah (multi-tenant).</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">Apakah bisa dipakai tanpa internet? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Ya! SekolahPro dirancang offline-first. Data tersimpan di perangkat lokal. Saat ada koneksi, otomatis sinkron ke cloud. Cocok untuk sekolah di area dengan internet tidak stabil.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">Bagaimana cara pindahkan data dari Excel lama? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">SekolahPro punya fitur Smart Import. Upload file Excel atau CSV Anda, sistem otomatis mapping kolom dan validasi data. Import 100 siswa bisa selesai dalam 1 menit.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">Bisa dipakai di HP Android? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Bisa! SekolahPro adalah Progressive Web App (PWA) — buka via browser Chrome di HP, lalu install ke layar utama. Tampilannya otomatis menyesuaikan ukuran HP. Tidak perlu download dari Play Store.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">Siapa saja yang bisa akses aplikasi ini? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Ada 5 jenis akses: Kepala Sekolah/Admin (akses penuh), Guru (data siswa & jadwal), Orang Tua (status anak), Siswa (status SPP sendiri), dan Offline (akses dasar tanpa login). Setiap role hanya bisa melihat data yang relevan.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">Apakah ada biaya setup atau pelatihan? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Tidak ada biaya setup. Untuk paket Pro, tersedia sesi onboarding langsung via WhatsApp Video Call tanpa biaya tambahan. Kami juga menyediakan panduan lengkap dan video tutorial.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BOTTOM ═══ -->
+<section class="cta-section" id="cta">
+  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto">
+    <div class="reveal">
+      <div style="font-size:40px;margin-bottom:16px">🏫</div>
+      <h2 class="cta-h2">Siap Digitalisasi Administrasi Sekolah?</h2>
+      <p class="cta-sub">Bergabung bersama sekolah-sekolah yang sudah merasakan manfaatnya. Mulai gratis, tidak perlu kartu kredit.</p>
+      <div class="cta-actions" style="margin-bottom:24px">
+        <a class="btn-white" href="https://sekolah-pro.vercel.app/" target="_blank">
+          🚀 Buka Aplikasi Sekarang
+        </a>
+        <a class="btn-outline-white" id="btn-download" href="#" onclick="downloadApp(event)">
+          📥 Download untuk HP
+        </a>
+        <a class="btn-outline-white" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20coba%20SekolahPro%20untuk%20sekolah%20saya" target="_blank">
+          💬 Chat WhatsApp
+        </a>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,.35)">
+        Atau hubungi: <strong style="color:rgba(255,255,255,.6)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e28390808e8d89868b858b96838ea2858f838b8ecc818d8f">[email&#160;protected]</a></strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">Sekolah<span>Pro</span> <span style="color:rgba(255,255,255,.2);font-weight:400;font-size:12px;margin-left:6px">by Arblok Digital</span></div>
+  <div class="footer-copy">© 2026 Arblok Digital. Hak cipta dilindungi.</div>
+  <div class="footer-links">
+    <a class="footer-link" href="#">Fitur</a>
+    <a class="footer-link" href="#">Harga</a>
+    <a class="footer-link" href="#">FAQ</a>
+    <a class="footer-link" href="#">Privasi</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── SCROLL REVEAL ──────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach((el, i) => {
+  // Stagger siblings
+  const siblings = el.parentElement.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+  let delay = 0;
+  siblings.forEach((s, j) => { if (s === el) delay = j * 80; });
+  el.style.transitionDelay = delay + 'ms';
+  observer.observe(el);
+});
+
+// ── FAQ TOGGLE ─────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const ans  = item.querySelector('.faq-a');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(f => {
+    f.classList.remove('open');
+    f.querySelector('.faq-a').classList.remove('open');
+  });
+  // Open clicked if was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    ans.classList.add('open');
+  }
+}
+
+// ── SMOOTH SCROLL NAV ──────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ── NAV SCROLL STYLE ────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (nav) nav.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(15,31,46,.1)' : 'none';
+});
+
+// ── QR CODE GENERATE ──────────────────────────────────
+window.addEventListener('load', function() {
+  var qrEl = document.getElementById('qr-demo');
+  if (qrEl && typeof QRCode !== 'undefined') {
+    try {
+      new QRCode(qrEl, {
+        text: 'https://sekolah-pro.vercel.app/',
+        width: 120, height: 120,
+        colorDark: '#0f1f2e', colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } catch(e) {
+      qrEl.innerHTML = '<div style="width:120px;height:120px;background:#f0fdf4;border:2px dashed #059669;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#059669;text-align:center;padding:8px">sekolah-pro<br/>.vercel.app</div>';
+    }
+  }
+  // Iframe fallback
+  var iframe = document.getElementById('demo-iframe');
+  var fallback = document.getElementById('iframe-fallback');
+  if (iframe && fallback) {
+    iframe.addEventListener('error', function() {
+      iframe.style.display = 'none';
+      fallback.style.display = 'flex';
+    });
+  }
+});
+
+// ── DOWNLOAD / INSTALL ────────────────────────────────
+function downloadApp(e) {
+  e.preventDefault();
+  var isIOS     = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  var isAndroid = /Android/.test(navigator.userAgent);
+  if (isIOS) {
+    alert('📱 Install di iPhone/iPad:\n\n1. Buka sekolah-pro.vercel.app di Safari\n2. Tap Share ⬆️ di bawah layar\n3. Pilih "Add to Home Screen"\n4. Tap "Add" ✅');
+  } else if (isAndroid) {
+    window.open('https://sekolah-pro.vercel.app/', '_blank');
+    setTimeout(function() {
+      alert('📲 Install di Android:\n\n1. Buka sekolah-pro.vercel.app di Chrome\n2. Tap menu ⋮ kanan atas\n3. Pilih "Add to Home Screen"\n4. Tap "Install" ✅');
+    }, 600);
+  } else {
+    window.open('https://sekolah-pro.vercel.app/', '_blank');
+    setTimeout(function() {
+      alert('💻 Install di Laptop/PC:\n\n1. Buka sekolah-pro.vercel.app di Chrome\n2. Klik ikon ⊕ di address bar\n3. Klik "Install" ✅\n\nSekolahPro muncul sebagai app desktop!');
+    }, 600);
+  }
+}
+</script>
+</body>
+</html>

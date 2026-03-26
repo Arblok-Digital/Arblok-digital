@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Arblok Digital — Investment Memo 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Editorial+New:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════ RESET & ROOT ═══════ */
+:root{
+  --ink:   #0a0a0e;
+  --paper: #f5f0e8;
+  --cream: #ede8dc;
+  --warm:  #e8e0d0;
+  --bdr:   #c8c0b0;
+  --bdr2:  #d8d0c0;
+  --grn:   #006644;
+  --grn2:  #008855;
+  --grn-lt:#e8f5ee;
+  --red:   #cc2200;
+  --red-lt:#fdf0ed;
+  --blu:   #1a3a7c;
+  --blu-lt:#eef2fb;
+  --yel:   #8a6200;
+  --yel-lt:#fdf8ec;
+  --pur:   #5a1a8a;
+  --pur-lt:#f5edfb;
+  --t1:    #0a0a0e;
+  --t2:    #3a3830;
+  --t3:    #7a7060;
+  --t4:    #a09888;
+  --head:  'Instrument Sans', sans-serif;
+  --body:  'Instrument Sans', sans-serif;
+  --mono:  'DM Mono', monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+body{
+  background:var(--paper);
+  color:var(--t1);
+  font-family:var(--body);
+  line-height:1.6;
+}
+::selection{background:var(--grn);color:white}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:3px}
+
+/* ═══════ PRINT MARKS ═══════ */
+body::before{
+  content:'';position:fixed;top:0;left:0;right:0;height:3px;
+  background:repeating-linear-gradient(90deg,var(--grn) 0,var(--grn) 8px,transparent 8px,transparent 12px);
+  z-index:1000;
+}
+
+/* ═══════ LAYOUT ═══════ */
+.page-wrap{max-width:1100px;margin:0 auto;padding:60px 40px 120px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+/* ═══════ MASTHEAD ═══════ */
+.masthead{
+  border-bottom:3px solid var(--ink);
+  padding-bottom:28px;margin-bottom:48px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  flex-wrap:wrap;gap:16px;
+}
+.masthead-logo{
+  font-family:var(--head);font-size:13px;font-weight:700;
+  color:var(--t3);letter-spacing:3px;text-transform:uppercase;
+}
+.masthead-title{
+  font-size:clamp(38px,5vw,72px);font-weight:700;
+  line-height:.95;letter-spacing:-2px;color:var(--ink);
+  font-family:var(--head);
+}
+.masthead-title em{color:var(--grn);font-style:normal}
+.masthead-right{text-align:right}
+.masthead-tag{
+  font-size:11px;font-weight:600;color:var(--t3);
+  letter-spacing:2px;text-transform:uppercase;
+  display:block;margin-bottom:4px;
+}
+.masthead-date{font-size:13px;color:var(--t2);font-family:var(--mono)}
+
+/* ═══════ SECTION HEADERS ═══════ */
+.sec-hdr{
+  display:flex;align-items:baseline;gap:12px;
+  border-bottom:1.5px solid var(--bdr2);
+  padding-bottom:8px;margin-bottom:20px;margin-top:52px;
+}
+.sec-num{
+  font-family:var(--mono);font-size:11px;color:var(--grn);
+  font-weight:500;letter-spacing:1px;
+}
+.sec-title{font-size:20px;font-weight:700;letter-spacing:-.5px;color:var(--ink)}
+
+/* ═══════ PULL QUOTE ═══════ */
+.pull{
+  border-left:4px solid var(--grn);padding:14px 20px;
+  background:var(--grn-lt);border-radius:0 8px 8px 0;
+  margin:20px 0;
+}
+.pull p{font-size:16px;font-weight:600;color:var(--grn);line-height:1.5}
+.pull cite{font-size:11px;color:var(--t3);font-family:var(--mono);font-style:normal;display:block;margin-top:6px}
+
+/* ═══════ KPI CARDS ═══════ */
+.kpi{
+  border:1.5px solid var(--bdr2);border-radius:10px;
+  padding:18px 20px;background:white;
+  position:relative;overflow:hidden;
+}
+.kpi::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--kpi-color,var(--grn));
+}
+.kpi-num{
+  font-family:var(--mono);font-size:clamp(28px,3vw,40px);
+  font-weight:500;line-height:1;margin-bottom:5px;
+  color:var(--kpi-color,var(--grn));
+}
+.kpi-label{font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.5px;text-transform:uppercase}
+.kpi-sub{font-size:11px;color:var(--t3);margin-top:5px;line-height:1.4}
+.kpi-delta{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;
+  margin-top:8px;font-family:var(--mono);
+}
+.delta-up{background:#dcfce7;color:#16a34a}
+.delta-dn{background:#fee2e2;color:#dc2626}
+
+/* ═══════ TABLE ═══════ */
+.table-wrap{overflow-x:auto;border:1.5px solid var(--bdr2);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+thead tr{background:var(--ink);color:white}
+thead th{
+  padding:10px 14px;text-align:left;font-weight:600;
+  font-size:10px;letter-spacing:1px;text-transform:uppercase;
+  font-family:var(--mono);white-space:nowrap;
+}
+tbody tr{border-bottom:1px solid var(--bdr2)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:nth-child(even){background:var(--cream)}
+tbody td{padding:9px 14px;color:var(--t2);vertical-align:middle}
+tbody td:first-child{font-weight:600;color:var(--ink)}
+td.num{font-family:var(--mono);text-align:right;white-space:nowrap}
+td.grn{color:var(--grn);font-weight:700;font-family:var(--mono)}
+td.red{color:var(--red);font-family:var(--mono)}
+td.bold{font-weight:700;color:var(--ink)}
+tr.total-row td{background:var(--grn);color:white;font-weight:700}
+tr.total-row td.num{color:white}
+
+/* ═══════ BAR CHART ═══════ */
+.chart-wrap{display:flex;flex-direction:column;gap:8px}
+.chart-row{display:flex;align-items:center;gap:10px}
+.chart-lbl{font-size:11px;font-weight:600;color:var(--t2);min-width:100px;text-align:right;flex-shrink:0}
+.chart-bar-track{flex:1;height:22px;background:var(--cream);border-radius:3px;overflow:hidden;position:relative}
+.chart-bar{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:8px}
+.chart-bar span{font-size:10px;font-weight:700;color:white;font-family:var(--mono);white-space:nowrap}
+.chart-val{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--t2);min-width:70px;text-align:left;flex-shrink:0}
+
+/* ═══════ WATERFALL CHART ═══════ */
+.waterfall{display:flex;align-items:flex-end;gap:6px;height:200px;padding-bottom:24px;position:relative}
+.waterfall::after{content:'';position:absolute;bottom:24px;left:0;right:0;height:1.5px;background:var(--bdr)}
+.wf-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.wf-bar{width:100%;border-radius:3px 3px 0 0;position:relative;min-height:4px}
+.wf-lbl{font-size:9px;font-family:var(--mono);color:var(--t3);text-align:center;white-space:nowrap}
+.wf-val{font-size:10px;font-weight:700;font-family:var(--mono);text-align:center}
+
+/* ═══════ FUNNEL ═══════ */
+.funnel{display:flex;flex-direction:column;align-items:center;gap:0}
+.funnel-tier{
+  border-radius:6px;display:flex;align-items:center;justify-content:space-between;
+  padding:9px 16px;margin-bottom:4px;width:var(--fw);transition:width .8s;
+}
+.funnel-tier-name{font-size:12px;font-weight:600}
+.funnel-tier-val{font-family:var(--mono);font-size:12px;font-weight:500}
+
+/* ═══════ SECTOR CARD ═══════ */
+.sector-card{
+  border:1.5px solid var(--bdr2);border-radius:12px;overflow:hidden;background:white;
+}
+.sector-head{padding:16px 20px;border-bottom:1.5px solid var(--bdr2)}
+.sector-head-title{font-size:17px;font-weight:700;letter-spacing:-.3px;margin-bottom:3px}
+.sector-head-sub{font-size:11px;color:var(--t3)}
+.sector-body{padding:16px 20px}
+.sector-metric{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:7px 0;border-bottom:1px dashed var(--bdr2);font-size:12px;
+}
+.sector-metric:last-child{border-bottom:none}
+.sector-metric-name{color:var(--t2)}
+.sector-metric-val{font-family:var(--mono);font-weight:500;font-size:13px}
+
+/* ═══════ CALLOUT BOX ═══════ */
+.callout{
+  border:2px solid;border-radius:10px;padding:16px 20px;margin:16px 0;
+}
+.callout-grn{border-color:var(--grn);background:var(--grn-lt)}
+.callout-blu{border-color:var(--blu);background:var(--blu-lt)}
+.callout-yel{border-color:var(--yel);background:var(--yel-lt)}
+.callout-pur{border-color:var(--pur);background:var(--pur-lt)}
+.callout-red{border-color:var(--red);background:var(--red-lt)}
+.callout-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.callout-body{font-size:13px;line-height:1.7;color:var(--t2)}
+.callout-num{font-family:var(--mono);font-size:28px;font-weight:500;line-height:1;margin:6px 0}
+
+/* ═══════ BADGE ═══════ */
+.badge{
+  display:inline-flex;align-items:center;
+  font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:3px 9px;border-radius:20px;margin:2px;
+}
+.badge-grn{background:var(--grn-lt);color:var(--grn);border:1px solid rgba(0,102,68,.2)}
+.badge-blu{background:var(--blu-lt);color:var(--blu);border:1px solid rgba(26,58,124,.2)}
+.badge-yel{background:var(--yel-lt);color:var(--yel);border:1px solid rgba(138,98,0,.2)}
+.badge-pur{background:var(--pur-lt);color:var(--pur);border:1px solid rgba(90,26,138,.2)}
+.badge-red{background:var(--red-lt);color:var(--red);border:1px solid rgba(204,34,0,.2)}
+.badge-dk {background:var(--ink);color:white}
+
+/* ═══════ FOOTNOTE ═══════ */
+.footnote{font-size:10px;color:var(--t4);font-family:var(--mono);margin-top:6px;line-height:1.5}
+
+/* ═══════ DIVIDER ═══════ */
+.divider{height:1px;background:linear-gradient(90deg,var(--grn),var(--bdr),transparent);margin:40px 0}
+
+/* ═══════ VALUATION EQUATION ═══════ */
+.val-eq{
+  background:var(--ink);border-radius:12px;padding:24px 28px;
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  font-family:var(--mono);color:white;
+}
+.val-term{text-align:center}
+.val-term-num{font-size:clamp(20px,2.5vw,32px);font-weight:500;line-height:1}
+.val-term-lbl{font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.val-op{font-size:28px;color:#444;align-self:center}
+.val-result{
+  background:var(--grn);border-radius:8px;padding:14px 24px;text-align:center;
+  min-width:180px;
+}
+.val-result-num{font-size:clamp(24px,3vw,40px);font-weight:500;color:white;line-height:1}
+.val-result-lbl{font-size:9px;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:768px){
+  .page-wrap{padding:32px 18px 80px}
+  .two-col,.three-col,.four-col{grid-template-columns:1fr}
+  .masthead{flex-direction:column;align-items:flex-start}
+  .masthead-right{text-align:left}
+  .val-eq{flex-direction:column;gap:8px}
+}
+
+/* ═══════ PRINT ═══════ */
+@media print{
+  body::before{display:none}
+  .page-wrap{padding:20px}
+  a{color:inherit!important}
+}
+
+/* ═══════ ANIMATE ON SCROLL ═══════ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ═══════════════════════════════════
+     MASTHEAD
+═══════════════════════════════════ -->
+<header class="masthead">
+  <div>
+    <div class="masthead-logo">Arblok Digital · Investment Memorandum</div>
+    <div class="masthead-title">KONVERGENSI<br/><em>FMCG + EDUCATION</em><br/>EKONOMI MODEL</div>
+  </div>
+  <div class="masthead-right">
+    <span class="masthead-tag">Confidential · Series Seed</span>
+    <div class="masthead-date">Maret 2026 · v1.0</div>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:4px;align-items:flex-end">
+      <span class="badge badge-grn">SekolahPro</span>
+      <span class="badge badge-blu">Kasir Pro</span>
+      <span class="badge badge-pur">Arblok Pay</span>
+      <span class="badge badge-dk">Arblok Ecosystem</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════
+     EXECUTIVE SUMMARY
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 00</span><span class="sec-title">Executive Summary</span></div>
+
+<div class="pull">
+  <p>"Satu ekosistem digital menyentuh dua sektor terbesar kehidupan masyarakat Indonesia — apa yang anak makan dan di mana anak belajar. Itulah Arblok."</p>
+  <cite>— Investment Thesis, Arblok Digital 2026</cite>
+</div>
+
+<p style="font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:16px">
+  Arblok Digital membangun <strong style="color:var(--ink)">infrastruktur digital dua-lapis</strong> yang menghubungkan ekosistem
+  pendidikan (<em>SekolahPro</em>) dengan ekosistem perdagangan mikro (<em>Kasir Pro</em>), diikat oleh
+  rails pembayaran proprietary (<em>Arblok Pay</em>). Konvergensi ini bukan kebetulan —
+  ini adalah arbitrase pasar di mana kedua sektor <strong style="color:var(--ink)">belum memiliki pemain dominan</strong> di Indonesia.
+</p>
+
+<div class="four-col">
+  <div class="kpi" style="--kpi-color:var(--grn)">
+    <div class="kpi-num">Rp 2,1T</div>
+    <div class="kpi-label">Total Addressable Market</div>
+    <div class="kpi-sub">Education SaaS + FMCG POS Indonesia 2026</div>
+    <div class="kpi-delta delta-up">↑ 18% YoY</div>
+  </div>
+  <div class="kpi" style="--kpi-color:var(--blu)">
+    <div class="kpi-num">Rp 47,8M</div>
+    <div class="kpi-label">Target ARR 2027</div>
+    <div class="kpi-sub">50 sekolah + 500 warung aktif</div>
+    <div class="kpi-delta delta-up">↑ Year 1</div>
+  </div>
+  <div class="kpi" style="--kpi-color:var(--pur)">
+    <div class="kpi-num">Rp 850M</div>
+    <div class="kpi-label">Proyeksi Valuasi 2028</div>
+    <div class="kpi-sub">Revenue multiple 8–12x, pre-money</div>
+    <div class="kpi-delta delta-up">Seed target</div>
+  </div>
+  <div class="kpi" style="--kpi-color:var(--yel)">
+    <div class="kpi-num">Rp 15,4T</div>
+    <div class="kpi-label">Ekosistem Valuasi 2030</div>
+    <div class="kpi-sub">Full convergence + Arblok Pay GMV</div>
+    <div class="kpi-delta delta-up">↑ 5-Year Target</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     THE CONVERGENCE THESIS
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 01</span><span class="sec-title">The Convergence Thesis — Mengapa FMCG + Education?</span></div>
+
+<div class="two-col" style="margin-bottom:20px">
+  <div>
+    <p style="font-size:13px;color:var(--t2);line-height:1.8;margin-bottom:14px">
+      Di Indonesia, <strong style="color:var(--ink)">toko kelontong dan sekolah adalah dua institusi paling dekat dengan keluarga.</strong>
+      Rata-rata keluarga Indonesia berinteraksi dengan warung <em>setiap hari</em> dan dengan sekolah
+      <em>setiap minggu</em>. Namun keduanya beroperasi secara analog — tanpa data, tanpa infrastruktur digital.
+    </p>
+    <p style="font-size:13px;color:var(--t2);line-height:1.8">
+      Arblok masuk ke <strong style="color:var(--ink)">kedua pintu sekaligus</strong>. Kasir Pro digitalisasi
+      warung dan toko grosiran. SekolahPro digitalisasi sekolah. Arblok Pay menjadi
+      jembatan transaksi di antara keduanya — termasuk pembayaran SPP dari warung terdekat,
+      pembelian buku lewat marketplace Kasir, dan loyalitas ortu lintas ekosistem.
+    </p>
+  </div>
+  <div>
+    <div style="background:var(--ink);border-radius:12px;padding:20px 22px;font-family:var(--mono);color:white;font-size:12px">
+      <div style="color:#888;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">The Flywheel</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,.05);border-radius:6px;border-left:3px solid #00cc6a">
+          <span style="font-size:16px">🏫</span>
+          <div><div style="color:#00cc6a">SekolahPro</div><div style="font-size:9px;color:#666">Data siswa + ortu + keuangan</div></div>
+        </div>
+        <div style="text-align:center;color:#444;font-size:16px">↕</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,.05);border-radius:6px;border-left:3px solid #a855f7">
+          <span style="font-size:16px">💳</span>
+          <div><div style="color:#a855f7">Arblok Pay</div><div style="font-size:9px;color:#666">Payment rails + e-wallet</div></div>
+        </div>
+        <div style="text-align:center;color:#444;font-size:16px">↕</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,.05);border-radius:6px;border-left:3px solid #3b82f6">
+          <span style="font-size:16px">🛒</span>
+          <div><div style="color:#3b82f6">Kasir Pro</div><div style="font-size:9px;color:#666">FMCG POS + inventory + grosiran</div></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #333;font-size:10px;color:#666;text-align:center">
+        Satu keluarga → 3 touchpoints/hari
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="callout callout-grn">
+  <div class="callout-title" style="color:var(--grn)">💡 Insight Kunci</div>
+  <div class="callout-body">
+    Bayangkan seorang ibu yang <strong>membayar SPP anak via Arblok Pay</strong> dari warung depan rumah (yang pakai Kasir Pro),
+    lalu sekolah langsung terima notifikasi otomatis di SekolahPro. <em>Zero friction, zero human error, satu ekosistem.</em>
+    Ini yang disebut <strong>embedded finance dalam daily life</strong> — bukan fintech yang cari pengguna, tapi infrastruktur yang menjemput pengguna.
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     TAM/SAM/SOM
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 02</span><span class="sec-title">Market Sizing — TAM · SAM · SOM</span></div>
+
+<div class="two-col">
+  <div>
+    <div class="chart-wrap" id="tamChart">
+      <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:12px;letter-spacing:1px">EDUCATION SECTOR — INDONESIA 2026</div>
+      <div class="chart-row">
+        <div class="chart-lbl">TAM</div>
+        <div class="chart-bar-track"><div class="chart-bar" style="width:0%;background:var(--grn)" data-w="100%"><span>Rp 1,2T / thn</span></div></div>
+        <div class="chart-val">Rp 1,2T</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-lbl">SAM</div>
+        <div class="chart-bar-track"><div class="chart-bar" style="width:0%;background:var(--grn);opacity:.75" data-w="55%"><span>Rp 660M</span></div></div>
+        <div class="chart-val">Rp 660M</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-lbl">SOM Y3</div>
+        <div class="chart-bar-track"><div class="chart-bar" style="width:0%;background:var(--grn);opacity:.5" data-w="12%"><span>Rp 79M</span></div></div>
+        <div class="chart-val">Rp 79M</div>
+      </div>
+      <p class="footnote" style="margin-top:10px">TAM: 216K sekolah swasta × Rp 5,5jt/thn avg. SAM: sekolah dengan akses internet aktif. SOM: 2% SAM pada tahun ke-3.</p>
+    </div>
+  </div>
+  <div>
+    <div class="chart-wrap">
+      <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:12px;letter-spacing:1px">FMCG MICRO-RETAIL — INDONESIA 2026</div>
+      <div class="chart-row">
+        <div class="chart-lbl">TAM</div>
+        <div class="chart-bar-track"><div class="chart-bar" style="width:0%;background:var(--blu)" data-w="100%"><span>Rp 890M / thn</span></div></div>
+        <div class="chart-val">Rp 890M</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-lbl">SAM</div>
+        <div class="chart-bar-track"><div class="chart-bar" style="width:0%;background:var(--blu);opacity:.75" data-w="40%"><span>Rp 356M</span></div></div>
+        <div class="chart-val">Rp 356M</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-lbl">SOM Y3</div>
+        <div class="chart-bar-track"><div class="chart-bar" style="width:0%;background:var(--blu);opacity:.5" data-w="8%"><span>Rp 28M</span></div></div>
+        <div class="chart-val">Rp 28M</div>
+      </div>
+      <p class="footnote" style="margin-top:10px">TAM: 4,5M warung + toko kelontong × Rp 200K/thn SaaS. SAM: warung dengan smartphone aktif (40%). SOM: 0.5% SAM pada tahun ke-3.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Convergence TAM -->
+<div class="callout callout-grn" style="margin-top:20px">
+  <div class="callout-title" style="color:var(--grn)">🔗 Combined TAM — Konvergensi Dua Sektor</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:10px">
+    <div>
+      <div class="callout-num" style="color:var(--grn)">Rp 2,09T</div>
+      <div style="font-size:11px;color:var(--t2)">Total TAM gabungan Education + FMCG</div>
+    </div>
+    <div>
+      <div class="callout-num" style="color:var(--blu)">Rp 1,01T</div>
+      <div style="font-size:11px;color:var(--t2)">Combined SAM (addressable hari ini)</div>
+    </div>
+    <div>
+      <div class="callout-num" style="color:var(--pur)">Rp 360M+</div>
+      <div style="font-size:11px;color:var(--t2)">Arblok Pay GMV Year 3 (% dari transaksi)</div>
+    </div>
+    <div>
+      <div class="callout-num" style="color:var(--yel)">Rp 107M</div>
+      <div style="font-size:11px;color:var(--t2)">Combined SOM ARR Year 3 target</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     REVENUE MODEL PER PRODUK
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 03</span><span class="sec-title">Revenue Model — Per Produk</span></div>
+
+<div class="two-col">
+
+  <!-- SEKOLAHPRO -->
+  <div class="sector-card">
+    <div class="sector-head" style="background:var(--grn-lt)">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div>
+          <div class="sector-head-title" style="color:var(--grn)">🏫 SekolahPro</div>
+          <div class="sector-head-sub">Education Management SaaS</div>
+        </div>
+        <span class="badge badge-grn">Live 2026</span>
+      </div>
+    </div>
+    <div class="sector-body">
+      <div class="sector-metric">
+        <span class="sector-metric-name">SaaS Bulanan (Basic)</span>
+        <span class="sector-metric-val" style="color:var(--grn)">Rp 149K / bln</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">SaaS Pro (unlimited users)</span>
+        <span class="sector-metric-val" style="color:var(--grn)">Rp 349K / bln</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">Enterprise (chain sekolah)</span>
+        <span class="sector-metric-val" style="color:var(--grn)">Rp 999K / bln</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">Setup fee (one-time)</span>
+        <span class="sector-metric-val" style="color:var(--grn)">Rp 500K</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">Broadcast Ads CPM</span>
+        <span class="sector-metric-val" style="color:var(--grn)">Rp 50K / 1000</span>
+      </div>
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr2)">
+        <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:6px">UNIT ECONOMICS</div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+          <span style="color:var(--t2)">LTV (avg 36 bln)</span>
+          <span style="font-family:var(--mono);color:var(--grn)">Rp 10,6jt</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+          <span style="color:var(--t2)">CAC estimasi</span>
+          <span style="font-family:var(--mono)">Rp 350K</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px">
+          <span style="color:var(--t2)">LTV/CAC Ratio</span>
+          <span style="font-family:var(--mono);color:var(--grn);font-weight:700">30.3x 🔥</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KASIR PRO -->
+  <div class="sector-card">
+    <div class="sector-head" style="background:var(--blu-lt)">
+      <div style="display:flex;justify-content:space-between;align-items:start">
+        <div>
+          <div class="sector-head-title" style="color:var(--blu)">🛒 Kasir Pro</div>
+          <div class="sector-head-sub">FMCG Micro-Retail POS</div>
+        </div>
+        <span class="badge badge-blu">Q3 2028</span>
+      </div>
+    </div>
+    <div class="sector-body">
+      <div class="sector-metric">
+        <span class="sector-metric-name">POS Basic (warung)</span>
+        <span class="sector-metric-val" style="color:var(--blu)">Rp 79K / bln</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">POS Pro (minimarket)</span>
+        <span class="sector-metric-val" style="color:var(--blu)">Rp 249K / bln</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">Grosiran (B2B wholesale)</span>
+        <span class="sector-metric-val" style="color:var(--blu)">Rp 749K / bln</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">Inventory management add-on</span>
+        <span class="sector-metric-val" style="color:var(--blu)">Rp 99K / bln</span>
+      </div>
+      <div class="sector-metric">
+        <span class="sector-metric-name">Komisi order B2B supplier</span>
+        <span class="sector-metric-val" style="color:var(--blu)">1.5% / transaksi</span>
+      </div>
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr2)">
+        <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:6px">UNIT ECONOMICS</div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+          <span style="color:var(--t2)">LTV (avg 24 bln)</span>
+          <span style="font-family:var(--mono);color:var(--blu)">Rp 1,9jt</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+          <span style="color:var(--t2)">CAC estimasi</span>
+          <span style="font-family:var(--mono)">Rp 80K</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px">
+          <span style="color:var(--t2)">LTV/CAC Ratio</span>
+          <span style="font-family:var(--mono);color:var(--blu);font-weight:700">23.7x 🔥</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ARBLOK PAY -->
+<div class="sector-card" style="margin-top:16px">
+  <div class="sector-head" style="background:var(--pur-lt)">
+    <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px">
+      <div>
+        <div class="sector-head-title" style="color:var(--pur)">💳 Arblok Pay — The Rails</div>
+        <div class="sector-head-sub">Embedded payment layer untuk seluruh ekosistem. Setiap transaksi di SekolahPro dan Kasir Pro mengalir lewat Arblok Pay.</div>
+      </div>
+      <span class="badge badge-pur">2029 Launch</span>
+    </div>
+  </div>
+  <div class="sector-body">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+      <div>
+        <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:8px">REVENUE STREAMS</div>
+        <div class="sector-metric">
+          <span class="sector-metric-name">MDR (merchant fee)</span>
+          <span class="sector-metric-val" style="color:var(--pur)">0.5%</span>
+        </div>
+        <div class="sector-metric">
+          <span class="sector-metric-name">Transfer fee (antar ekosistem)</span>
+          <span class="sector-metric-val" style="color:var(--pur)">Rp 1.000 flat</span>
+        </div>
+        <div class="sector-metric">
+          <span class="sector-metric-name">Cicilan bayar SPP</span>
+          <span class="sector-metric-val" style="color:var(--pur)">1.2% / txn</span>
+        </div>
+        <div class="sector-metric">
+          <span class="sector-metric-name">Float income (e-wallet)</span>
+          <span class="sector-metric-val" style="color:var(--pur)">~3% p.a.</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:8px">GMV PROYEKSI</div>
+        <div class="sector-metric"><span class="sector-metric-name">2029 Launch</span><span class="sector-metric-val">Rp 12M GMV</span></div>
+        <div class="sector-metric"><span class="sector-metric-name">2030 Scale</span><span class="sector-metric-val">Rp 360M GMV</span></div>
+        <div class="sector-metric"><span class="sector-metric-name">Revenue take-rate</span><span class="sector-metric-val" style="color:var(--pur)">~1.2%</span></div>
+        <div class="sector-metric"><span class="sector-metric-name">Est. Net Revenue 2030</span><span class="sector-metric-val" style="color:var(--pur);font-weight:700">Rp 4,3M</span></div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:8px">MOAT</div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.8">
+          ✓ Captive user base dari SekolahPro + Kasir Pro<br/>
+          ✓ Zero CAC (embedded di produk existing)<br/>
+          ✓ Network effect antar warung dan sekolah<br/>
+          ✓ Data spending behavior ortu dan siswa
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     P&L PROJECTION 5 TAHUN
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 04</span><span class="sec-title">5-Year P&L Projection</span></div>
+<p class="footnote" style="margin-bottom:16px">Dalam Juta Rupiah (Jt). Asumsi: pertumbuhan organik + 1 funding round Seed Rp 500M di 2026–Q4.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Revenue Stream</th>
+      <th class="num">2026</th>
+      <th class="num">2027</th>
+      <th class="num">2028</th>
+      <th class="num">2029</th>
+      <th class="num">2030</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SekolahPro SaaS</td>
+      <td class="num">0,9</td>
+      <td class="num">10,8</td>
+      <td class="num">28,5</td>
+      <td class="num">68,4</td>
+      <td class="num">144,0</td>
+    </tr>
+    <tr>
+      <td>SekolahPro Setup Fee</td>
+      <td class="num">0,5</td>
+      <td class="num">2,5</td>
+      <td class="num">5,0</td>
+      <td class="num">7,5</td>
+      <td class="num">10,0</td>
+    </tr>
+    <tr>
+      <td>SekolahPro Broadcast Ads</td>
+      <td class="num">—</td>
+      <td class="num">1,2</td>
+      <td class="num">4,8</td>
+      <td class="num">12,0</td>
+      <td class="num">28,0</td>
+    </tr>
+    <tr>
+      <td>Kasir Pro SaaS</td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td class="num">6,0</td>
+      <td class="num">35,0</td>
+      <td class="num">120,0</td>
+    </tr>
+    <tr>
+      <td>Kasir Pro B2B Commission</td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td class="num">2,4</td>
+      <td class="num">15,0</td>
+      <td class="num">60,0</td>
+    </tr>
+    <tr>
+      <td>ChatRoom Premium</td>
+      <td class="num">—</td>
+      <td class="num">3,6</td>
+      <td class="num">9,0</td>
+      <td class="num">18,0</td>
+      <td class="num">36,0</td>
+    </tr>
+    <tr>
+      <td>Arblok Pay Net Revenue</td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td class="num">0,9</td>
+      <td class="num">4,3</td>
+    </tr>
+    <tr class="total-row">
+      <td>Total Revenue</td>
+      <td class="num">1,4</td>
+      <td class="num">18,1</td>
+      <td class="num">55,7</td>
+      <td class="num">156,8</td>
+      <td class="num">402,3</td>
+    </tr>
+    <tr>
+      <td style="color:var(--red)">COGS + Infra</td>
+      <td class="num red">(0,8)</td>
+      <td class="num red">(6,0)</td>
+      <td class="num red">(16,0)</td>
+      <td class="num red">(42,0)</td>
+      <td class="num red">(98,0)</td>
+    </tr>
+    <tr>
+      <td style="color:var(--red)">Sales & Marketing</td>
+      <td class="num red">(1,2)</td>
+      <td class="num red">(8,0)</td>
+      <td class="num red">(18,0)</td>
+      <td class="num red">(36,0)</td>
+      <td class="num red">(72,0)</td>
+    </tr>
+    <tr>
+      <td style="color:var(--red)">R&D + Engineering</td>
+      <td class="num red">(2,4)</td>
+      <td class="num red">(12,0)</td>
+      <td class="num red">(22,0)</td>
+      <td class="num red">(40,0)</td>
+      <td class="num red">(65,0)</td>
+    </tr>
+    <tr>
+      <td style="color:var(--red)">G&A</td>
+      <td class="num red">(0,8)</td>
+      <td class="num red">(4,0)</td>
+      <td class="num red">(8,0)</td>
+      <td class="num red">(14,0)</td>
+      <td class="num red">(24,0)</td>
+    </tr>
+    <tr style="background:var(--cream)">
+      <td class="bold">EBITDA</td>
+      <td class="num red bold">(3,8)</td>
+      <td class="num red bold">(11,9)</td>
+      <td class="num bold">(8,3)</td>
+      <td class="num grn bold">24,8</td>
+      <td class="num grn bold">143,3</td>
+    </tr>
+    <tr style="background:var(--cream)">
+      <td class="bold">EBITDA Margin</td>
+      <td class="num red">-271%</td>
+      <td class="num red">-66%</td>
+      <td class="num red">-15%</td>
+      <td class="num grn">+16%</td>
+      <td class="num grn">+36%</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p class="footnote">*Proyeksi bersifat konservatif. Asumsi 50% YoY churn rate tahun 1–2, turun ke 15% pada tahun 4+. COGS termasuk Firebase, hosting, customer support.</p>
+</div>
+
+<!-- ═══════════════════════════════════
+     GROWTH FUNNEL PER SEGMEN
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 05</span><span class="sec-title">User Growth Funnel — 2026–2030</span></div>
+
+<div class="two-col">
+  <div>
+    <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:14px;letter-spacing:1px">SEKOLAHPRO USER FUNNEL</div>
+    <div class="funnel">
+      <div class="funnel-tier" style="--fw:100%;background:var(--grn);color:white">
+        <span class="funnel-tier-name">Awareness</span><span class="funnel-tier-val">10.000 sekolah</span>
+      </div>
+      <div class="funnel-tier" style="--fw:70%;background:rgba(0,102,68,.2);color:var(--grn);border:1px solid rgba(0,102,68,.3)">
+        <span class="funnel-tier-name">Trial (free)</span><span class="funnel-tier-val">7.000</span>
+      </div>
+      <div class="funnel-tier" style="--fw:50%;background:rgba(0,102,68,.15);color:var(--grn);border:1px solid rgba(0,102,68,.25)">
+        <span class="funnel-tier-name">Activated</span><span class="funnel-tier-val">5.000</span>
+      </div>
+      <div class="funnel-tier" style="--fw:35%;background:rgba(0,102,68,.1);color:var(--grn);border:1px solid rgba(0,102,68,.2)">
+        <span class="funnel-tier-name">Paid</span><span class="funnel-tier-val">3.500</span>
+      </div>
+      <div class="funnel-tier" style="--fw:20%;background:rgba(0,102,68,.07);color:var(--grn);border:1px solid rgba(0,102,68,.15)">
+        <span class="funnel-tier-name">Retained Y2+</span><span class="funnel-tier-val">2.000</span>
+      </div>
+    </div>
+    <p class="footnote" style="margin-top:10px">Target kumulatif 2030. Conversion trial→paid est. 50%.</p>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:var(--t3);font-family:var(--mono);margin-bottom:14px;letter-spacing:1px">KASIR PRO USER FUNNEL</div>
+    <div class="funnel">
+      <div class="funnel-tier" style="--fw:100%;background:var(--blu);color:white">
+        <span class="funnel-tier-name">Awareness</span><span class="funnel-tier-val">500.000 warung</span>
+      </div>
+      <div class="funnel-tier" style="--fw:60%;background:rgba(26,58,124,.15);color:var(--blu);border:1px solid rgba(26,58,124,.25)">
+        <span class="funnel-tier-name">Download app</span><span class="funnel-tier-val">300.000</span>
+      </div>
+      <div class="funnel-tier" style="--fw:40%;background:rgba(26,58,124,.1);color:var(--blu);border:1px solid rgba(26,58,124,.2)">
+        <span class="funnel-tier-name">7-day Active</span><span class="funnel-tier-val">200.000</span>
+      </div>
+      <div class="funnel-tier" style="--fw:25%;background:rgba(26,58,124,.07);color:var(--blu);border:1px solid rgba(26,58,124,.15)">
+        <span class="funnel-tier-name">Paid Tier</span><span class="funnel-tier-val">125.000</span>
+      </div>
+      <div class="funnel-tier" style="--fw:15%;background:rgba(26,58,124,.05);color:var(--blu);border:1px solid rgba(26,58,124,.1)">
+        <span class="funnel-tier-name">Arblok Pay aktif</span><span class="funnel-tier-val">75.000</span>
+      </div>
+    </div>
+    <p class="footnote" style="margin-top:10px">Target kumulatif 2030. Fokus kota tier 2–3 dengan komunitas warung digital.</p>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     VALUATION MODEL
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 06</span><span class="sec-title">Valuation Model — Tiga Metodologi</span></div>
+
+<!-- Method 1: Revenue Multiple -->
+<div class="callout callout-grn" style="margin-bottom:16px">
+  <div class="callout-title" style="color:var(--grn)">Metode 1 — Revenue Multiple (SaaS Benchmark)</div>
+  <div class="callout-body" style="margin-bottom:12px">
+    SaaS Indonesia early-stage umumnya di-valued 6–12× ARR. Ambil konservatif 8× untuk company pre-profitability dengan growth 10× YoY.
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+    <div>
+      <div style="font-size:10px;color:var(--t3);font-family:var(--mono);margin-bottom:4px">ARR 2027 (proyeksi)</div>
+      <div style="font-family:var(--mono);font-size:18px;color:var(--grn);font-weight:500">Rp 18,1M</div>
+    </div>
+    <div>
+      <div style="font-size:10px;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Multiple (8x konservatif)</div>
+      <div style="font-family:var(--mono);font-size:18px;color:var(--grn);font-weight:500">8×</div>
+    </div>
+    <div style="background:rgba(0,102,68,.1);border-radius:8px;padding:10px;border:1px solid rgba(0,102,68,.2)">
+      <div style="font-size:10px;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Pre-money Valuation 2027</div>
+      <div style="font-family:var(--mono);font-size:20px;color:var(--grn);font-weight:700">Rp 144M</div>
+    </div>
+    <div style="background:rgba(0,102,68,.15);border-radius:8px;padding:10px;border:1px solid rgba(0,102,68,.25)">
+      <div style="font-size:10px;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Dengan 12× ARR 2028</div>
+      <div style="font-family:var(--mono);font-size:20px;color:var(--grn);font-weight:700">Rp 668M</div>
+    </div>
+  </div>
+</div>
+
+<!-- Method 2: Comparable -->
+<div class="callout callout-blu" style="margin-bottom:16px">
+  <div class="callout-title" style="color:var(--blu)">Metode 2 — Comparable Company Analysis</div>
+  <div class="table-wrap" style="margin-top:10px">
+    <table>
+      <thead>
+        <tr>
+          <th>Perusahaan</th><th>Sektor</th><th class="num">Valuasi</th><th class="num">ARR</th><th class="num">Multiple</th><th>Relevansi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Schoology (US)</td><td>EdTech SaaS</td><td class="num">$800M</td><td class="num">$50M</td><td class="num">16×</td><td><span class="badge badge-grn">SekolahPro</span></td></tr>
+        <tr><td>Moka POS (ID)</td><td>FMCG POS</td><td class="num">Rp 1,2T</td><td class="num">Rp 80M</td><td class="num">15×</td><td><span class="badge badge-blu">Kasir Pro</span></td></tr>
+        <tr><td>Majoo (ID)</td><td>POS + Kasir</td><td class="num">~Rp 400M</td><td class="num">Rp 30M</td><td class="num">13×</td><td><span class="badge badge-blu">Kasir Pro</span></td></tr>
+        <tr><td>Xendit (ID)</td><td>Payment Rails</td><td class="num">$1,5B</td><td class="num">$85M</td><td class="num">18×</td><td><span class="badge badge-pur">Arblok Pay</span></td></tr>
+        <tr><td>Dana (ID)</td><td>E-wallet</td><td class="num">$2B+</td><td class="num">GMV %</td><td class="num">N/M</td><td><span class="badge badge-pur">Arblok Pay</span></td></tr>
+        <tr class="total-row"><td>Arblok Avg Benchmark</td><td>Cross-sector</td><td class="num">—</td><td class="num">—</td><td class="num">14×</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="footnote" style="margin-top:8px">Dengan 14× ARR benchmark dan ARR 2028 Rp 55,7M → Implied Valuation: <strong style="color:var(--blu)">Rp 779M</strong></p>
+</div>
+
+<!-- Method 3: DCF -->
+<div class="callout callout-pur">
+  <div class="callout-title" style="color:var(--pur)">Metode 3 — Simplified DCF (Discounted Cash Flow)</div>
+  <div class="callout-body" style="margin-bottom:14px">Discount rate 35% (early-stage Indonesia risk premium). Terminal growth 5%. NPV of 5-year free cash flows.</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px">
+    <div style="text-align:center;padding:10px;background:rgba(90,26,138,.08);border-radius:8px;border:1px solid rgba(90,26,138,.15)">
+      <div style="font-size:9px;color:var(--t3);font-family:var(--mono);margin-bottom:4px">PV FCF 2026–30</div>
+      <div style="font-family:var(--mono);font-size:15px;color:var(--pur);font-weight:500">Rp 78M</div>
+    </div>
+    <div style="text-align:center;padding:10px;background:rgba(90,26,138,.08);border-radius:8px;border:1px solid rgba(90,26,138,.15)">
+      <div style="font-size:9px;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Terminal Value</div>
+      <div style="font-family:var(--mono);font-size:15px;color:var(--pur);font-weight:500">Rp 628M</div>
+    </div>
+    <div style="text-align:center;padding:10px;background:rgba(90,26,138,.12);border-radius:8px;border:1px solid rgba(90,26,138,.25)">
+      <div style="font-size:9px;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Enterprise Value</div>
+      <div style="font-family:var(--mono);font-size:16px;color:var(--pur);font-weight:700">Rp 706M</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL VALUATION EQUATION -->
+<div style="margin-top:24px">
+  <div style="font-size:11px;color:var(--t3);font-family:var(--mono);letter-spacing:1px;text-align:center;margin-bottom:14px">BLENDED VALUATION CONSENSUS — SEED ROUND 2026</div>
+  <div class="val-eq">
+    <div class="val-term">
+      <div class="val-term-num" style="color:#00cc6a">Rp 144M</div>
+      <div class="val-term-lbl">Revenue ×</div>
+    </div>
+    <div class="val-op">+</div>
+    <div class="val-term">
+      <div class="val-term-num" style="color:#3b82f6">Rp 779M</div>
+      <div class="val-term-lbl">Comp. Analysis</div>
+    </div>
+    <div class="val-op">+</div>
+    <div class="val-term">
+      <div class="val-term-num" style="color:#a855f7">Rp 706M</div>
+      <div class="val-term-lbl">DCF</div>
+    </div>
+    <div class="val-op">÷ 3</div>
+    <div class="val-result">
+      <div class="val-result-num">Rp 543M</div>
+      <div class="val-result-lbl">Pre-money Seed (2026)</div>
+    </div>
+  </div>
+  <p class="footnote" style="text-align:center;margin-top:10px">
+    Proyeksi 5-year full ecosystem: <strong>Rp 8,4T – 15,4T</strong> (tergantung penetrasi Arblok Pay + Kasir Pro scale).
+    Benchmark: Gojek mencapai $10B dari titik yang mirip dalam 7 tahun.
+  </p>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     COMPETITIVE MOAT
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 07</span><span class="sec-title">Competitive Moat — Mengapa Sulit Ditiru</span></div>
+
+<div class="three-col">
+  <div class="callout callout-grn">
+    <div class="callout-title" style="color:var(--grn)">🏰 Data Moat</div>
+    <div class="callout-body">
+      Data siswa, SPP, nilai, absensi, dan spending warung membentuk <strong>behavioral graph keluarga Indonesia</strong>.
+      Setelah 3 tahun, dataset ini menjadi aset yang tidak bisa dibeli pesaing.
+    </div>
+  </div>
+  <div class="callout callout-blu">
+    <div class="callout-title" style="color:var(--blu)">⚓ Switching Cost</div>
+    <div class="callout-body">
+      Sekolah yang sudah input 3 tahun data siswa, SPP, rapor tidak akan pindah.
+      Warung yang sudah integrasikan inventory ke supplier via Kasir Pro tidak akan cabut.
+    </div>
+  </div>
+  <div class="callout callout-pur">
+    <div class="callout-title" style="color:var(--pur)">🕸️ Network Effect</div>
+    <div class="callout-body">
+      Semakin banyak sekolah pakai SekolahPro → semakin banyak ortu kenal Arblok Pay → semakin banyak warung terima Arblok Pay → Kasir Pro makin valuable.
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     USE OF FUNDS
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="sec-hdr"><span class="sec-num">§ 08</span><span class="sec-title">Use of Funds — Seed Round Rp 500M</span></div>
+
+<div class="two-col">
+  <div>
+    <div class="chart-wrap">
+      <div class="chart-row"><div class="chart-lbl">Engineering</div><div class="chart-bar-track"><div class="chart-bar" data-w="40%" style="width:40%;background:var(--grn)"><span>40% · Rp 200M</span></div></div></div>
+      <div class="chart-row"><div class="chart-lbl">Sales & GTM</div><div class="chart-bar-track"><div class="chart-bar" data-w="25%" style="width:25%;background:var(--blu)"><span>25% · Rp 125M</span></div></div></div>
+      <div class="chart-row"><div class="chart-lbl">Infrastruktur</div><div class="chart-bar-track"><div class="chart-bar" data-w="20%" style="width:20%;background:var(--pur)"><span>20% · Rp 100M</span></div></div></div>
+      <div class="chart-row"><div class="chart-lbl">Ops & Legal</div><div class="chart-bar-track"><div class="chart-bar" data-w="10%" style="width:10%;background:var(--yel)"><span>10% · Rp 50M</span></div></div></div>
+      <div class="chart-row"><div class="chart-lbl">Reserve</div><div class="chart-bar-track"><div class="chart-bar" data-w="5%" style="width:5%;background:var(--t3)"><span>5% · Rp 25M</span></div></div></div>
+    </div>
+  </div>
+  <div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+      <div style="padding:10px 14px;background:var(--grn-lt);border-radius:8px;border-left:3px solid var(--grn)">
+        <strong style="color:var(--grn)">Engineering (Rp 200M)</strong>
+        <p style="font-size:11px;color:var(--t2);margin-top:3px">ChatRoom MVP, Kasir Pro Beta, mobile apps, API layer untuk Arblok Pay. 3 full-stack engineers + 1 DevOps.</p>
+      </div>
+      <div style="padding:10px 14px;background:var(--blu-lt);border-radius:8px;border-left:3px solid var(--blu)">
+        <strong style="color:var(--blu)">Sales & GTM (Rp 125M)</strong>
+        <p style="font-size:11px;color:var(--t2);margin-top:3px">Partnership Dinas Pendidikan, community sales warung, content marketing, 2 sales reps lapangan.</p>
+      </div>
+      <div style="padding:10px 14px;background:var(--pur-lt);border-radius:8px;border-left:3px solid var(--pur)">
+        <strong style="color:var(--pur)">Infrastruktur (Rp 100M)</strong>
+        <p style="font-size:11px;color:var(--t2);margin-top:3px">Firebase scale-up, CDN, keamanan data (ISO 27001 prep), monitoring & SLA 99.9%.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     CLOSING
+═══════════════════════════════════ -->
+<div class="reveal">
+<div class="divider"></div>
+<div style="text-align:center;padding:40px 20px">
+  <div style="font-size:11px;color:var(--t3);font-family:var(--mono);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">The Bottom Line</div>
+  <div style="font-size:clamp(24px,4vw,42px);font-weight:700;line-height:1.2;letter-spacing:-1px;max-width:700px;margin:0 auto;color:var(--ink)">
+    Arblok bukan hanya software sekolah.<br/>
+    Arblok adalah <span style="color:var(--grn)">infrastruktur digital</span> untuk<br/>
+    <span style="color:var(--blu)">cara hidup 50 juta keluarga Indonesia.</span>
+  </div>
+  <div style="margin-top:24px;display:inline-flex;align-items:center;gap:12px;background:var(--grn);color:white;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px">
+    <span>🚀</span> Seed Round Rp 500M · Target Close Q4 2026
+  </div>
+  <div style="margin-top:28px;font-size:12px;color:var(--t3);line-height:1.8">
+    Contact: <strong style="color:var(--ink)">Arblok Digital</strong> · arblok.digital<br/>
+    This document contains forward-looking projections. Not a guarantee of returns.
+  </div>
+</div>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+// ═══ SCROLL REVEAL ═══
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ═══ BAR CHART ANIMATE ═══
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.chart-bar[data-w]').forEach(bar => {
+        setTimeout(() => { bar.style.width = bar.dataset.w; }, 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.chart-wrap, .table-wrap').forEach(el => barObs.observe(el));
+
+// ═══ FUNNEL WIDTH ANIMATE ═══
+const funnelObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.funnel-tier').forEach((tier, i) => {
+        const w = tier.style.getPropertyValue('--fw');
+        tier.style.setProperty('--fw', '100%');
+        setTimeout(() => { tier.style.setProperty('--fw', w); }, i * 80);
+      });
+      funnelObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.funnel').forEach(el => funnelObs.observe(el));
+</script>
+</body>
+</html>
