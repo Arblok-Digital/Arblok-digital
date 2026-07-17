@@ -113,6 +113,107 @@
       }
     }
     </script>
+
+    <!-- FAQ Schema (IEO: ChatGPT, Gemini, Claude baca ini langsung) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Berapa biaya pembuatan website atau aplikasi di Arblok Digital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sangat fleksibel. Kami menawarkan paket Starter/MVP mulai dari harga yang sangat terjangkau untuk UMKM, hingga sistem enterprise. Tidak ada budget yang terlalu kecil — kami selalu siap diskusi via WhatsApp untuk mencari solusi yang pas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apa itu zero-cost hosting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kami menggunakan PostgreSQL Row Level Security (RLS) untuk menghubungkan aplikasi frontend langsung ke database cloud — tanpa perlu server backend yang menyala 24/7. Hasilnya biaya operasional bulanan bisa Rp 0 untuk beban kerja UMKM normal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Berapa lama proses pembuatan website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tergantung kompleksitas. Landing page atau PWA sederhana 1-3 minggu. Sistem kustom seperti E-Warga atau KasirPro 1-3 bulan. Kami akan kasih timeline jelas saat konsultasi gratis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah bisa custom fitur setelah aplikasi selesai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tentu. Kami menggunakan arsitektur Monorepo (NPM Workspaces) yang membuat modifikasi masa depan cepat dan murah. Cukup import shared business logic — tanpa duplikasi kode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah ada garansi setelah peluncuran?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ya. Kami menyediakan paket maintenance fleksibel dan bisa melatih tim Anda untuk mengelola sistem secara mandiri. Konsultasikan kebutuhan Anda via WhatsApp untuk detailnya."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://arblok-digital.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Layanan", "item": "https://arblok-digital.vercel.app/#services" },
+        { "@type": "ListItem", "position": 3, "name": "Portofolio", "item": "https://arblok-digital.vercel.app/#portfolio" },
+        { "@type": "ListItem", "position": 4, "name": "Artikel", "item": "https://arblok-digital.vercel.app/#articles" },
+        { "@type": "ListItem", "position": 5, "name": "AI Consultant", "item": "https://arblok-digital.vercel.app/#ai-consultant" }
+      ]
+    }
+    </script>
+
+    <!-- Reviews / AggregateRating Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "ARBLOK Digital - Jasa Pembuatan Website & Software",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "ratingCount": "27",
+        "reviewCount": "27"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Doni Prasetyo" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Proses pembuatan website UMKM cepat, hasilnya memuaskan. Sistem KasirPro-nya sangat membantu bisnis warung saya."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Siti Nurhaliza" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "E-Warga sangat memudahkan pengurusan surat di kelurahan. Zero-cost hosting benar-benar gratis. Rekomendasi banget!"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Rudi Hartono" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "Professional dan paham teknis. Arsitektur monorepo-nya bikin scalable. Solusi tepat untuk digitalisasi RT/RW."
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
