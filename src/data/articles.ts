@@ -193,7 +193,136 @@ Melalui penerapan **Monorepo (NPM Workspaces)**, Arblok Digital menyatukan selur
    
 3. **Kemudahan Integrasi Lokal**
    Aplikasi front-end warga tinggal mengimpor pustaka bersama ini menggunakan perintah impor standar. Saat kita menambahkan aplikasi kecamatan di masa depan, kita hanya perlu mengimpor library yang sama tanpa perlu menulis ulang satu baris kode database pun.`
-  }
+  },
+  {
+    id: "cara-memilih-software-house-tasikmalaya",
+    slug: "cara-memilih-software-house-umkm-tasikmalaya",
+    title: "Cara Memilih Software House untuk UMKM di Tasikmalaya: Panduan Lengkap",
+    excerpt: "Bingung milih software house di Tasikmalaya? Pelajari 5 kriteria penting: portofolio nyata, arsitektur scalable, transparansi biaya, dukungan after-launch, dan testimonial. Plus cara bedain agensi beneran dari reseller template.",
+    category: "Digitalisasi UMKM",
+    publishedAt: "2026-07-17",
+    readTime: "7 Menit Bacaan",
+    tags: ["Software House Tasikmalaya", "Digital Agency", "UMKM Digital", "Web Development", "Arblok Digital", "PWA Tasikmalaya", "Jasa Pembuatan Website"],
+    author: {
+      name: "Ardi",
+      role: "Founder & Lead Software Architect @ Arblok Digital"
+    },
+    faq: [
+      {
+        question: "Berapa biaya jasa pembuatan website di software house Tasikmalaya?",
+        answer: "Kisaran harga sangat bervariasi tergantung kompleksitas. Landing page sederhana bisa mulai dari 2-5 juta, aplikasi kasir (POS) 10-30 juta, marketplace 30-100 juta. Yang penting: pastikan software house transparan soal biaya maintenance dan hosting bulanan. Di Arblok Digital, kami tidak memasang biaya tersembunyi dan menawarkan Zero-Cost Hosting (Rp 0 per bulan)."
+      },
+      {
+        question: "Apa yang membedakan software house profesional dengan reseller template?",
+        answer: "Software house profesional membangun dari kode murni (custom code), punya portofolio produk sendiri (bukan template), menerapkan arsitektur scalable (Monorepo), dan memberikan akses ke source code. Reseller template biasanya cuma ganti logo/warna di template yang dijual massal, kode berantakan, dan susah dikembangkan. Tanya selalu: 'Apakah source code diserahkan ke klien?'"
+      },
+      {
+        question: "Berapa lama waktu pembuatan website oleh software house di Tasikmalaya?",
+        answer: "Tergantung skala. Website profil/company profile: 1-2 minggu. Aplikasi custom seperti sistem kasir atau e-commerce: 3-8 minggu. Platform kompleks seperti digitalisasi kelurahan atau marketplace multi-vendor: 2-4 bulan. Hindari software house yang janji 'jadi 3 hari' untuk sistem kompleks — itu red flag."
+      },
+      {
+        question: "Apakah aplikasi UMKM perlu arsitektur Monorepo?",
+        answer: "Tidak wajib untuk landing page sederhana, tapi sangat direkomendasikan jika Anda berencana berkembang. Monorepo memungkinkan satu codebase dipakai untuk banyak aplikasi (web admin, aplikasi android, dashboard mitra) tanpa duplikasi kode. Ini menghemat 70% biaya pengembangan jangka panjang. Di Arblok Digital, Monorepo adalah standar kami."
+      },
+      {
+        question: "Bagaimana cara verifikasi kredibilitas software house?",
+        answer: "Cek 3 hal: (1) Portofolio — minta akses demo langsung, bukan screenshot. (2) Testimonial — chat klien sebelumnya via WhatsApp atau telepon. (3) Google — cari review di Google Maps atau forum. Bonus: lihat apakah mereka punya produk sendiri (bukan cuma jasa). Produk sendiri = bukti mereka paham siklus hidup software."
+      }
+    ],
+    content: `### Memilih Software House di Tasikmalaya: Kenapa Ini Penting?
+
+Tasikmalaya berkembang sebagai kota dengan potensi digital yang besar. Banyak pelaku UMKM, pemilik toko, hingga perangkat kelurahan mulai sadar pentingnya go-digital. Tapi masalahnya: **bagaimana memilih software house yang beneran paham kebutuhan lokal, bukan sekadar jual template murahan?**
+
+Pasar jasa pembuatan website di Indonesia Timur (termasuk Tasikmalaya, Garut, Bandung timur) dipenuhi dua ekstrem: agensi besar dengan harga puluhan hingga ratusan juta, atau "jasa website" 500 ribuan yang cuma ganti logo di template Wix. Keduanya jarang yang pas untuk UMKM yang butuh **kualitas enterprise dengan harga UMKM**.
+
+Artikel ini bakal bantu Anda — owner UMKM, pemilik toko, kepala desa, atau siapapun yang serius mau digital — untuk memilih software house yang tepat. Tanpa hype, tanpa istilah teknis berlebihan.
+
+### 5 Kriteria Penting Sebelum Pilih Software House
+
+#### 1. Portofolio Nyata, Bukan Screenshot Oloran
+Software house profesional punya produk yang **bisa lo akses langsung**. Bukan cuma gambar mockup di slideshare. Minta link demo, coba fitur-fiturnya, tes di HP sendiri. Kalau software house cuma kasih PDF portofolio tanpa link langsung, itu red flag besar.
+
+Coba tanya: _"Ini produk punya lo sendiri atau klien? Bisa saya coba langsung?"_
+
+#### 2. Arsitektur yang Bisa Tumbuh Bareng Usaha Lo
+Banyak UMKM bikin website murah, 6 bulan kemudian pengen tambah fitur — ternyata harus bikin dari nol lagi karena kode-nya berantakan. Boros.
+
+Software house yang paham arsitektur akan pakai **Monorepo (NPM Workspaces)** atau setidaknya kode yang terstruktur rapi. Ini bikin:
+- Nambah fitur baru **gak perlu ngulang dari awal**
+- Shared logic bisa dipakai di aplikasi lain (web admin, dashboard, aplikasi android)
+- Biaya pengembangan jangka panjang **turun drastis**
+
+Di Arblok Digital, semua produk—dari KasirPro hingga E-Warga—dibangun di atas arsitektur Monorepo. Ini kenapa kami bisa nawarin harga fleksibel: karena shared codebase bikin biaya development lebih efisien.
+
+#### 3. Transparansi Biaya Total (Bukan Cuma DP)
+Ini jebakan paling umum. Software house bilang "mulai 3 jutaan", tapi pas deal ternyata ada biaya:
+- Hosting bulanan Rp 200-500rb
+- Domain per tahun Rp 300rb
+- SSL certificate (padahal gratis)
+- Biaya maintenance bulanan
+- Biaya revisi tambahan per fitur
+
+**Total tahun pertama bisa 2-3x lipat dari harga awal.**
+
+Software house profesional akan transparan dari awal: berapa biaya sekali jalan, berapa biaya recurring per bulan, dan apa yang bisa lo lakukan sendiri (misal: belajar update konten).
+
+#### 4. Dukungan Setelah Launch
+Website selesai bukan akhir dari perjalanan. Pastikan software house punya:
+- **Dokumentasi** — cara update konten, nambah produk, ganti gambar
+- **Garansi** — berapa lama gratis revisi bug (minimal 30 hari)
+- **Kontak darurat** — ada WhatsApp atau telepon yang bisa dihubungi kalau server down
+
+Software house yang ilang setelah launching = bencana buat bisnis lo.
+
+#### 5. Testimonial dari Klien Nyata (Bukan Cuma Bintang 5 di Website)
+Minta kontak 1-2 klien sebelumnya. Chat mereka. Tanya:
+_"Apa yang lo suka dari software house ini?"  
+"Apa kendala yang lo alami?"  
+"Apakah sesuai janji?"_
+
+Kalau software house gak bisa kasih kontak klien, itu tanda bahaya. Di Arblok Digital, kami selalu siap koneksikan Anda dengan klien kami untuk diskusi langsung via WhatsApp.
+
+### Panduan Memilih Berdasarkan Budget
+
+| Budget | Yang Realistis | Yang Harus Diwaspadai |
+|--------|---------------|----------------------|
+| < 5 juta | Landing page company profile | Janji jadi 3 hari dengan fitur unlimited |
+| 5-15 juta | PWA sederhana + admin panel | Klaim "SEO guaranteed page 1 Google" |
+| 15-40 juta | Aplikasi kasir, sistem kelurahan | Arsitektur template murah yang gak scalable |
+| 40-100 juta | Marketplace, platform multi-vendor | Gak ada source code diserahkan |
+| 100jt+ | Enterprise grade, AI integration, Web3 | **Harus ada kontrak SLA resmi** |
+
+### Pertanyaan Wajib ke Software House Sebelum Deal
+
+Sebelum transfer DP, tanyakan 5 hal ini:  
+1. "Teknologi stack apa yang lo pake?" (Jawaban ideal: React/Vue + TypeScript + cloud database)
+2. "Apakah source code diserahkan ke klien?" (Ideal: YA — kode lo punya lo)
+3. "Berapa perkiraan biaya bulanan setelah launching?" (Termasuk hosting, domain, third-party services)
+4. "Berapa lama estimasi pengerjaan & apa milestone-nya?" (Ada timeline jelas)
+5. "Siapa yang handle maintenance setelah serah terima?" (Ada kontak darurat)
+
+### Kenapa Arblok Digital Bisa Jadi Pilihan?
+
+Kami bukan software house biasa. Di Arblok Digital:
+- **Produk sendiri sudah production-ready**: KasirPro F&B, KasirPro Grosiran, E-Warga, SekolahPro — bukan template, bukan mockup
+- **Zero-Cost Hosting**: Anda gak perlu bayar server bulanan (Rp 0 untuk beban normal UMKM)
+- **Arsitektur Monorepo**: Biaya pengembangan jangka panjang lebih murah karena kode reusable
+- **Pendiri (Ardi) bisa dihubungi langsung**: Gak ada CS robot, gak ada sales ambisius
+- **Top 100 Global Google Innovation Award**: Solana Warung — bukti kompetensi internasional
+- **Transparan harga**: Berani kasih rincian biaya dari awal
+- **Bilingual ID/EN**: Siap bantu ekspansi bisnis ke pasar global
+
+### Kesimpulan
+
+Memilih software house di Tasikmalaya gak perlu bingung. Fokus pada 5 hal: portofolio nyata, arsitektur scalable, transparansi biaya, dukungan after-launch, dan testimonial asli.
+
+Gak ada yang lebih mahal daripada software murah yang harus dibikin ulang 6 bulan kemudian. Investasi di awal yang sedikit lebih (tapi arsitektur bener) = hemat puluhan juta di masa depan.
+
+**Butuh konsultasi gratis?** Langsung chat Ardi via WhatsApp. Gak ada kewajiban, gak ada sales pressure. Kita bahas kebutuhan lo, kami kasih solusi — sederhana.
+
+👉 **Chat WhatsApp (Ardi - Arblok Digital): https://wa.me/6289508053795**
+👉 **Lihat langsung portofolio kami: https://arblok-digital.vercel.app/#portfolio**`
+  },
 ];
 
 const ARTICLES_EN: Article[] = [
