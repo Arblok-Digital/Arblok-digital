@@ -1,0 +1,6 @@
+{
+  "name": "Arblok Digital",
+  "description": "Company Profile Arblok Digital - Transformasi Digital & Kecerdasan Buatan (AI) dari Tasikmalaya.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
