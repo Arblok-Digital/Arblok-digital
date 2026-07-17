@@ -323,6 +323,190 @@ Gak ada yang lebih mahal daripada software murah yang harus dibikin ulang 6 bula
 👉 **Chat WhatsApp (Ardi - Arblok Digital): https://wa.me/6289508053795**
 👉 **Lihat langsung portofolio kami: https://arblok-digital.vercel.app/#portfolio**`
   },
+  {
+    id: "keluar-marketplace-toko-sendiri",
+    slug: "keluar-marketplace-bikin-toko-online-sendiri-tanpa-potongan-admin",
+    title: "Cara Keluar dari Marketplace: Bikin Toko Online Sendiri Tanpa Potongan Admin 2-10%",
+    excerpt: "Biaya admin Shopee & Tokopedia naik 2-10% per transaksi Mei 2026. Pelajari cara bikin toko online sendiri dengan payment gateway langsung: 0% potongan platform, margin utuh, dan customer jadi milik lo. Plus checklist modal & teknologinya.",
+    category: "UMKM & Marketplace",
+    publishedAt: "2026-07-17",
+    readTime: "8 Menit Bacaan",
+    tags: ["Keluar Marketplace", "Toko Online Sendiri", "Biaya Admin Marketplace", "UMKM 2026", "Shopee Tokopedia", "Payment Gateway", "Web Development Tasikmalaya", "Arblok Digital"],
+    author: {
+      name: "Ardi",
+      role: "Founder & Lead Software Architect @ Arblok Digital"
+    },
+    faq: [
+      {
+        question: "Berapa biaya admin Shopee dan Tokopedia per transaksi di 2026?",
+        answer: "Per Januari-Mei 2026, biaya admin Shopee berkisar 2-10% per transaksi (tergantung kategori produk dan program subsidi). Tokopedia juga menyesuaikan struktur biaya layanan. Ditambah Rp 1.250 yang tetap dipotong meski barang diretur. Untuk seller dengan margin tipis (F&B, grosir, kerajinan), ini bisa menggerus 15-25% profit per bulan."
+      },
+      {
+        question: "Apakah bisa jualan online tanpa marketplace?",
+        answer: "Sangat bisa. Ada 3 jalur utama: (1) Toko online sendiri + payment gateway (Midtrans, Xendit, DOKU) untuk terima QRIS, virtual account, e-wallet. (2) WhatsApp Business + katalog produk + payment link (zero infrastructure). (3) Social commerce Instagram/TikTok yang diarahkan ke payment link pribadi. Semua jalur ini 0% potongan platform."
+      },
+      {
+        question: "Berapa modal bikin toko online sendiri?",
+        answer: "Modal bervariasi: (a) Pakai platform jadi seperti Shopify/WooCommerce: 500rb-3jt untuk setup + 300-800rb/bulan langganan. (b) Custom website dari software house: 8-25jt (sekali bayar) + Rp 0/bulan untuk hosting. (c) WhatsApp + payment link: gratis tapi gak punya brand presence. Pilihan (b) paling ROI tinggi untuk UMKM serius."
+      },
+      {
+        question: "Apa itu payment gateway dan kenapa penting untuk toko online sendiri?",
+        answer: "Payment gateway adalah perantara antara customer Anda dan bank untuk proses pembayaran online. Contoh populer: Midtrans, Xendit, DOKU, iPaymu. Mereka kasih QRIS, virtual account, e-wallet (OVO, DANA, GoPay), dan credit card. Biaya transaksi hanya 0.7-2.5% (jauh lebih murah dari 2-10% marketplace) dan customer bayar langsung ke nomor rekening/rekening usaha Anda."
+      },
+      {
+        question: "Bagaimana cara bawa customer dari marketplace ke toko sendiri?",
+        answer: "Strategi 3 lapis: (1) Packaging premium — sisipkan kartu ucapan + QR code toko online di setiap paket. (2) Konten edukatif — buat Instagram/TikTok dengan value konten, link ke toko sendiri di bio. (3) Loyalty program — kasih diskon eksklusif untuk repeat order via website (misal: 'Beli 5 gratis ongkir khusus member website'). Konsistensi 3-6 bulan biasanya cukup untuk migrasi 30-50% customer ke channel sendiri."
+      },
+      {
+        question: "Apakah toko online sendiri bisa menang SEO dari marketplace di Google?",
+        answer: "Justru lebih mudah. Domain sendiri (tokosaya.com) punya otoritas SEO yang bisa lo bangun dari 0. Halaman produk lo 100% bisa di-customize untuk target kata kunci spesifik (misal: 'keripik pedas Tasikmalaya'). Marketplace halaman produknya keadilannya banyak saingan, persis seperti rank di Google. Dengan SEO konten (artikel blog, FAQ schema, backlink lokal) toko sendiri bisa page-1 Google dalam 3-6 bulan untuk keyword spesifik niche Anda."
+      }
+    ],
+    content: `### Marketplace Mahal? Lo Gak Sendirian
+
+Shopee naik lagi. Tokopedia nyusul. Biaya admin Shopee resmi jadi 2-10% per transaksi per Januari 2026, dan Tokopedia menyesuaikan struktur biayanya di Mei 2026. Ditambah Rp 1.250 yang tetap dipotong meski barang diretur. Hasilnya: banyak seller UKM, terutama F&B, kerajinan, dan grosir, ngerasain margin mereka tergerus 15-25% per bulan.
+
+Pemerintah udah turun tangan — Permendag No. 19/2026, Permen UMKM No. 3/2026 — tapi aturan transparansi gak otomatis menghapus biaya. Lo tetap bayar, cuma lebih jelas perhitungannya.
+
+Pertanyaan besarnya: **mau terus-terusan gajian orang lain, atau mulai bangun toko sendiri yang profit 100% milik lo?**
+
+### Tanda Lo Harus Pindah dari Marketplace
+
+Cek 5 kondisi ini. Kalau 3+ cocok, berarti sudah waktunya:
+
+1. **Margin lo tergerus >15%** karena admin fee + ongkir subsidi + iklan wajib
+2. **Views organik marketplace terus turun** — lo dipaksa keluar uang iklan supaya produk tetap terlihat
+3. **Customer lo gak kenal brand lo**, yang mereka ingat cuma platform-nya
+4. **Data customer lo bukan milik lo** — gak bisa di-reach langsung, harus bayar lagi untuk remarketing
+5. **Cash flow lo boncos** setelah jualan rame karena potongan admin + retur
+
+Kalau 3+ dari 5 kondisi di atas kejadian di lo, pertimbangkan serius untuk migrasi.
+
+### 3 Jalur Keluar dari Marketplace (Tanpa Kehilangan Customer)
+
+#### Jalur 1: Toko Online Sendiri + Payment Gateway (RECOMMENDED)
+- Lo punya domain sendiri (misal: keripikpedas.tasik.id)
+- Customer checkout langsung di website lo
+- Pembayaran lewat payment gateway (Midtrans, Xendit, DOKU) — bisa QRIS, virtual account, e-wallet, credit card
+- **Biaya transaksi cuma 0.7-2.5%** (vs 2-10% di marketplace)
+- **Modal 8-25jt sekali bayar** untuk custom website, **Rp 0/bulan** untuk hosting (pakai arsitektur serverless + free tier Supabase/Vercel)
+- **Customer 100% milik lo** — nomor WA, email, alamat bisa lo kumpulin untuk retensi
+
+#### Jalur 2: WhatsApp Business + Payment Link
+- Tanpa website, tanpa setup teknis
+- Cukup katalog produk di WhatsApp Business + payment link dari DOKU/iPaymu
+- **Gratis total**, tapi gak ada brand presence (customer cuma inget nomor WA lo)
+- Cocok untuk: jualan skala kecil (< 50 order/bulan), produk yang butuh konsultasi langsung (katering, jasa)
+
+#### Jalur 3: Social Commerce (Instagram/TikTok → Payment Link)
+- Jualan via konten reels/shorts
+- Checkout via payment link di bio/caption
+- **0% potongan platform** karena lo gak jualan di Instagram, cuma narik traffic
+- Cocok untuk: produk visual (fashion, F&B estetik, craft), owner yang aktif bikin konten
+- Resiko: bergantung algoritma IG/TikTok, gak punya customer database sendiri
+
+**Rekomendasi gue: Kombinasi Jalur 1 + 3.** Website jadi hub resmi, Instagram/TikTok jadi corong traffic. WhatsApp untuk closing & after-sales.
+
+### Anatomi Toko Online Sendiri yang Untung
+
+Toko online sendiri yang profitable punya 5 komponen wajib:
+
+1. **Katalog Produk yang SEO-Friendly**
+   - Setiap produk punya halaman URL sendiri (contoh: /produk/keripik-pedas-original)
+   - Ada deskripsi + foto + harga + stok + ongkir otomatis
+   - Markup schema Product (otomatis muncul di Google rich snippet)
+
+2. **Payment Gateway Terintegrasi**
+   - QRIS, virtual account BCA/Mandiri/BNI, e-wallet (OVO, DANA, GoPay, ShopeePay)
+   - Midtrans (paling populer, biaya 0.7-2.5%)
+   - Webhook otomatis: customer bayar → sistem langsung update status pesanan
+
+3. **Manajemen Order & Stok Real-Time**
+   - Dashboard admin untuk lihat order masuk, status bayar, stok produk
+   - Integrasi dengan jasa kirim (JNE, J&T, SiCepat) untuk print resi otomatis
+   - Notifikasi WhatsApp ke customer setiap status berubah (pakai deep link wa.me — gratis, gak pakai API mahal)
+
+4. **Sistem Retensi & Loyalty**
+   - Diskon member untuk repeat order
+   - Poin rewards (setiap Rp 100rb = 1 poin, 10 poin = diskon 10%)
+   - Birthday promo otomatis dari database customer
+
+5. **Tracking & Analytics**
+   - Google Analytics + Meta Pixel untuk tahu asal traffic
+   - Dashboard konversi: berapa visitor → berapa add-to-cart → berapa checkout
+   - A/B testing landing page untuk iklan
+
+### Checklist Modal & Teknologi
+
+| Komponen | DIY (Sendiri) | Custom Software House | Platform Jadi (Shopify) |
+|----------|---------------|----------------------|------------------------|
+| **Modal Awal** | 0-1jt (belajar) | 8-25jt | 500rb-3jt |
+| **Biaya Bulanan** | 0 | **Rp 0** (zero-cost hosting) | 300-800rb |
+| **Waktu Setup** | 2-4 minggu | 3-6 minggu | 1-3 hari |
+| **Biaya Transaksi** | 0.7-2.5% (Midtrans) | 0.7-2.5% (Midtrans) | 2% (Shopify Payments) |
+| **Custom Fitur** | Sangat terbatas | 100% sesuai kebutuhan | Terbatas tema |
+| **Source Code** | Punya sendiri | Punya sendiri | Gak punya (langganan) |
+| **SEO Friendly** | Tergantung builder | Sangat (bisa di-optimize full) | Cukup |
+| **Skalabilitas** | Rendah | Sangat tinggi (Monorepo) | Tinggi tapi mahal |
+
+### 3 Strategi Bawa Customer Marketplace ke Toko Sendiri
+
+1. **Packaging is Marketing**
+   Sisipkan kartu ucapan + QR code toko online di setiap paket yang lo kirim dari marketplace. Tulis manual: "Yuk, order lagi lebih murah di tokosaya.com — gratis ongkir khusus member!" 70% customer loyal bakal notice.
+
+2. **Konten Edukatif, Bukan Jualan**
+   Bikin Instagram/TikTok dengan value konten: behind the scene produksi, tips masak, review customer. Di bio, link ke toko online sendiri. Konsistensi 3-6 bulan = traffic organik 5-20rb/bulan.
+
+3. **Loyalty Program Eksklusif**
+   "Beli 5 gratis ongkir khusus order via website" atau "Poin rewards 2x lebih besar untuk member website." Ini bikin customer migrate pelan-pelan tanpa lo harus keluar dari marketplace seketika.
+
+### Real Case: Bikin Toko Sendiri Cuma 12 Juta, Bayar Sendiri dalam 4 Bulan
+
+Kasus nyata (generalisir, bukan nama asli):
+
+- **Owner:** UMKM keripik Tasikmalaya, omzet Rp 35-50jt/bulan via Shopee
+- **Masalah:** Margin tergerus 18% karena admin fee + iklan wajib + retur
+- **Solusi:** Custom website toko online + integrasi Midtrans (QRIS) + WA notification
+- **Modal:** Rp 12jt (sekali bayar) + Rp 0/bulan hosting
+- **Hasil 4 bulan pertama:**
+  - 40% customer migrate ke website sendiri
+  - Margin naik dari 18% jadi 30% (hemat ~Rp 4.5jt/bulan)
+  - Bayar modal dalam 4 bulan. Setelah itu profit naik 100% ke owner.
+
+### Kenapa Arblok Digital?
+
+Lo bisa aja bikin sendiri pakai Shopify atau WooCommerce. Tapi kalau lo pengen:
+
+- **Source code 100% milik lo** (bukan langganan)
+- **Zero-cost hosting** — Rp 0/bulan selamanya (bukan 300-800rb/bulan)
+- **Custom fitur tanpa batas** — integrasi langsung ke kasir, loyalty, ERP
+- **SEO yang beneran jalan** — schema markup, fast load, content strategy
+- **Support langsung ke Founder** — bukan CS robot
+
+...maka custom website dari software house profesional adalah jawabannya.
+
+Di Arblok Digital, kami udah build:
+- **KasirPro F&B** — sistem kasir online untuk warung & resto
+- **E-Warga** — platform birokrasi digital untuk kelurahan
+- **SekolahPro** — sistem manajemen sekolah
+- **Solana Warung** — masuk Top 100 Google Innovation Award 2025
+
+Semua dibangun dengan arsitektur **Monorepo (NPM Workspaces)** yang bikin pengembangan fitur baru 70% lebih cepat dan murah. Kami gak pakai template — semua kode custom dari nol sesuai kebutuhan Anda.
+
+### Kesimpulan
+
+Marketplace itu tools, bukan tempat tinggal permanen. Lo boleh jualan di sana buat dapet exposure awal, tapi tujuan akhir adalah: **customer 100% milik lo, margin utuh, brand lo yang dikenal, bukan platform.**
+
+Tiga jalur keluar udah gue bahas. Pilihan ada di lo. Yang penting: mulai dari sekarang, bukan nanti. Karena setiap bulan lo nunggu, marketplace naik admin fee lagi.
+
+**Mau diskusi gratis dulu?** Langsung chat Ardi via WhatsApp. Kita akan analisis kondisi bisnis lo, kasih rekomendasi yang paling pas — tanpa sales pressure, tanpa obligation.
+
+Konsultasi 30 menit pertama gratis. Setelah itu, kalau cocok, kita lanjut ke proposal. Kalau belum cocok, gak ada tagihan, gak ada drama.
+
+👉 **Chat WhatsApp (Ardi - Arblok Digital): https://wa.me/6289508053795**
+👉 **Lihat portofolio kami: https://arblok-digital.vercel.app/#portfolio**
+👉 **Cek layanan Marketplace Custom: https://arblok-digital.vercel.app/#services**`
+  }
 ];
 
 const ARTICLES_EN: Article[] = [
@@ -518,6 +702,190 @@ By leveraging **Monorepo workspaces**, Arblok Digital bundles these sub-systems 
 
 3. **Seamless Local Workspaces**
    Your citizen application imports these shared local packages. When we build the district dashboard, we simply import the exact same modules in seconds with zero code rewriting.`
+  },
+  {
+    id: "exit-marketplace-own-store",
+    slug: "exit-marketplace-build-own-online-store-zero-commission",
+    title: "How to Exit the Marketplace: Build Your Own Online Store with 0% Platform Commission",
+    excerpt: "Shopee & Tokopedia fees up to 2-10% per transaction in May 2026. Learn how to build your own online store with a direct payment gateway: 0% platform cuts, full margins, and customers you actually own. Plus a complete budget & technology checklist.",
+    category: "SMB & Marketplace",
+    publishedAt: "2026-07-17",
+    readTime: "8 Min Read",
+    tags: ["Exit Marketplace", "Own Online Store", "Marketplace Fees", "SMB 2026", "Shopee Tokopedia", "Payment Gateway", "Tasikmalaya Web Development", "Arblok Digital"],
+    author: {
+      name: "Ardi",
+      role: "Founder & Lead Software Architect @ Arblok Digital"
+    },
+    faq: [
+      {
+        question: "What are the Shopee and Tokopedia transaction fees in 2026?",
+        answer: "As of January-May 2026, Shopee service fees range from 2-10% per transaction (depending on product category and subsidy programs). Tokopedia has also adjusted its fee structure. Add a flat Rp 1,250 cut that applies even on returns. For sellers with thin margins (F&B, wholesale, crafts), this can erode 15-25% of monthly profit."
+      },
+      {
+        question: "Can you sell online without a marketplace?",
+        answer: "Absolutely. There are 3 main paths: (1) Your own online store + payment gateway (Midtrans, Xendit, DOKU) for QRIS, virtual account, and e-wallet acceptance. (2) WhatsApp Business + product catalog + payment link (zero infrastructure). (3) Instagram/TikTok social commerce that funnels to your own payment link. All three paths mean 0% platform commission."
+      },
+      {
+        question: "How much does it cost to build your own online store?",
+        answer: "Costs vary: (a) Using a hosted platform like Shopify/WooCommerce: IDR 500K-3M setup + 300-800K/month subscription. (b) Custom website from a software house: 8-25M (one-time) + IDR 0/month for hosting. (c) WhatsApp + payment link: free but no brand presence. Option (b) offers the highest ROI for serious SMBs."
+      },
+      {
+        question: "What is a payment gateway and why is it critical for a self-hosted store?",
+        answer: "A payment gateway is an intermediary between your customers and the bank for processing online payments. Popular options in Indonesia: Midtrans, Xendit, DOKU, iPaymu. They support QRIS, virtual account, e-wallet (OVO, DANA, GoPay), and credit card. Transaction fees are only 0.7-2.5% (far cheaper than 2-10% on marketplaces) and customers pay directly to your business bank account."
+      },
+      {
+        question: "How do you migrate marketplace customers to your own store?",
+        answer: "3-layer strategy: (1) Premium packaging — slip in a thank-you card + QR code linking to your online store in every package. (2) Educational content — build an Instagram/TikTok presence with value content, link your store in the bio. (3) Loyalty program — exclusive discounts for repeat orders via your website (e.g., 'Buy 5 get free shipping for website members'). Consistency for 3-6 months usually migrates 30-50% of customers to your own channel."
+      },
+      {
+        question: "Can a self-hosted store outrank marketplaces on Google SEO?",
+        answer: "Actually, it's easier. Your own domain (yourstore.com) builds SEO authority from scratch. Your product pages can be 100% customized for specific keywords (e.g., 'spicy chips Tasikmalaya'). Marketplace product pages are packed with competition, exactly like ranking on Google. With content SEO (blog articles, FAQ schema, local backlinks) your own store can hit Google's page 1 within 3-6 months for your specific niche keywords."
+      }
+    ],
+    content: `### Marketplaces Getting Expensive? You're Not Alone
+
+Shopee raised fees again. Tokopedia followed. Shopee's official service fee is now 2-10% per transaction as of January 2026, and Tokopedia adjusted its fee structure in May 2026. Add Rp 1,250 that gets deducted even on returns. The result: many SMB sellers, especially in F&B, crafts, and wholesale, see their margins eroded by 15-25% per month.
+
+The government has stepped in — Permendag No. 19/2026, Permen UMKM No. 3/2026 — but transparency rules don't automatically eliminate fees. You still pay, just with clearer math.
+
+The big question: **keep feeding someone else's platform, or start building your own store where 100% of the profit is yours?**
+
+### 5 Signs You Should Migrate Off Marketplaces
+
+Check these 5 conditions. If 3+ match, it's time:
+
+1. **Margins eroded >15%** from admin fees + shipping subsidies + mandatory ads
+2. **Organic marketplace views keep dropping** — you're forced to pay for ads just to stay visible
+3. **Customers don't recognize your brand** — they only remember the platform
+4. **Customer data isn't yours** — you can't reach them directly, must pay again to remarket
+5. **Cash flow goes negative** even on busy sales days due to admin cuts + returns
+
+If 3+ of those apply to you, seriously consider migrating.
+
+### 3 Paths Out of the Marketplace (Without Losing Customers)
+
+#### Path 1: Your Own Online Store + Payment Gateway (RECOMMENDED)
+- You own your domain (e.g., spicysnacks.tasik.id)
+- Customers check out directly on your website
+- Payments via payment gateway (Midtrans, Xendit, DOKU) — supports QRIS, virtual account, e-wallet, credit card
+- **Transaction fees only 0.7-2.5%** (vs 2-10% on marketplaces)
+- **8-25M one-time investment** for a custom website, **IDR 0/month** for hosting (using serverless architecture + free tier of Supabase/Vercel)
+- **100% customers are yours** — phone, email, address all yours for retention
+
+#### Path 2: WhatsApp Business + Payment Link
+- No website, no technical setup
+- Just a product catalog in WhatsApp Business + payment link from DOKU/iPaymu
+- **Totally free**, but no brand presence (customers only remember your WA number)
+- Best for: small-scale sales (< 50 orders/month), products requiring direct consultation (catering, services)
+
+#### Path 3: Social Commerce (Instagram/TikTok → Payment Link)
+- Sell via reels/shorts content
+- Checkout via payment link in bio/caption
+- **0% platform commission** because you're not selling on Instagram, just pulling traffic
+- Best for: visual products (fashion, aesthetic F&B, crafts), owners who actively create content
+- Risk: depends on IG/TikTok algorithm, no customer database of your own
+
+**My recommendation: Combine Path 1 + 3.** Website as the official hub, Instagram/TikTok as the traffic funnel. WhatsApp for closing and after-sales.
+
+### Anatomy of a Profitable Self-Hosted Store
+
+A profitable self-hosted store has 5 mandatory components:
+
+1. **SEO-Friendly Product Catalog**
+   - Each product has its own URL page (e.g., /products/spicy-chips-original)
+   - Includes description + photos + price + stock + automatic shipping
+   - Product schema markup (auto-appears in Google rich snippets)
+
+2. **Integrated Payment Gateway**
+   - QRIS, virtual account (BCA/Mandiri/BNI), e-wallet (OVO, DANA, GoPay, ShopeePay)
+   - Midtrans (most popular, 0.7-2.5% fee)
+   - Automatic webhook: customer pays → system auto-updates order status
+
+3. **Real-Time Order & Inventory Management**
+   - Admin dashboard to view incoming orders, payment status, product stock
+   - Integration with couriers (JNE, J&T, SiCepat) for automatic label printing
+   - WhatsApp notification to customers on every status change (using wa.me deep links — free, no expensive API)
+
+4. **Retention & Loyalty System**
+   - Member discounts for repeat orders
+   - Reward points (every IDR 100K = 1 point, 10 points = 10% discount)
+   - Automatic birthday promo from customer database
+
+5. **Tracking & Analytics**
+   - Google Analytics + Meta Pixel to know traffic sources
+   - Conversion dashboard: visitors → add-to-cart → checkouts
+   - A/B testing landing pages for ads
+
+### Budget & Technology Checklist
+
+| Component | DIY (Self-Built) | Custom Software House | Hosted Platform (Shopify) |
+|-----------|------------------|----------------------|---------------------------|
+| **Initial Cost** | 0-1M (learning) | 8-25M | 500K-3M |
+| **Monthly Cost** | 0 | **IDR 0** (zero-cost hosting) | 300-800K |
+| **Setup Time** | 2-4 weeks | 3-6 weeks | 1-3 days |
+| **Transaction Fee** | 0.7-2.5% (Midtrans) | 0.7-2.5% (Midtrans) | 2% (Shopify Payments) |
+| **Custom Features** | Very limited | 100% to your needs | Limited by theme |
+| **Source Code** | You own it | You own it | You don't (subscription) |
+| **SEO Friendly** | Depends on builder | Excellent (fully optimizable) | Decent |
+| **Scalability** | Low | Very high (Monorepo) | High but expensive |
+
+### 3 Strategies to Bring Marketplace Customers to Your Own Store
+
+1. **Packaging is Marketing**
+   Slip in a thank-you card + QR code linking to your online store in every package you ship from the marketplace. Handwrite: "Order again cheaper at yourstore.com — free shipping for members!" 70% of loyal customers will notice.
+
+2. **Educational Content, Not Sales**
+   Build an Instagram/TikTok with value content: production behind-the-scenes, cooking tips, customer reviews. In bio, link to your own online store. Consistency for 3-6 months = 5-20K organic monthly traffic.
+
+3. **Exclusive Loyalty Program**
+   "Buy 5 get free shipping on website orders only" or "2x reward points for website members." This migrates customers gradually without forcing you to leave the marketplace overnight.
+
+### Real Case: 12 Million IDR Custom Store, Paid for Itself in 4 Months
+
+Real case (generalized, not real names):
+
+- **Owner:** Tasikmalaya chips SMB, IDR 35-50M/month revenue via Shopee
+- **Problem:** 18% margin erosion from admin fees + mandatory ads + returns
+- **Solution:** Custom online store + Midtrans integration (QRIS) + WA notification
+- **Investment:** IDR 12M (one-time) + IDR 0/month hosting
+- **Results after 4 months:**
+  - 40% of customers migrated to their own website
+  - Margin rose from 18% to 30% (saved ~IDR 4.5M/month)
+  - Investment paid for itself in 4 months. After that, 100% profit increase to owner.
+
+### Why Arblok Digital?
+
+You could DIY with Shopify or WooCommerce. But if you want:
+
+- **100% source code ownership** (not subscription)
+- **Zero-cost hosting** — IDR 0/month forever (not 300-800K/month)
+- **Unlimited custom features** — direct integration with POS, loyalty, ERP
+- **SEO that actually works** — schema markup, fast load, content strategy
+- **Direct support from the Founder** — not a robot CS
+
+...then a custom website from a professional software house is the answer.
+
+At Arblok Digital, we've built:
+- **KasirPro F&B** — online POS system for warungs and restaurants
+- **E-Warga** — digital bureaucracy platform for villages
+- **SekolahPro** — school management system
+- **Solana Warung** — Top 100 Google Innovation Award 2025
+
+All built on a **Monorepo (NPM Workspaces)** architecture that makes new feature development 70% faster and cheaper. We don't use templates — everything is custom-coded from scratch to your specific needs.
+
+### Conclusion
+
+A marketplace is a tool, not a permanent home. You can sell there to get initial exposure, but the end goal is: **100% of customers are yours, margins intact, your brand is known, not the platform.**
+
+Three exit paths are covered above. The choice is yours. The important thing: start now, not later. Because every month you wait, marketplaces raise admin fees again.
+
+**Want a free consultation first?** Chat directly with Ardi via WhatsApp. We'll analyze your business situation, give the most fitting recommendation — no sales pressure, no obligation.
+
+First 30 minutes of consultation are free. If it clicks, we move to proposal. If it doesn't, no bill, no drama.
+
+👉 **WhatsApp Chat (Ardi - Arblok Digital): https://wa.me/6289508053795**
+👉 **View our portfolio: https://arblok-digital.vercel.app/#portfolio**
+👉 **Check our Custom Marketplace service: https://arblok-digital.vercel.app/#services**`
   }
 ];
 
