@@ -27,6 +27,7 @@ export default function Portfolio() {
         "Kompresi berkas KTP & KK otomatis di frontend (<150KB)",
         "Notifikasi WhatsApp click-to-chat gratis tanpa biaya API"
       ],
+      link: "https://ewarga-tau.vercel.app/",
       image: "/portfolio/e-warga.jpg"
     },
     {
@@ -146,6 +147,7 @@ export default function Portfolio() {
         "Automatic front-end file compression for KTP/KK (<150KB)",
         "Free, automated WhatsApp click-to-chat triggers (no API fees)"
       ],
+      link: "https://ewarga-tau.vercel.app/",
       image: "/portfolio/e-warga.jpg"
     },
     {
