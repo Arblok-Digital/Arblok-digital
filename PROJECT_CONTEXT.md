@@ -30,7 +30,7 @@
 - **Local folder = mirror** dari cloud, edit di sini harus di-sync balik ke cloud (manual copy-paste atau git push dari local)
 
 ### Keterbatasan:
-- AI Studio sandbox iframe TIDAK support path-based routing yang refresh (pakai hash `#` di App.tsx)
+- AI Studio sandbox iframe TIDAK support path-based routing yang refresh (hash `#` dulu dipakai, sekarang sudah pake React Router path routing)
 - AI Studio nge-keep `vercel.json` 100% (tidak di-overwrite)
 - `/public/` file otomatis ke-deploy via Vite build
 
@@ -66,11 +66,17 @@ Arblok-Digital--main/
 │       ├── onyx.jpg
 │       ├── sekolah-pro.jpg
 │       └── solana-warung.jpg
+│   ├── arblok_logo.webp           # 28KB (was 648KB JPG)
+│   ├── icon-192.png               # PWA icon
+│   ├── icon-512.png               # PWA icon
+│   ├── manifest.json              # PWA manifest
+│   ├── sw.js                      # Service worker (cache-first)
 ├── src/
 │   ├── components/
 │   │   ├── About.tsx           # Visi & Misi section
 │   │   ├── AiConsultant.tsx    # Chat interface (calls /api/chat)
 │   │   ├── Articles.tsx        # Blog + dynamic JSON-LD injection
+│   │   ├── ErrorBoundary.tsx   # React error boundary + WhatsApp CTA
 │   │   ├── Footer.tsx
 │   │   ├── Hero.tsx
 │   │   ├── Navbar.tsx
@@ -78,7 +84,7 @@ Arblok-Digital--main/
 │   │   └── Services.tsx
 │   ├── data/
 │   │   └── articles.ts         # 400 baris, bilingual articles
-│   ├── App.tsx                 # Tab routing (hash-based)
+│   ├── App.tsx                 # React Router path routing (/, /articles, /consultant)
 │   ├── LanguageContext.tsx     # Translation provider
 │   ├── main.tsx                # Entry point
 │   ├── types.ts                # TypeScript interfaces
@@ -97,7 +103,7 @@ Arblok-Digital--main/
 
 - **No AI terminology di copy** — "kecerdasan buatan" atau singkatan teknis, BUKAN "AI" di marketing copy (sesuai instruksi founder)
 - **Bilingual pattern**: hardcode inline `language === "id" ? ... : ...`, BUKAN pakai `t("key")` di components
-- **Hash routing**: `#articles`, `#ai-consultant` (jangan refactor ke React Router, AI Studio iframe limit)
+- **Routing**: React Router path routing (`/`, `/articles`, `/consultant`). Old hash `#articles` → `/articles`, `#ai-consultant` → `/consultant` via OldHashRedirect
 - **Pricing flexibility**: Sales copy tidak pernah tolak budget — selalu tawarkan starter/MVP
 - **WhatsApp CTA**: `https://wa.me/6289508053795` (Ardi, founder)
 
@@ -112,8 +118,8 @@ Arblok-Digital--main/
 
 | Component | Fungsi | Catatan |
 |-----------|--------|---------|
-| `Navbar.tsx` | Fixed nav + language switcher + mobile menu | Hash navigation |
-| `Hero.tsx` | Landing hero + fake code mockup + CTA | Bilingual hardcoded |
+| `Navbar.tsx` | Fixed nav + language switcher + mobile menu | React Router navigation (`useNavigate()`) |
+| `Hero.tsx` | Landing hero + fake code mockup + CTA | React Router for internal links |
 | `About.tsx` | Visi/Misi + monorepo narrative | Bilingual hardcoded |
 | `Services.tsx` | 4 service cards + CTA banners | Bilingual hardcoded |
 | `Portfolio.tsx` | 7 projects grid + filter | 443 baris, data BAKED IN (refactor nanti) |
@@ -168,15 +174,23 @@ Arblok-Digital--main/
 - [x] HSTS enabled (Vercel default)
 - [x] Dynamic BlogPosting + FAQPage schema via useEffect (Articles.tsx)
 
-### Yang BELUM (perlu dibuat):
-- [ ] `public/robots.txt` (file hilang di repo ini)
-- [ ] `public/sitemap.xml` (file hilang)
-- [ ] `public/llms.txt` (file hilang — critical untuk AI crawler discovery)
-- [ ] `public/og-image.png` (branded 1200x630, saat ini cuma logo)
-- [ ] `vercel.json` security headers (belum lengkap)
-- [ ] hreflang untuk ID/EN bilingual
-- [ ] Reviews/AggregateRating schema
-- [ ] Static fallback meta tags di `index.html` (saat ini template polos, runtime inject only)
+### Yang UDAH done (AUDIT 18 JUL 2026):
+- [x] `public/robots.txt` — ✅
+- [x] `public/sitemap.xml` — ✅ (updated hash → real paths)
+- [x] `public/llms.txt` — ✅
+- [x] `public/og-image.png` — ✅
+- [x] `public/arblok_logo.webp` — ✅ (648KB → 28KB, -96%)
+- [x] `vercel.json` security headers + rewrite fix — ✅
+- [x] hreflang ID/EN — ✅
+- [x] PWA (`manifest.json`, `sw.js`, icons) — ✅
+- [x] ErrorBoundary — ✅
+- [x] React Router migration (hash → path routing) — ✅
+- [x] Static fallback meta tags di `index.html` — ✅
+
+### Yang MANUAL:
+- [ ] GA4 ID (`G-XXXXXXXX`) — isi sendiri di `index.html`
+- [ ] Search Console verification code — isi sendiri di `index.html`
+- [ ] GMB listing — klaim Google Business Profile
 
 ## 10. PRODUK / PORTFOLIO (7 ITEMS)
 
@@ -198,10 +212,11 @@ Arblok-Digital--main/
 1. **server.ts + api/chat.ts duplikasi 95%** — refactor ke `src/lib/ai-providers.ts`
 2. **LanguageContext translation keys dead code** — components hardcode bilingual
 3. **Portfolio.tsx 443 baris** — data baked in, susah maintain
-4. **No error boundary di App.tsx** — risk white screen on error
-5. **Logo 648KB** — perlu compress ke WebP
-6. **No static fallback meta di index.html** — risky untuk non-JS crawler
+4. ~~**No error boundary di App.tsx**~~ ✅ SUDAH — ErrorBoundary.tsx wrapping App
+5. ~~**Logo 648KB**~~ ✅ SUDAH — compressed to 28KB WebP
+6. ~~**No static fallback meta**~~ ✅ SUDAH — meta tags hardcoded di index.html
 7. **AI Studio rate limit** — workflow blocker kalau edit panjang
+8. **AGENTS.md rule "JANGAN migrate React Router" outdated** — sudah dimigrasi, need update
 
 ## 12. YANG PERLU DITANYAIN KE USER (BUKAN DI-ASUMSI)
 
@@ -260,4 +275,4 @@ node_modules/.bin/vite --host
 
 **Last updated**: 17 Juli 2026
 **Status**: Production live, ongoing polish
-**Next priority**: robots.txt + sitemap.xml + llms.txt + vercel.json headers
+**Next priority**: GA4 setup, Search Console verification, GMB listing

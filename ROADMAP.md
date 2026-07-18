@@ -5,7 +5,7 @@
 **Owner**: Ardi — +62 895-0805-3795 / ardiblokchine@gmail.com
 **Live URL**: https://arblok-digital.vercel.app/
 **Repository**: GitHub (private/public depends on user setup)
-**Base path**: `D:\DATA YAYAH\Arblok-Digital--main\Arblok-Digital--main`
+**Base path**: `D:\DATA YAYAH\Arblok-Digital-\Arblok-Digital--main`
 
 ---
 

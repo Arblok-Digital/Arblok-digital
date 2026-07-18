@@ -22,7 +22,7 @@ Detail lengkap ada di `PROJECT_CONTEXT.md` (baca juga).
 ### 2. IKUTI KONVENSI YANG ADA
 - **No "AI" di marketing copy** — pakai "kecerdasan buatan", "sistem otomatis", "teknologi pintar", atau technical names (Gemini, NVIDIA NIM, etc)
 - **Bilingual pattern**: hardcode inline `language === "id" ? ... : ...`, BUKAN pakai `t("key")` di components
-- **Hash routing only** (`#articles`, `#ai-consultant`) — JANGAN refactor ke React Router, AI Studio iframe limit
+- **DEPRECATED: Hash routing** — sudah dimigrasi ke React Router path routing (`/articles`, `/consultant`). Old hash redirect masih support backward compat (`#articles` → `/articles`)
 - **WhatsApp CTA format**: `https://wa.me/6289508053795` dengan `?text=` pre-filled kalau dari article/portfolio
 
 ### 3. FIX ONE MODULE AT A TIME
@@ -36,7 +36,7 @@ Detail lengkap ada di `PROJECT_CONTEXT.md` (baca juga).
 
 ### Build & deploy:
 - Project ini di-build di **Google AI Studio** (cloud), BUKAN local
-- Tapi source mirror di local (folder `D:\DATA YAYAH\Arblok-Digital--main\Arblok-Digital--main`)
+- Tapi source mirror di local (folder `D:\DATA YAYAH\Arblok-Digital-\Arblok-Digital--main`)
 - Push dari AI Studio **ATAU** git push dari local → GitHub → Vercel auto-deploy
 - `vercel.json` TIDAK di-overwrite oleh AI Studio (aman)
 
@@ -60,7 +60,7 @@ Detail lengkap ada di `PROJECT_CONTEXT.md` (baca juga).
 | Refactor Portfolio.tsx tanpa diminta | Biarin 443 baris, data BAKED IN masih OK |
 | Refactor LanguageContext (biarin dead code) | Biarin, components hardcode bilingual |
 | Hapus server.ts (DRY) | Tinggalin, Express masih dipake untuk local dev |
-| Migrate ke React Router | Hash routing aman untuk AI Studio iframe |
+| Migrate balik ke hash routing | React Router path routing sudah live & tested, backward compat via OldHashRedirect |
 | Pakai `t("key")` di component baru | Hardcode inline `language === "id" ? ... : ...` |
 | Tolak client karena budget | Selalu tawarkan starter/MVP (sesuai system prompt) |
 | Edit `metadata.json` atau `.aistudio/` | Itu internal AI Studio, jangan disentuh |
