@@ -117,23 +117,6 @@ export default function Portfolio() {
       image: "/portfolio/kasirpro.jpg"
     },
     {
-      id: "sekolah-pro",
-      title: "SekolahPro",
-      category: "Web Application",
-      description: "Sistem Informasi Akademik & Manajemen Sekolah terpadu untuk efisiensi administrasi, guru, siswa, dan orang tua. Transformasi ekosistem pendidikan ke era digital.",
-      badge: "SaaS EduTech",
-      status: "Production-ready",
-      techStack: ["React", "Node.js", "PostgreSQL", "Role-based Auth", "Student Ledger"],
-      features: [
-        "Portal interaktif guru, siswa, dan wali murid dalam satu sistem",
-        "Manajemen keuangan sekolah, SPP, dan tagihan terintegrasi",
-        "Input nilai rapor kurikulum merdeka & rekap absen otomatis",
-        "Sistem pengumuman massal berbasis WhatsApp/SMS Gateway"
-      ],
-      link: "https://sekolah-pro.vercel.app/",
-      image: "/portfolio/sekolah-pro.jpg"
-    },
-    {
       id: "onyx",
       title: "Onyx Terminal",
       category: "AI & Automation",
@@ -165,7 +148,26 @@ export default function Portfolio() {
         "Log aktivitas terenkripsi untuk keamanan informasi internal"
       ],
       image: "/portfolio/coordination.jpg"
-    }
+    },
+    {
+      id: "sanajan-qr-order",
+      title: "Sanajan QR Order & Loyalty",
+      category: "Web Application",
+      description: "Platform pesan mandiri QR Table-Order & loyalty untuk warkop dan café. Pelanggan scan QR meja, pesan & kustomisasi lewat HP, bayar QRIS instan. Barista terima order di dashboard real-time. Zero-cost server — semua jalan di Supabase free tier.",
+      badge: "F&B Digitalisasi",
+      status: "Production-ready",
+      techStack: ["React 19", "Vite 6", "Framer Motion", "Supabase", "QRIS Payment", "WhatsApp wa.me"],
+      features: [
+        "Scan QR meja → langsung buka menu digital tanpa install app",
+        "Kustomisasi kopi interaktif (size, milk, extra shot, request)",
+        "Pembayaran QRIS instan — otomatis kurir pesanan ke dapur",
+        "Loyalty stamp digital — gratis 7 stamp untuk setiap pelanggan baru",
+        "Admin dashboard: manajemen menu real-time + antrean order",
+        "Notifikasi WhatsApp click-to-chat tanpa biaya API gateway"
+      ],
+      link: "/portfolio/sanajan-qr-order.html",
+      image: "/portfolio/sanajan-qr-order.png"
+    },
   ] : [
     {
       id: "sekolah-rapi",
@@ -271,23 +273,6 @@ export default function Portfolio() {
       image: "/portfolio/kasirpro.jpg"
     },
     {
-      id: "sekolah-pro",
-      title: "SekolahPro",
-      category: "Web Application",
-      description: "Integrated school information and academic portal streamlining workflows for administration, teachers, students, and parents.",
-      badge: "EduTech SaaS",
-      status: "Production-ready",
-      techStack: ["React", "Node.js", "PostgreSQL", "Role-based Auth", "Student Ledger"],
-      features: [
-        "Interactive unified portals for teachers, students, and parents",
-        "Integrated school tuition and student balance ledgers",
-        "Automated report card compiling & digital class attendance trackers",
-        "Bulk announcement channel with pre-built WhatsApp/SMS gate integrations"
-      ],
-      link: "https://sekolah-pro.vercel.app/",
-      image: "/portfolio/sekolah-pro.jpg"
-    },
-    {
       id: "onyx",
       title: "Onyx Terminal",
       category: "AI & Automation",
@@ -337,6 +322,25 @@ export default function Portfolio() {
         "Encrypted security logs protecting internal campaign briefs"
       ],
       image: "/portfolio/coordination.jpg"
+    },
+    {
+      id: "sanajan-qr-order",
+      title: "Sanajan QR Order & Loyalty",
+      category: "Web Application",
+      description: "Self-service QR Table-Order & loyalty platform for modern cafes. Customers scan table QR, order & customize via their phone, pay QRIS instantly. Barista receives orders on a real-time dashboard. Zero-cost server — fully powered by Supabase free tier.",
+      badge: "F&B Digitalization",
+      status: "Production-ready",
+      techStack: ["React 19", "Vite 6", "Framer Motion", "Supabase", "QRIS Payment", "WhatsApp wa.me"],
+      features: [
+        "Scan table QR → digital menu instantly, no app install required",
+        "Interactive coffee customization (size, milk, extra shot, special requests)",
+        "Instant QRIS payment — order auto-routes to kitchen dashboard",
+        "Digital loyalty stamps — 7 free stamps for every new customer",
+        "Admin dashboard: real-time menu management + order queue",
+        "WhatsApp click-to-chat notifications with zero API gateway costs"
+      ],
+      link: "/portfolio/sanajan-qr-order.html",
+      image: "/portfolio/sanajan-qr-order.png"
     },
     {
       id: "sekolah-rapi",

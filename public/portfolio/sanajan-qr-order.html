@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanajan QR Ordering & Loyalty Platform - Arblok Digital Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts: Libre Caslon Text & Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "cafe-dark": "#1c1917", // Stone 900
+            "cafe-medium": "#44403c", // Stone 700
+            "cafe-light": "#fcfaf7", // Luxe Cream
+            "cafe-accent": "#b45309", // Amber 700
+            "cafe-accent-hover": "#92400e", // Amber 800
+            "cafe-border": "#e7e2dc",
+          },
+          fontFamily: {
+            serif: ["Libre Caslon Text", "Georgia", "serif"],
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-shadow {
+      box-shadow: 0 20px 40px -15px rgba(28, 25, 23, 0.05);
+    }
+    .gradient-gold {
+      background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+    }
+  </style>
+</head>
+<body class="bg-cafe-light text-cafe-dark font-sans selection:bg-cafe-accent/20 overflow-x-hidden antialiased">
+
+  <!-- Header Nav -->
+  <header class="sticky top-0 w-full z-50 bg-cafe-light/80 backdrop-blur-md border-b border-cafe-border/50 h-20 flex justify-between items-center px-6 lg:px-16">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-cafe-dark flex items-center justify-center text-cafe-light font-bold text-lg shadow-md">
+        AD
+      </div>
+      <div>
+        <span class="text-xs uppercase tracking-[0.2em] font-extrabold text-cafe-accent block">Built by Portfolio</span>
+        <h1 class="font-serif text-lg font-bold text-cafe-dark -mt-1">Arblok Digital</h1>
+      </div>
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-bold text-cafe-medium">
+      <a href="#value-prop" class="hover:text-cafe-accent transition-colors">Value Prop</a>
+      <a href="#architecture" class="hover:text-cafe-accent transition-colors">Arsitektur</a>
+      <a href="#flow" class="hover:text-cafe-accent transition-colors">Alur Sistem</a>
+      <a href="#monorepo" class="hover:text-cafe-accent transition-colors">Skalabilitas</a>
+    </nav>
+
+    <div>
+      <a href="https://wa.me/6281234567890?text=Halo%20Arblok%20Digital,%20saya%20tertarik%20konsultasi%20sistem%20QR%20Cafe!" 
+         target="_blank" 
+         class="px-5 py-2.5 bg-cafe-dark hover:bg-cafe-accent text-cafe-light text-xs font-bold uppercase tracking-wider rounded-xl transition-all inline-flex items-center gap-2">
+        <span>Hubungi Kami</span>
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center justify-center px-6 py-16 bg-gradient-to-b from-cafe-border/20 via-transparent to-transparent">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Text Area -->
+      <div class="lg:col-span-7 space-y-6 text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-cafe-accent/10 rounded-full text-cafe-accent text-xs font-bold uppercase tracking-widest">
+          <span class="flex h-2 w-2 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cafe-accent opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-cafe-accent"></span>
+          </span>
+          Production-Ready Case Study
+        </div>
+        
+        <h1 class="font-serif text-4xl lg:text-5xl lg:leading-[1.15] text-cafe-dark">
+          Platform Pesan Mandiri <br class="hidden sm:inline">
+          <span class="font-bold underline decoration-cafe-accent decoration-wavy decoration-2 underline-offset-8">QR Table-Order</span> & Loyalty <br>
+          Untuk Pemilik Café Pintar.
+        </h1>
+        
+        <p class="text-cafe-medium font-sans text-sm md:text-base leading-relaxed max-w-xl">
+          Sebuah studi kasus digitalisasi warkop modern oleh <strong>Arblok Digital</strong>. Membantu pemilik café memotong antrean kasir, meningkatkan penjualan tambahan hingga 25% lewat kustomisasi interaktif, dan mempertahankan pelanggan setia lewat kartu stamp digital interaktif. 
+        </p>
+
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="#flow" class="px-6 py-3.5 bg-cafe-accent hover:bg-cafe-accent-hover text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all shadow-lg shadow-cafe-accent/20 flex items-center gap-2">
+            Lihat Demo Flow
+            <span class="material-symbols-outlined text-sm">route</span>
+          </a>
+          <a href="#architecture" class="px-6 py-3.5 border border-cafe-dark/20 hover:border-cafe-dark text-cafe-dark text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center gap-2">
+            Analisis Arsitektur
+            <span class="material-symbols-outlined text-sm">code</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-cafe-border">
+          <div>
+            <p class="font-serif text-2xl lg:text-3xl font-bold text-cafe-accent">0%</p>
+            <p class="text-[10px] uppercase font-extrabold tracking-wider text-stone-400">Biaya Server Bulanan</p>
+          </div>
+          <div>
+            <p class="font-serif text-2xl lg:text-3xl font-bold text-cafe-accent">&lt; 1 Detik</p>
+            <p class="text-[10px] uppercase font-extrabold tracking-wider text-stone-400">Respon Order Instan</p>
+          </div>
+          <div>
+            <p class="font-serif text-2xl lg:text-3xl font-bold text-cafe-accent">100%</p>
+            <p class="text-[10px] uppercase font-extrabold tracking-wider text-stone-400">Serverless Supabase</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Preview Area -->
+      <div class="lg:col-span-5 relative flex justify-center">
+        <!-- Background decorative shape -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-cafe-accent/10 to-transparent rounded-3xl blur-3xl -z-10 transform scale-90"></div>
+        
+        <!-- Showcase Card -->
+        <div class="bg-white border border-cafe-border p-6 rounded-3xl shadow-xl w-full max-w-sm space-y-6 relative overflow-hidden">
+          <div class="flex justify-between items-center pb-4 border-b border-cafe-border">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-cafe-accent">local_cafe</span>
+              <span class="font-serif font-bold text-sm">Sanajan Warkop</span>
+            </div>
+            <span class="text-[9px] font-mono bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-bold">MEJA 03</span>
+          </div>
+          
+          <!-- Sample Order UI -->
+          <div class="space-y-3">
+            <p class="text-[10px] uppercase tracking-wider font-bold text-stone-400">Keranjang Aktif</p>
+            <div class="bg-cafe-light p-3 rounded-xl border border-cafe-border/50 flex justify-between items-center">
+              <div>
+                <p class="font-serif text-xs font-bold text-cafe-dark">Caramel Macchiato</p>
+                <p class="text-[9px] text-stone-400">Oat Milk • Extra Espresso Shot</p>
+              </div>
+              <p class="font-sans text-xs font-bold text-cafe-accent">Rp 37.000</p>
+            </div>
+            
+            <div class="flex justify-between items-center text-xs pt-2">
+              <span class="text-stone-500">Biaya Layanan</span>
+              <span class="font-mono text-[11px]">Rp 2.000</span>
+            </div>
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-stone-500">Pajak PB1 (10%)</span>
+              <span class="font-mono text-[11px]">Rp 3.700</span>
+            </div>
+            <div class="flex justify-between items-center text-sm pt-2 border-t border-dashed border-cafe-border font-bold">
+              <span>Total Tagihan</span>
+              <span class="text-cafe-accent">Rp 42.700</span>
+            </div>
+          </div>
+
+          <!-- Loyalty Card Preview -->
+          <div class="bg-cafe-dark text-cafe-light p-4 rounded-2xl space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-[9px] uppercase tracking-widest text-cafe-border/60 font-bold">Loyalty Stamps</span>
+              <span class="material-symbols-outlined text-amber-400 text-xs">stars</span>
+            </div>
+            <div class="flex gap-1.5 justify-between">
+              <span class="w-5 h-5 rounded-full bg-cafe-accent text-white flex items-center justify-center text-[10px] font-bold">★</span>
+              <span class="w-5 h-5 rounded-full bg-cafe-accent text-white flex items-center justify-center text-[10px] font-bold">★</span>
+              <span class="w-5 h-5 rounded-full bg-cafe-accent text-white flex items-center justify-center text-[10px] font-bold">★</span>
+              <span class="w-5 h-5 rounded-full bg-cafe-accent text-white flex items-center justify-center text-[10px] font-bold">★</span>
+              <span class="w-5 h-5 rounded-full bg-cafe-accent text-white flex items-center justify-center text-[10px] font-bold">★</span>
+              <span class="w-5 h-5 rounded-full bg-cafe-accent text-white flex items-center justify-center text-[10px] font-bold">★</span>
+              <span class="w-5 h-5 rounded-full bg-cafe-accent text-white flex items-center justify-center text-[10px] font-bold">★</span>
+              <span class="w-5 h-5 rounded-full bg-stone-700 text-stone-500 flex items-center justify-center text-[10px] font-bold">8</span>
+              <span class="w-5 h-5 rounded-full bg-stone-700 text-stone-500 flex items-center justify-center text-[10px] font-bold">9</span>
+              <span class="w-5 h-5 rounded-full bg-stone-700 text-stone-500 flex items-center justify-center text-[10px] font-bold">10</span>
+            </div>
+            <p class="text-[8px] text-stone-400 text-center mt-1">Kumpulkan 3 star lagi untuk mendapatkan 1 kopi gratis!</p>
+          </div>
+
+          <div class="text-center">
+            <span class="text-[10px] text-stone-400 font-mono">Dibuat menggunakan standard tinggi oleh Arblok Digital</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Value Propositions -->
+  <section id="value-prop" class="px-6 py-20 lg:px-16 border-t border-cafe-border bg-white">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center max-w-xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-[0.25em] text-cafe-accent font-bold">Solusi Bisnis Praktis</span>
+        <h2 class="font-serif text-3xl font-bold">Mengapa Owner Café Menyukai Sistem Ini?</h2>
+        <p class="text-sm text-cafe-medium">Sistem pesanan tradisional menghabiskan waktu, rawan salah catat, dan butuh kasir stand-by. Kami menyelesaikan masalah tersebut secara elegan.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Prop 1 -->
+        <div class="border border-cafe-border p-8 rounded-2xl bg-cafe-light/50 space-y-4 hover:border-cafe-accent/30 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-cafe-dark flex items-center justify-center text-white">
+            <span class="material-symbols-outlined text-amber-400">qr_code_2</span>
+          </div>
+          <h3 class="font-serif text-lg font-bold">QR Table Ordering</h3>
+          <p class="text-xs text-cafe-medium leading-relaxed">
+            Pelanggan cukup scan QR di meja, langsung terbuka menu interaktif lengkap dengan kustomisasi (ukuran kopi, pilihan susu, extra shot). Tidak perlu antre, tidak perlu install aplikasi tambahan.
+          </p>
+        </div>
+
+        <!-- Prop 2 -->
+        <div class="border border-cafe-border p-8 rounded-2xl bg-cafe-light/50 space-y-4 hover:border-cafe-accent/30 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-cafe-dark flex items-center justify-center text-white">
+            <span class="material-symbols-outlined text-green-400">chat</span>
+          </div>
+          <h3 class="font-serif text-lg font-bold">Instant Wa.me Integration</h3>
+          <p class="text-xs text-cafe-medium leading-relaxed">
+            Menghindari biaya bulanan gateway WhatsApp API yang mahal. Kami menggunakan metode deep-link WhatsApp Click-to-Chat otomatis untuk komunikasi langsung dari meja ke nomor barista secara instan dan 100% GRATIS.
+          </p>
+        </div>
+
+        <!-- Prop 3 -->
+        <div class="border border-cafe-border p-8 rounded-2xl bg-cafe-light/50 space-y-4 hover:border-cafe-accent/30 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-cafe-dark flex items-center justify-center text-white">
+            <span class="material-symbols-outlined text-red-400">stars</span>
+          </div>
+          <h3 class="font-serif text-lg font-bold">Interactive Stamp Loyalty</h3>
+          <p class="text-xs text-cafe-medium leading-relaxed">
+            Meningkatkan retensi pelanggan dengan kartu stamp loyalitas digital. Setiap kali melakukan order, stamp bertambah otomatis secara real-time. Psikologi "gamifikasi" ini memicu pelanggan untuk kembali membeli kopi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Technical Architecture -->
+  <section id="architecture" class="px-6 py-20 lg:px-16 border-t border-cafe-border bg-cafe-light">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Visual Architecture Diagram Simulator -->
+      <div class="lg:col-span-5 space-y-4">
+        <div class="bg-cafe-dark text-cafe-light rounded-2xl p-6 shadow-xl font-mono text-[11px] space-y-4 border border-white/5">
+          <div class="pb-3 border-b border-white/10 flex justify-between items-center">
+            <span class="text-amber-400">ARCHITECTURE_SPEC.TS</span>
+            <span class="text-[9px] bg-white/10 px-2 py-0.5 rounded text-white">ZERO-COST</span>
+          </div>
+          
+          <div class="space-y-2">
+            <p class="text-stone-400">// Client Web App (PWA Frontend)</p>
+            <p class="text-white"><span class="text-pink-400">import</span> { supabase } <span class="text-pink-400">from</span> <span class="text-green-300">'@e-warga/supabase'</span>;</p>
+            <p class="text-white"><span class="text-pink-400">import</span> { workflow } <span class="text-pink-400">from</span> <span class="text-green-300">'@e-warga/logic'</span>;</p>
+          </div>
+
+          <div class="space-y-1 p-3 bg-white/5 rounded-lg border border-white/5">
+            <p class="text-amber-400 font-bold">1. Zero-Backend Serverless</p>
+            <p class="text-stone-300">Frontend directly hits DB client SDK.</p>
+            <p class="text-stone-300">Directly secured via Row-Level Security (RLS).</p>
+          </div>
+
+          <div class="space-y-1 p-3 bg-white/5 rounded-lg border border-white/5">
+            <p class="text-amber-400 font-bold">2. Local Storage Hydration</p>
+            <p class="text-stone-300">Fast load, offline fallback, instantly reactive.</p>
+          </div>
+
+          <div class="space-y-1 p-3 bg-white/5 rounded-lg border border-white/5">
+            <p class="text-amber-400 font-bold">3. NPM Monorepo Workspace</p>
+            <p class="text-stone-300">Core logic and Supabase types are split from frontend workspace to support future enterprise apps easily.</p>
+          </div>
+
+          <div class="flex justify-between text-[10px] text-stone-500 pt-2 border-t border-white/5">
+            <span>Security: Active RLS</span>
+            <span class="text-green-400">● Secure</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Explanation -->
+      <div class="lg:col-span-7 space-y-6">
+        <span class="text-xs uppercase tracking-[0.25em] text-cafe-accent font-bold">Developer Perspective & Deep-Tech</span>
+        <h2 class="font-serif text-3xl font-bold">Arsitektur Modern & Efisiensi Tanpa Server</h2>
+        <p class="text-sm text-cafe-medium leading-relaxed">
+          Bagi developer pemula ataupun profesional, membangun aplikasi seringkali memakan biaya server bulanan yang tinggi. Di <strong>Arblok Digital</strong>, kami mendesain arsitektur aplikasi ini agar memiliki performa skala industri namun memiliki <strong>operating cost mendekati Rp 0 (Zero-Cost)</strong>.
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-lg bg-cafe-accent/10 flex items-center justify-center text-cafe-accent shrink-0 font-bold text-xs">01</div>
+            <div>
+              <h4 class="font-serif font-bold text-sm">Supabase Direct Access & RLS Security</h4>
+              <p class="text-xs text-cafe-medium mt-1 leading-relaxed">
+                Aplikasi langsung berkomunikasi dengan database melalui Client SDK Supabase. Keamanannya dijamin oleh fitur <strong>Row Level Security (RLS) PostgreSQL</strong> di mana query divalidasi langsung di database, sehingga tidak membutuhkan server backend API perantara yang mahal.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-lg bg-cafe-accent/10 flex items-center justify-center text-cafe-accent shrink-0 font-bold text-xs">02</div>
+            <div>
+              <h4 class="font-serif font-bold text-sm">Image Compressing on Frontend Side</h4>
+              <p class="text-xs text-cafe-medium mt-1 leading-relaxed">
+                Semua upload file (seperti KTP, KK, bukti bayar, atau foto menu) dikompresi di tingkat frontend menggunakan browser-side library menjadi <strong>kurang dari 150KB</strong> sebelum di-upload ke Supabase Storage. Menghemat bandwith pelanggan sekaligus memaksimalkan kuota gratis 1GB Supabase Storage.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-lg bg-cafe-accent/10 flex items-center justify-center text-cafe-accent shrink-0 font-bold text-xs">03</div>
+            <div>
+              <h4 class="font-serif font-bold text-sm">WhatsApp wa.me Deep-Linking Notification</h4>
+              <p class="text-xs text-cafe-medium mt-1 leading-relaxed">
+                Mengirim status pesanan, notifikasi, atau koordinasi langsung ke wa.me dengan encoding template pesan instan, sehingga pelanggan tinggal mengetuk satu tombol tanpa setup server notifikasi berbayar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section: Interactive Flow Chart -->
+  <section id="flow" class="px-6 py-20 lg:px-16 border-t border-cafe-border bg-white">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center max-w-xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-[0.25em] text-cafe-accent font-bold font-mono">STEP-BY-STEP USER PATH</span>
+        <h2 class="font-serif text-3xl font-bold">Bagaimana Alur Pemesanan Berjalan?</h2>
+        <p class="text-sm text-cafe-medium">Simpel, intuitif, dan bebas hambatan bagi barista dan pelanggan.</p>
+      </div>
+
+      <!-- Custom Interactive Timeline -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+        
+        <!-- Step 1 -->
+        <div class="bg-cafe-light border border-cafe-border p-6 rounded-2xl relative space-y-3">
+          <div class="absolute -top-4 left-6 bg-cafe-accent text-white font-mono text-xs w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
+          <div class="pt-2">
+            <span class="material-symbols-outlined text-cafe-accent text-3xl">qr_code_scanner</span>
+          </div>
+          <h4 class="font-serif font-bold text-sm">Scan QR di Meja</h4>
+          <p class="text-xs text-cafe-medium leading-relaxed">Pelanggan datang, duduk di meja masing-masing, dan memindai QR code unik yang ada di meja.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-cafe-light border border-cafe-border p-6 rounded-2xl relative space-y-3">
+          <div class="absolute -top-4 left-6 bg-cafe-accent text-white font-mono text-xs w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+          <div class="pt-2">
+            <span class="material-symbols-outlined text-cafe-accent text-3xl">coffee_maker</span>
+          </div>
+          <h4 class="font-serif font-bold text-sm">Sesuaikan Kopi Anda</h4>
+          <p class="text-xs text-cafe-medium leading-relaxed">Terbuka menu interaktif. Atur ukuran (Small, Med, Large), jenis susu, extra shot, dan berikan instruksi khusus jika diinginkan.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-cafe-light border border-cafe-border p-6 rounded-2xl relative space-y-3">
+          <div class="absolute -top-4 left-6 bg-cafe-accent text-white font-mono text-xs w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+          <div class="pt-2">
+            <span class="material-symbols-outlined text-cafe-accent text-3xl">shopping_cart_checkout</span>
+          </div>
+          <h4 class="font-serif font-bold text-sm">Kirim & Bayar Instan</h4>
+          <p class="text-xs text-cafe-medium leading-relaxed">Pesan terkirim ke serverless DB. Pelanggan bisa melakukan pembayaran mandiri lewat QRIS dinamis yang muncul otomatis.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-cafe-light border border-cafe-border p-6 rounded-2xl relative space-y-3">
+          <div class="absolute -top-4 left-6 bg-cafe-accent text-white font-mono text-xs w-8 h-8 rounded-full flex items-center justify-center font-bold">4</div>
+          <div class="pt-2">
+            <span class="material-symbols-outlined text-cafe-accent text-3xl">done_all</span>
+          </div>
+          <h4 class="font-serif font-bold text-sm">Pesanan Selesai</h4>
+          <p class="text-xs text-cafe-medium leading-relaxed">Barista menerima pesanan di panel dashboard utama, memproses kopi, dan pesanan siap diantarkan langsung ke meja.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Monorepo Scaling -->
+  <section id="monorepo" class="px-6 py-20 lg:px-16 border-t border-cafe-border bg-cafe-dark text-cafe-light">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <span class="text-xs uppercase tracking-[0.25em] text-amber-400 font-bold font-mono">FILOSOFI MONOREPO WORKSPACE</span>
+          <h2 class="font-serif text-3xl font-bold">Dirancang untuk Skalabilitas Masa Depan</h2>
+          <p class="text-sm text-stone-300 leading-relaxed">
+            Dalam membangun ekosistem digital E-Warga dan sistem pendukung seperti Sanajan Warkop, kami di <strong>Arblok Digital</strong> tidak sekadar membuat kode satu halaman yang ditumpuk. Kami memisahkan modul-modul logika utama ke dalam struktur monorepo workspace yang bersih.
+          </p>
+          <p class="text-sm text-stone-300 leading-relaxed">
+            Mengapa ini penting? Di masa depan, ketika café ini berkembang dan ingin meluncurkan aplikasi native Android/iOS khusus member, dashboard khusus owner café, atau aplikasi khusus kasir, kita tidak perlu menduplikat kode! Cukup mengimpor shared package yang sama.
+          </p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10 space-y-2">
+              <p class="font-serif text-amber-400 text-sm font-bold">/packages/logic</p>
+              <p class="text-xs text-stone-400">Berisi skema validasi, tipe data pesanan, status transisi (Pending &rarr; Diproses &rarr; Selesai), dan workflow pipeline yang digunakan bersama.</p>
+            </div>
+            <div class="bg-white/5 p-4 rounded-xl border border-white/10 space-y-2">
+              <p class="font-serif text-amber-400 text-sm font-bold">/packages/supabase</p>
+              <p class="text-xs text-stone-400">Isolasi koneksi database, skema migrasi database PostgreSQL, helper query, dan konfigurasi keamanan Row Level Security (RLS).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Directory tree simulator -->
+        <div class="lg:col-span-5">
+          <div class="bg-black/40 border border-white/10 p-6 rounded-2xl space-y-3 font-mono text-xs">
+            <p class="text-amber-400 font-bold">// Workspace Folder Tree</p>
+            <div class="space-y-1 text-stone-300 pl-2">
+              <p>📂 <span class="text-white font-bold">e-warga-monorepo/</span></p>
+              <p class="pl-4">├── 📁 <span class="text-amber-200">apps/</span></p>
+              <p class="pl-8 text-stone-400">├── 📁 <span class="text-white">warga-pwa/</span> <span class="text-[9px] bg-white/10 px-1.5 py-0.2 rounded text-white font-normal">Customer UI</span></p>
+              <p class="pl-8 text-stone-400">└── 📁 <span class="text-stone-500">kecamatan-dashboard/</span> <span class="text-[9px] bg-amber-500/10 text-amber-400 px-1.5 py-0.2 rounded font-normal">Future App</span></p>
+              <p class="pl-4">├── 📁 <span class="text-amber-200">packages/</span></p>
+              <p class="pl-8">├── 📁 <span class="text-white">logic/</span> <span class="text-[9px] bg-green-500/10 text-green-400 px-1.5 py-0.2 rounded font-normal">@e-warga/logic</span></p>
+              <p class="pl-8">└── 📁 <span class="text-white">supabase/</span> <span class="text-[9px] bg-blue-500/10 text-blue-400 px-1.5 py-0.2 rounded font-normal">@e-warga/supabase</span></p>
+              <p class="pl-4">├── 📄 <span class="text-green-300">package.json</span> <span class="text-[9px] text-stone-500">(Root Workspaces)</span></p>
+              <p class="pl-4">└── 📄 <span class="text-stone-500">README.md</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Call to Action (Company Profile Link) -->
+  <section class="px-6 py-24 lg:px-16 border-t border-cafe-border bg-cafe-light flex justify-center text-center">
+    <div class="max-w-xl mx-auto space-y-6">
+      <div class="w-16 h-16 rounded-2xl bg-cafe-dark flex items-center justify-center text-white mx-auto shadow-lg">
+        <span class="material-symbols-outlined text-amber-400 text-3xl">terminal</span>
+      </div>
+      <h2 class="font-serif text-3xl font-bold">Siap Mendigitalisasi Bisnis Anda?</h2>
+      <p class="text-sm text-cafe-medium leading-relaxed">
+        Sistem di atas merupakan salah satu hasil pengerjaan tim <strong>Arblok Digital</strong>. Kami merancang solusi perangkat lunak tangguh dengan performa tinggi, desain estetik yang premium, dan efisiensi biaya server bulanan maksimal.
+      </p>
+      
+      <div class="pt-4">
+        <a href="https://wa.me/6281234567890?text=Halo%20Arblok%20Digital,%20saya%20tertarik%20konsultasi%20mengenai%20mendigitalisasi%20bisnis%20saya!" 
+           target="_blank" 
+           class="px-8 py-4 bg-cafe-accent hover:bg-cafe-accent-hover text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all shadow-xl shadow-cafe-accent/20 inline-flex items-center gap-2">
+          <span>Mulai Konsultasi Gratis</span>
+          <span class="material-symbols-outlined">chat_bubble</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-cafe-dark text-stone-500 py-12 px-6 lg:px-16 border-t border-white/5 text-xs text-center">
+    <div class="max-w-5xl mx-auto space-y-4">
+      <p class="text-stone-400 font-serif font-bold text-sm text-cafe-light">Arblok Digital Portfolio Piece</p>
+      <p>Sistem Pemesanan Mandiri Kafe Modern • Dirancang untuk Kecepatan, Keindahan & Tanpa Biaya Server Bulanan.</p>
+      <div class="pt-4 text-stone-600">
+        &copy; 2026 Arblok Digital. Hak Cipta Dilindungi Undang-Undang.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
