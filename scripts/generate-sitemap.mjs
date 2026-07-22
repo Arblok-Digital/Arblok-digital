@@ -47,6 +47,14 @@ const articles = [
     slug: "cara-memilih-software-house-umkm-tasikmalaya",
     lastmod: "2026-07-17",
   },
+  {
+    slug: "keluar-marketplace-bikin-toko-online-sendiri-tanpa-potongan-admin",
+    lastmod: "2026-07-17",
+  },
+  {
+    slug: "biaya-bulanan-yang-tidak-perlu-perusahaan-hemat-teknologi",
+    lastmod: "2026-07-22",
+  },
 ];
 
 // ── Build XML ──

@@ -172,6 +172,62 @@ Panduan Memilih Berdasarkan Budget
       { q: "Bagaimana verifikasi kredibilitas software house?", a: "Cek portofolio (minta demo langsung), testimonial (chat klien), dan Google review." },
     ],
   },
+  {
+    slug: "keluar-marketplace-bikin-toko-online-sendiri-tanpa-potongan-admin",
+    title: "Cara Keluar dari Marketplace: Bikin Toko Online Sendiri Tanpa Potongan Admin 2-10%",
+    excerpt: "Biaya admin Shopee & Tokopedia naik 2-10% per transaksi Mei 2026. Pelajari cara bikin toko online sendiri dengan payment gateway langsung.",
+    category: "UMKM & Marketplace",
+    publishedAt: "2026-07-17",
+    author: { name: "Ardi", role: "Founder & Lead Software Architect @ Arblok Digital" },
+    tags: ["Keluar Marketplace", "Toko Online Sendiri", "Biaya Admin Marketplace", "UMKM 2026"],
+    content: `Marketplace Mahal? Lo Gak Sendirian
+
+Shopee naik lagi. Tokopedia nyusul. Biaya admin Shopee resmi jadi 2-10% per transaksi per Januari 2026. Hasilnya: banyak seller UKM ngerasain margin mereka tergerus 15-25% per bulan.
+
+3 Jalur Keluar dari Marketplace:
+1. Toko Online Sendiri + Payment Gateway (Recommended) — modal 8-25jt, 0% potongan, 0% biaya server
+2. WhatsApp Business + Payment Link — gratis total, cocok untuk skala kecil
+3. Social Commerce (Instagram/TikTok → Payment Link) — 0% potongan, tapi tergantung algoritma
+
+Kenapa custom website lebih untung? Source code milik Anda, hosting Rp 0/bulan, customer data sepenuhnya milik Anda.
+
+Butuh bantuan migrasi dari marketplace? Chat Ardi via WhatsApp untuk konsultasi gratis.`,
+    faq: [
+      { q: "Berapa biaya admin Shopee dan Tokopedia di 2026?", a: "Shopee 2-10%, Tokopedia juga menyesuaikan. Bisa menggerus 15-25% margin bulanan." },
+      { q: "Bisakah jualan online tanpa marketplace?", a: "Bisa. Lewat website sendiri + payment gateway, WA Business, atau social commerce." },
+      { q: "Berapa modal bikin toko online sendiri?", a: "Custom website 8-25jt (sekali bayar) + Rp 0/bulan hosting. Lebih murah dari 2 tahun SaaS." },
+      { q: "Bagaimana bawa customer dari marketplace?", a: "Sisipkan QR code website di packaging, konten edukatif di IG/TikTok, loyalty program eksklusif untuk member website." },
+    ],
+  },
+  {
+    slug: "biaya-bulanan-yang-tidak-perlu-perusahaan-hemat-teknologi",
+    title: "Biaya Bulanan yang Tidak Perlu: Mengapa Banyak Perusahaan Bayar untuk Hal yang Bisa Gratis",
+    excerpt: "Banyak perusahaan membayar puluhan juta per tahun untuk software yang tidak sepenuhnya dimanfaatkan. Pelajari cara menghemat 30-40% biaya operasional teknologi.",
+    category: "Efisiensi Bisnis",
+    publishedAt: "2026-07-22",
+    author: { name: "Ardi", role: "Founder & Lead Software Architect @ Arblok Digital" },
+    tags: ["Biaya Operasional", "Efisiensi Teknologi", "Software Custom", "Cost Optimization"],
+    content: `Biaya Bulanan yang Tidak Perlu
+
+Beberapa minggu lalu, saya ngobrol dengan seorang Finance Director di perusahaan manufaktur Jawa Barat. Total biaya teknologi mereka: Rp 4,4 juta per bulan = Rp 52,8 juta per tahun untuk 30 karyawan.
+
+Masalahnya: sebagian besar fitur software tidak dipakai optimal. Biaya digitalisasi meningkat tajam (Kompas Money Juni 2026, Koran Jakarta Juli 2026).
+
+Apa yang bisa dilakukan?
+1. Audit biaya teknologi — 30-40% bisa dihemat tanpa kehilangan fungsi kritis
+2. Ganti model langganan dengan kepemilikan — custom software sekali bayar
+3. Pastikan software benar-benar dipakai — bukan demo lalu ditinggalkan
+
+Real Case: Perusahaan manufaktur 30 karyawan — Rp 4,4jt/bulan jadi Rp 0/bulan untuk server + gateway WA. Modal Rp 18jt terbayar dalam 7 bulan.
+
+Konsultasi 30 menit gratis. Hubungi Ardi via WhatsApp.`,
+    faq: [
+      { q: "Berapa rata-rata biaya teknologi perusahaan kecil per tahun?", a: "Rp 40-60 juta untuk 30-50 karyawan. Sebagian besar fitur tidak optimal." },
+      { q: "Bisakah hemat biaya tanpa ganti sistem yang ada?", a: "Bisa. Audit fitur, biasanya 30-40% biaya bisa dipangkas." },
+      { q: "Apa beda custom software dengan SaaS?", a: "SaaS bayar bulanan selamanya. Custom sekali bayar, milik Anda selamanya." },
+      { q: "Apakah Arblok Digital melayani perusahaan menengah?", a: "Ya. Kami melayani UMKM hingga perusahaan menengah." },
+    ],
+  },
 ];
 
 // ── Simple markdown-ish to HTML converter ──
