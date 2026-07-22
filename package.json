@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build:sitemap": "node scripts/generate-sitemap.mjs",\n    "prerender": "node scripts/prerender-articles.mjs",\n    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build:sitemap": "node scripts/generate-sitemap.mjs",
+    "prerender": "node scripts/prerender-articles.mjs",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
