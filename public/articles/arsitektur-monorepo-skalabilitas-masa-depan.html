@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membangun Aplikasi Cepat dan Scalable dengan Arsitektur Monorepo | Arblok Digital</title>
+  <meta name="description" content="Mengapa memulai dengan satu codebase tunggal (monorepo) menggunakan NPM Workspaces adalah pilihan terbaik bagi startup modern.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://arblok-digital.vercel.app/articles#arsitektur-monorepo-skalabilitas-masa-depan">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Membangun Aplikasi Cepat dan Scalable dengan Arsitektur Monorepo">
+  <meta property="og:description" content="Mengapa memulai dengan satu codebase tunggal (monorepo) menggunakan NPM Workspaces adalah pilihan terbaik bagi startup modern.">
+  <meta property="og:url" content="https://arblok-digital.vercel.app/articles#arsitektur-monorepo-skalabilitas-masa-depan">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Membangun Aplikasi Cepat dan Scalable dengan Arsitektur Monorepo","description":"Mengapa memulai dengan satu codebase tunggal (monorepo) menggunakan NPM Workspaces adalah pilihan terbaik bagi startup modern.","datePublished":"2026-07-08","author":{"@type":"Person","name":"Ardi","jobTitle":"Lead Software Architect @ Arblok Digital"},"publisher":{"@type":"Organization","name":"Arblok Digital"},"keywords":"Monorepo, NPM Workspaces, TypeScript, Scalability"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Apa perbedaan Monorepo dengan Monolith?","acceptedAnswer":{"@type":"Answer","text":"Monolith adalah satu aplikasi besar tunggal. Monorepo adalah satu repositori yang menampung banyak aplikasi independen yang berbagi kode secara modular."}},{"@type":"Question","name":"Kapan proyek harus beralih ke Monorepo?","acceptedAnswer":{"@type":"Answer","text":"Sangat disarankan sejak awal jika berencana membuat beberapa aplikasi yang saling terhubung."}}]}</script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #1a1a2e; line-height: 1.7; }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .meta { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
+    .meta span { margin-right: 1rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; color: #0ea5e9; }
+    h3 { font-size: 1.1rem; margin-top: 1.5rem; }
+    strong { color: #0f172a; }
+    ol, ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    section { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; }
+    .cta { margin-top: 2rem; padding: 1rem; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px; text-align: center; }
+    .cta a { color: #0ea5e9; font-weight: bold; text-decoration: none; }
+    a.back { color: #0ea5e9; text-decoration: none; display: inline-block; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <a class="back" href="/articles">&larr; Kembali ke Blog</a>
+  <article>
+    <h1>Membangun Aplikasi Cepat dan Scalable dengan Arsitektur Monorepo</h1>
+    <div class="meta">
+      <span>Teknologi & Bisnis</span>
+      <span>2026-07-08</span>
+      <span>Oleh Ardi</span>
+    </div>
+    <p><em>Mengapa memulai dengan satu codebase tunggal (monorepo) menggunakan NPM Workspaces adalah pilihan terbaik bagi startup modern.</em></p>
+    <p>Tantangan Duplikasi Kode pada Skala Besar</p>
+<p>Ketika produk teknologi berkembang, developer sering perlu membuat beberapa aplikasi pendukung yang berbeda namun menggunakan basis data dan alur kerja yang serupa. Jika menggunakan multi-repositori tradisional, developer terpaksa menduplikasi kode.</p>
+<p>Solusi NPM Workspaces & Shared Packages</p>
+<ol><li>Paket Logika Bersama (packages/logic): Seluruh logika bisnis diisolasi ke dalam satu folder tersendiri.</li></ol>
+<ol><li>Paket Koneksi Database (packages/supabase): Konfigurasi klien, kueri database, serta migrasi skema RLS diwadahi dalam satu paket independen.</li></ol>
+<ol><li>Kemudahan Integrasi: Aplikasi front-end tinggal mengimpor pustaka bersama. Saat menambahkan aplikasi baru, hanya perlu mengimpor library yang sama.</li></ol>
+    <section><h2>FAQ</h2><div><h3>Apa perbedaan Monorepo dengan Monolith?</h3><p>Monolith adalah satu aplikasi besar tunggal. Monorepo adalah satu repositori yang menampung banyak aplikasi independen yang berbagi kode secara modular.</p></div>
+<div><h3>Kapan proyek harus beralih ke Monorepo?</h3><p>Sangat disarankan sejak awal jika berencana membuat beberapa aplikasi yang saling terhubung.</p></div></section>
+  </article>
+  <div class="cta">
+    <p>Tertarik menerapkan solusi ini?</p>
+    <a href="https://wa.me/6289508053795?text=Halo%20Arblok%20Digital%2C%20saya%20membaca%20artikel%20tentang%20Membangun%20Aplikasi%20Cepat%20dan%20Scalable%20dengan%20Arsitektur%20Monorepo">Diskusikan di WhatsApp &rarr;</a>
+  </div>
+</body>
+</html>

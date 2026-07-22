@@ -176,7 +176,7 @@ Arblok-Digital--main/
 
 ### Yang UDAH done (AUDIT 18 JUL 2026):
 - [x] `public/robots.txt` — ✅
-- [x] `public/sitemap.xml` — ✅ (updated hash → real paths)
+- [x] `public/sitemap.xml` — ✅ (auto-generated via `scripts/generate-sitemap.mjs`)
 - [x] `public/llms.txt` — ✅
 - [x] `public/og-image.png` — ✅
 - [x] `public/arblok_logo.webp` — ✅ (648KB → 28KB, -96%)
@@ -186,6 +186,24 @@ Arblok-Digital--main/
 - [x] ErrorBoundary — ✅
 - [x] React Router migration (hash → path routing) — ✅
 - [x] Static fallback meta tags di `index.html` — ✅
+
+
+### Yang UDAH done (AUDIT 22 JUL 2026 - SEO/IEO Fix):
+- [x] Hapus fake Product/AggregateRating JSON-LD (risiko Google manual action) — ✅
+- [x] Breadcrumb schema: update hash URLs → path routing URLs — ✅
+- [x] Static article pages: `public/articles/[slug].html` — AI crawler readable tanpa JS — ✅
+- [x] Sitemap auto-generated dari articles data (`scripts/generate-sitemap.mjs`) — ✅
+- [x] Prerender script (`scripts/prerender-articles.mjs`) — generate HTML + JSON-LD baked — ✅
+- [x] BlogPosting + FAQPage JSON-LD baked ke static HTML — ✅
+- [x] GA4 ID (`G-GHKVV2YQE2`) — ✅
+- [x] Google Search Console verification — ✅
+
+### Yang PERLU dilakukan (POST AUDIT):
+- [ ] Add individual article routes (`/articles/:slug`) untuk SEO optimal
+- [ ] Google My Business listing — klaim + optimasi
+- [ ] Testimonial ASLI dari klien → ganti placeholder reviews
+- [ ] Prerender homepage (`/`) + `/consultant` untuk AI crawler
+- [ ] Run `node scripts/prerender-articles.mjs` sebelum setiap build/deploy
 
 ### Yang MANUAL:
 - [ ] GA4 ID (`G-XXXXXXXX`) — isi sendiri di `index.html`

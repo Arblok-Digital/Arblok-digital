@@ -190,48 +190,17 @@
         { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://arblok-digital.vercel.app/" },
         { "@type": "ListItem", "position": 2, "name": "Layanan", "item": "https://arblok-digital.vercel.app/#services" },
         { "@type": "ListItem", "position": 3, "name": "Portofolio", "item": "https://arblok-digital.vercel.app/#portfolio" },
-        { "@type": "ListItem", "position": 4, "name": "Artikel", "item": "https://arblok-digital.vercel.app/#articles" },
-        { "@type": "ListItem", "position": 5, "name": "AI Consultant", "item": "https://arblok-digital.vercel.app/#ai-consultant" }
+        { "@type": "ListItem", "position": 4, "name": "Artikel", "item": "https://arblok-digital.vercel.app/articles" },
+        { "@type": "ListItem", "position": 5, "name": "AI Consultant", "item": "https://arblok-digital.vercel.app/consultant" }
       ]
     }
     </script>
 
-    <!-- Reviews / AggregateRating Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "ARBLOK Digital - Jasa Pembuatan Website & Software",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "ratingCount": "27",
-        "reviewCount": "27"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Doni Prasetyo" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "reviewBody": "Proses pembuatan website UMKM cepat, hasilnya memuaskan. Sistem KasirPro-nya sangat membantu bisnis warung saya."
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Siti Nurhaliza" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "reviewBody": "E-Warga sangat memudahkan pengurusan surat di kelurahan. Zero-cost hosting benar-benar gratis. Rekomendasi banget!"
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Rudi Hartono" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "reviewBody": "Professional dan paham teknis. Arsitektur monorepo-nya bikin scalable. Solusi tepat untuk digitalisasi RT/RW."
-        }
-      ]
-    }
-    </script>
-  </head>
+    <!--
+      REMOVED: Fake Product/AggregateRating schema.
+      Risiko: Google manual action untuk fabricated reviews.
+      TODO: Ganti dengan testimonial ASLI dari klien (KasirPro, E-Warga, SekolahRapi).
+    -->  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
