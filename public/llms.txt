@@ -78,6 +78,13 @@ Flexible and negotiable. No budget is too small. We offer:
 - Hours: Monday-Saturday, 09:00-21:00 WIB (UTC+7)
 - Languages: Indonesian (primary), English
 
+## Prerendered Pages (AI-crawlable, no JavaScript required)
+
+These pages contain the same content as the main SPA but are fully static HTML for AI crawlers:
+
+- Homepage: https://arblok-digital.vercel.app/prerendered/home.html
+- AI Consultant: https://arblok-digital.vercel.app/prerendered/consultant.html
+
 ## Industries Served
 
 - UMKM / Small-Medium Enterprises

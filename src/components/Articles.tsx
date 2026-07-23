@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { BookOpen, Calendar, Clock, ArrowLeft, Tag, ChevronDown, ChevronUp, User, Sparkles } from "lucide-react";
 import { Article, FAQItem } from "../types";
 import { getArticlesData } from "../data/articles";
@@ -6,6 +7,8 @@ import { useLanguage } from "../LanguageContext";
 
 export default function Articles() {
   const { language } = useLanguage();
+  const { slug } = useParams<{ slug?: string }>();
+  const navigate = useNavigate();
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("Semua");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -27,6 +30,21 @@ export default function Articles() {
     }
   }, [language, articlesData]);
 
+  // SEO-friendly route: /articles/:slug opens the requested article directly
+  useEffect(() => {
+    if (slug) {
+      const found = articlesData.find((a) => a.slug === slug);
+      if (found) {
+        setSelectedArticle(found);
+      } else {
+        // Unknown slug -> back to article list
+        navigate("/articles", { replace: true });
+      }
+    } else {
+      setSelectedArticle(null);
+    }
+  }, [slug, articlesData, navigate]);
+
   const categories = language === "id"
     ? ["Semua", "Digitalisasi UMKM", "Kecerdasan Buatan (AI)", "Teknologi & Bisnis"]
     : ["All", "SMB Digitalization", "Artificial Intelligence (AI)", "Technology & Business"];
@@ -44,12 +62,15 @@ export default function Articles() {
     }
 
     if (selectedArticle) {
+      const articleUrl = `${window.location.origin}/articles/${selectedArticle.slug}`;
+
       // 1. Create BlogPosting Schema
       const blogSchema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": selectedArticle.title,
         "description": selectedArticle.excerpt,
+        "url": articleUrl,
         "datePublished": selectedArticle.publishedAt,
         "author": {
           "@type": "Person",
@@ -61,9 +82,10 @@ export default function Articles() {
           "name": "Arblok Digital",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://arblok-digital.id/assets/logo.png" // Fallback URL
+            "url": "https://arblok-digital.vercel.app/arblok_logo.webp"
           }
         },
+        "image": "https://arblok-digital.vercel.app/og-image.png",
         "keywords": selectedArticle.tags.join(", ")
       };
 
@@ -84,8 +106,19 @@ export default function Articles() {
         };
       }
 
+      // 3. Create Breadcrumb Schema per article
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Beranda", "item": `${window.location.origin}/` },
+          { "@type": "ListItem", "position": 2, "name": "Artikel", "item": `${window.location.origin}/articles` },
+          { "@type": "ListItem", "position": 3, "name": selectedArticle.title, "item": articleUrl }
+        ]
+      };
+
       // Combine into array
-      const schemas = [blogSchema];
+      const schemas = [blogSchema, breadcrumbSchema];
       if (faqSchema) schemas.push(faqSchema);
 
       const script = document.createElement("script");
@@ -125,8 +158,7 @@ export default function Articles() {
               onClick={() => {
                 setSelectedArticle(null);
                 setOpenFaqIndex(null);
-                const section = document.getElementById("articles");
-                if (section) section.scrollIntoView({ behavior: "smooth" });
+                navigate("/articles");
               }}
               className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 font-mono text-xs uppercase tracking-wider bg-slate-900/60 hover:bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl transition-all cursor-pointer"
             >
@@ -374,9 +406,7 @@ export default function Articles() {
                     
                     <button
                       onClick={() => {
-                        setSelectedArticle(article);
-                        const section = document.getElementById("articles");
-                        if (section) section.scrollIntoView({ behavior: "smooth" });
+                        navigate(`/articles/${article.slug}`);
                       }}
                       className="font-display text-xs font-semibold text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 transition-all cursor-pointer"
                     >

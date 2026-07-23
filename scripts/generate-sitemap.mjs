@@ -74,13 +74,11 @@ for (const r of staticRoutes) {
   entries.push(urlEntry(`${BASE_URL}${r.path}`, TODAY, r.changefreq, r.priority));
 }
 
-// Individual articles (anchor links on /articles page)
-// NOTE: When individual article routes (/articles/:slug) are added,
-// update these to point to the actual route instead of the anchor.
+// Individual article routes (/articles/:slug)
 for (const a of articles) {
   entries.push(
     urlEntry(
-      `${BASE_URL}/articles#${a.slug}`,
+      `${BASE_URL}/articles/${a.slug}`,
       a.lastmod,
       "monthly",
       "0.7"

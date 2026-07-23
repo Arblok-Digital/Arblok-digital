@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -41,15 +41,19 @@ function ScrollToAnchor() {
 
 function OldHashRedirect() {
   const navigate = useNavigate();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    const hash = window.location.hash;
     if (hash === "#articles") {
       navigate("/articles", { replace: true });
     } else if (hash === "#ai-consultant") {
       navigate("/consultant", { replace: true });
+    } else if (pathname === "/articles" && hash.startsWith("#")) {
+      // Legacy anchor article links -> real path routes for SEO
+      const slug = hash.substring(1);
+      if (slug) navigate(`/articles/${slug}`, { replace: true });
     }
-  }, [navigate]);
+  }, [navigate, pathname, hash]);
 
   return null;
 }
@@ -64,6 +68,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<ProfilePage />} />
           <Route path="/articles" element={<div className="animate-fade-in"><Articles /></div>} />
+          <Route path="/articles/:slug" element={<div className="animate-fade-in"><Articles /></div>} />
           <Route path="/consultant" element={<div className="animate-fade-in pt-12"><AiConsultant /></div>} />
         </Routes>
       </main>

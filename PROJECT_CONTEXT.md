@@ -200,7 +200,7 @@ Arblok-Digital--main/
 
 ### Yang PERLU dilakukan (POST AUDIT):
 - [ ] Add individual article routes (`/articles/:slug`) untuk SEO optimal
-- [ ] Google My Business listing — klaim + optimasi
+- [ ] Google My Business listing — klaim + optimasi (prioritas: klaim profil bisnis Tasikmalaya di Google Maps)
 - [ ] Testimonial ASLI dari klien → ganti placeholder reviews
 - [ ] Prerender homepage (`/`) + `/consultant` untuk AI crawler
 - [ ] Run `node scripts/prerender-articles.mjs` sebelum setiap build/deploy

@@ -265,15 +265,36 @@ for (const article of articles) {
         })
       : null;
 
+  const articleUrl = `${BASE_URL}/articles/${article.slug}`;
   const blogSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.publishedAt,
-    author: { "@type": "Person", name: article.author.name, jobTitle: article.author.role },
-    publisher: { "@type": "Organization", name: "Arblok Digital" },
-    keywords: article.tags.join(", "),
+    "headline": article.title,
+    "description": article.excerpt,
+    "url": articleUrl,
+    "datePublished": article.publishedAt,
+    "dateModified": article.publishedAt,
+    "author": { "@type": "Person", "name": article.author.name, "jobTitle": article.author.role },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Arblok Digital",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${BASE_URL}/arblok_logo.webp`
+      }
+    },
+    "image": `${BASE_URL}/og-image.png`,
+    "keywords": article.tags.join(", ")
+  });
+
+  const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Beranda", "item": BASE_URL },
+      { "@type": "ListItem", "position": 2, "name": "Artikel", "item": `${BASE_URL}/articles` },
+      { "@type": "ListItem", "position": 3, "name": article.title, "item": articleUrl }
+    ]
   });
 
   const faqHtml =
@@ -289,13 +310,23 @@ for (const article of articles) {
   <title>${article.title} | Arblok Digital</title>
   <meta name="description" content="${article.excerpt}">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="${BASE_URL}/articles#${article.slug}">
+  <link rel="canonical" href="${articleUrl}">
   <meta property="og:type" content="article">
   <meta property="og:title" content="${article.title}">
   <meta property="og:description" content="${article.excerpt}">
-  <meta property="og:url" content="${BASE_URL}/articles#${article.slug}">
+  <meta property="og:url" content="${articleUrl}">
+  <meta property="og:image" content="${BASE_URL}/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:site_name" content="Arblok Digital">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${article.title}">
+  <meta name="twitter:description" content="${article.excerpt}">
+  <meta name="twitter:image" content="${BASE_URL}/og-image.png">
   <script type="application/ld+json">${blogSchema}</script>
   ${faqSchema ? `<script type="application/ld+json">${faqSchema}</script>` : ""}
+  <script type="application/ld+json">${breadcrumbSchema}</script>
   <style>
     body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #1a1a2e; line-height: 1.7; }
     h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
